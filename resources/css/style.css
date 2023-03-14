@@ -1,6 +1,6 @@
 html, body {
-	background-color: #303030;
-	color: #e0e0e0;
+	background-color: #222;
+	color: #fff;
 	position: fixed;
 	top: 0px;
 	left: 0px;
@@ -10,7 +10,7 @@ html, body {
 	overflow-y: auto;
 }
 h1, h2, p, a, .text {
-	color: #e0e0e0;
+	color: #fff;
 }
 .centriert {
 	display: flex;
