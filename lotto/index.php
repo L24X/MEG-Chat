@@ -22,7 +22,7 @@ if(isset($_SESSION['pupil'])){
 <body>
 	<?php require('../internal/middleware/navbar.php'); ?>
 	<div id="site_container">
-	    <div class="main">
+	    <div class="main" style="margin-top: 80px; ">
 			<div class="jackpot-box">
 			    <h2>Aktueller Jackpot:</h2>
 			    <p class="jackpot-amount">10.000.000 MEG-Taler</p>

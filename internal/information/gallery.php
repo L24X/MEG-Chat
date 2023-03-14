@@ -20,7 +20,7 @@ if(isset($_SESSION['pupil'])){
   <body>
 	<?php require('../middleware/navbar.php'); ?>
 	<div id="site_container" class="gallery">
-	    <header>
+	    <header style="margin-top: 80px; ">
 		  <div>
 	      <h1>MEG - Bildergalerie</h1>
 	      <h4>Wie auf den IPads nur in Besser!</h4>
