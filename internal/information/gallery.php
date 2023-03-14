@@ -18,118 +18,34 @@ if(isset($_SESSION['pupil'])){
     <?php require('../middleware/head.php'); ?>
   </head>
   <body>
-    <header>
-	  <div>
-      <h1>MEG - Bildergalerie</h1>
-      <h4>Wie auf den IPads nur in Besser!</h4>
-      </div>
-      <?php
-      if(isset($_SESSION['pupil'])){?>
-          <button id="add-image-btn" onclick="upload();">Neues Bild hinzufügen</button>
-          <?php
-      } else {
-		  ?>
-		  <button id="add-image-btn" onclick="page_navigate('/account/login');">Anmelden / Regestrieren</button>
-		  <?php  
-	  }
-      ?>
-    </header>
-    <main>
-      <div class="image-gallery" id="pictures">
-		<?php
-		$stmtData = $db->prepare("SELECT * FROM ".DBTBL.".pictures ORDER BY id DESC;");
-		$stmtData->execute();
-		while($row = $stmtData->fetchObject()){ $row = (array)$row; ?>
-			<img loading="lazy" src="<?php echo htmlspecialchars($row['path']); ?>" alt="Bild aus der MEG Chat Gallerie">
-	    <?php } ?>
-      </div>
-    </main>
-  </body>
-  <style>
-        body {
-		  background-color: #292929;
-		  color: #ffffff;
-		  font-family: Arial, sans-serif;
-		  font-size: 16px;
-		}
-		
-		header {
-		  display: flex;
-		  justify-content: space-between;
-		  align-items: center;
-		  padding: 20px;
-		  background-color: #1f1f1f;
-		}
-		
-		h1 {
-		  margin: 0;
-		  font-size: 32px;
-		}
-		
-		button {
-		  padding: 10px 20px;
-		  background-color: #eeb111;
-		  border: none;
-		  border-radius: 5px;
-		  color: #ffffff;
-		  font-size: 16px;
-		  cursor: pointer;
-		}
-		
-		button:hover {
-		  background-color: #d7a009;
-		}
-		
-		main {
-		  padding: 20px;
-		}
-		
-		.image-gallery {
-		  display: grid;
-		  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-		  gap: 20px;
-		}
-		
-		.image-gallery img {
-		  width: 100%;
-		  height: auto;
-		  border-radius: 5px;
-		  transition: all 0.2s;
-		}
-		
-		.image-gallery img:hover {
-		  transform: scale(1.05);
-		}
-		
-		@media screen and (max-width: 600px) {
-		  .image-gallery {
-		    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	<?php require('../middleware/navbar.php'); ?>
+	<div id="site_container">
+	    <div class="gallery_header">
+		  <div>
+	      <h1>MEG - Bildergalerie</h1>
+	      <h4>Wie auf den IPads nur in Besser!</h4>
+	      </div>
+	      <?php
+	      if(isset($_SESSION['pupil'])){?>
+	          <button id="add-image-btn" onclick="gallery_upload();">Neues Bild hinzufügen</button>
+	          <?php
+	      } else {
+			  ?>
+			  <button id="add-image-btn" onclick="page_navigate('/account/login');">Anmelden / Regestrieren</button>
+			  <?php  
 		  }
-		}
-  </style>
-  <script>
-      window.upload = function(){
-		  var e = document.createElement("input");
-		  e.type = "file";
-		  e.accept = "image/*";
-		  e.onchange = async function(){
-			var file = e.files[0];
-			if(!file) return;
-		    var dataUrl = await new Promise(resolve => {
-		      let reader = new FileReader();
-		      reader.onload = () => resolve(reader.result);
-		      reader.readAsDataURL(file);
-		    });
-		    document.getElementById("add-image-btn").innerText = "Hochladen...";
-		    post_request("/ajax/picture_upload.php", {data: dataUrl}, function(data){
-				document.getElementById("add-image-btn").innerText = "Neues Bild hinzufügen";
-		        if(data.length > 2){
-			        popup("Fehler!", data);
-			    }
-			    page_navigate(window.location.href, "#pictures");
-		    });
-		  };
-		  e.click();
-	  };
-  </script>
+	      ?>
+	    </header>
+	    <main>
+	      <div class="image-gallery" id="pictures">
+			<?php
+			$stmtData = $db->prepare("SELECT * FROM ".DBTBL.".pictures ORDER BY id DESC;");
+			$stmtData->execute();
+			while($row = $stmtData->fetchObject()){ $row = (array)$row; ?>
+				<img loading="lazy" src="<?php echo htmlspecialchars($row['path']); ?>" alt="Bild aus der MEG Chat Gallerie">
+		    <?php } ?>
+	      </div>
+	    </main>
+	</div>
+  </body>
 </html>

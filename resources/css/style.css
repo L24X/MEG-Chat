@@ -293,4 +293,204 @@ html, body {
              transform: translateY(-100%);
         }
     }
-    
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: #fff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.header h1 {
+    font-size: 36px;
+}
+
+.tokens {
+    font-size: 18px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.lotto-tickets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+.lotto-ticket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    padding: 20px;
+    background-color: #444;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.lotto-ticket:hover {
+    transform: translateY(-5px);
+}
+
+.lotto-ticket .numbers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.lotto-ticket .number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  background-color: #555;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.lotto-ticket .number.selected {
+  background-color: #f00;
+}
+
+.buy-ticket {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #f00;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(255, 0, 0, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buy-ticket:hover {
+  background-color: #c00;
+}
+
+.jackpot-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #111;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.jackpot-box h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.jackpot-amount {
+  font-size: 72px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+.countdown-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #111;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.countdown-box h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.countdown-timer {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+.gallery_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #1f1f1f;
+}
+
+h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #eeb111;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #d7a009;
+}
+
+main {
+  padding: 20px;
+}
+
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.image-gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  transition: all 0.2s;
+}
+
+.image-gallery img:hover {
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 600px) {
+  .image-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}

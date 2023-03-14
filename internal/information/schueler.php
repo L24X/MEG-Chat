@@ -33,6 +33,9 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
     <body>
 		<?php require('../middleware/navbar.php'); ?>
 		<div id="site_container">
+			<?php if($is_mobile){ ?>
+				<button onclick="window.history.go(-1); " style="position: fixed; top: 0px; left: 0px; min-height: 50px; height: auto; width:  auto; font-size: 16px; background-color: transparent; font-size: 24px; color: white; border: none; outline: none; ">&#8678;</button>
+			<?php } ?>
 	        <div style="float: left; width: 100%; min-width: 300px; max-width: 100%; text-align: center;">
 	            <?php if(!$s_data){
 				    ?>

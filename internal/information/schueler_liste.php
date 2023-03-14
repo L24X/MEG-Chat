@@ -21,9 +21,9 @@ if(isset($_SESSION['pupil'])){
     <body>
 		<?php require('../middleware/navbar.php'); ?>
 		<div id="site_container">
-	        <div style="float: left; width: 100%; min-width: 600px; max-width: 100%; text-align: center;">
+	        <div style="float: left; width: 100%; min-width: 300px; max-width: 100%; text-align: center;">
 	            <h1>Suchen Sie nach Schülern auf dem MEG-Chat</h1>
-				<div style="width: 100%; height: 100px; " class="centriert"><input type="text" onchange="page_navigate(window.location.href.split('?')[0]+'?q='+this.value, '#searchresults_container');" placeholder="Suchen.." id="search" value="<?php htmlspecialchars(isset($_GET['q']) ? $_GET['q'] : ""); ?>" style="width: 500px; max-width: 90%; height: 50px; font-size: 24px; "></div>
+				<div style="width: 100%; height: 100px; " class="centriert"><input type="text" onchange="page_navigate(window.location.href.split('?')[0]+'?q='+this.value, '#searchresults_container');" placeholder="Suchen.." id="search" value="<?php htmlspecialchars(isset($_GET['q']) ? $_GET['q'] : ""); ?>" style="width: 500px; max-width: 98%; height: 50px; font-size: 24px; "></div>
 				<div style="width: 100%; " id="searchresults_container">
 	                <?php
 				    $found = false;
