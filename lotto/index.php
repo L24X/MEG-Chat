@@ -32,11 +32,16 @@ if(isset($_SESSION['pupil'])){
 		        <h2>Nächste Ziehung in:</h2>
 			    <p class="countdown-timer">00:00:00:00</p>
 		    </div>
-		</div> 
-        <div class="lotto-tickets" id="tickets-container">
-            <!-- Hier werden die Lottoscheine angezeigt -->
-        </div>
-        <button class="buy-ticket">Neuen Schein kaufen</button>
+		</div>
+		<?php
+		if(isset($_SESSION['pupil'])){ ?>
+	        <div class="lotto-tickets" id="tickets-container">
+	            <!-- Hier werden die Lottoscheine angezeigt -->
+	        </div>
+	        <button class="buy-ticket">Neuen Schein kaufen</button>
+	        <?php
+	    }
+	    ?>
     </div>
     <script src="main.js"></script>
 </body>
