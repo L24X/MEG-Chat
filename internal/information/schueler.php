@@ -32,7 +32,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
     </head>
     <body>
 		<?php require('../middleware/navbar.php'); ?>
-		<div id="site_container" style="margin-top: 80px; ">
+		<div id="site_container" style="margin-top: 100px; ">
 			<?php if($is_mobile){ ?>
 				<button onclick="window.history.go(-1); " style="position: fixed; top: 0px; left: 0px; min-height: 50px; height: auto; width:  auto; font-size: 16px; background-color: transparent; font-size: 24px; color: white; border: none; outline: none; ">&#8678;</button>
 			<?php } ?>
