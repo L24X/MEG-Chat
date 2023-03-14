@@ -310,7 +310,7 @@ window.ask_for_notification_permissions = function(){
 };
 
 window.edit_about_me = function(){
-	html_popup("Erzähl etwas über dich..", '<textarea style="width: 100%; height: 200px; resize: none; " id="about_me_editor"><?php echo htmlspecialchars($s_data['about_me']); ?></textarea><button onclick="save_about_me();">Speichern</button>');
+	html_popup("Erzähl etwas über dich..", '<textarea style="width: 100%; height: 200px; resize: none; " id="about_me_editor"></textarea><button onclick="save_about_me();">Speichern</button>');
 };
 window.save_about_me = function(){
 	var value = document.getElementById("about_me_editor").value;
@@ -325,7 +325,7 @@ window.save_about_me = function(){
 	
 }
 window.edit_email = function(){
-	html_popup("Email Adresse bearbeiten", '<input type="email" id="email_editor" value="<?php echo htmlspecialchars($s_data['email']); ?>" placeholder="mustermann.max@meg-bruehl.de"></input><button onclick="save_email();">Speichern</button>');
+	html_popup("Email Adresse bearbeiten", '<input type="email" id="email_editor" placeholder="mustermann.max@meg-bruehl.de"></input><button onclick="save_email();">Speichern</button>');
 };
 window.save_email = function(){
 	var value = document.getElementById("email_editor").value;
