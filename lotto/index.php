@@ -17,10 +17,10 @@ if(isset($_SESSION['pupil'])){
     <title>MEG-Chat | Lotto</title>
     <meta name="description" content="Lotto Spiel! Ohne echtes Geld. Für Schüler des Max Ernst Gymnasiums. Gewinne den Jackpot und werde der rechste Schüler der Schule. Jetzt Lottoschein mit MEG-Talern kaufen.">
     <meta name="keywords" lang="de" content="meg, max, ernst, gymnasium, max ernst gymnasium, brühl, lotto, geld, meg-taler, taler, spielen, spaß, gewinnen">
-    <?php require('../middleware/head.php'); ?>
+    <?php require('../internal/middleware/head.php'); ?>
 </head>
 <body>
-	<?php require('../middleware/navbar.php'); ?>
+	<?php require('../internal/middleware/navbar.php'); ?>
 	<div id="site_container">
 	    <div class="main">
 			<div class="jackpot-box">

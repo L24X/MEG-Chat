@@ -19,15 +19,15 @@ if(isset($_SESSION['pupil'])){
   </head>
   <body>
 	<?php require('../middleware/navbar.php'); ?>
-	<div id="site_container">
-	    <div class="gallery_header">
+	<div id="site_container" class="gallery">
+	    <header>
 		  <div>
 	      <h1>MEG - Bildergalerie</h1>
 	      <h4>Wie auf den IPads nur in Besser!</h4>
 	      </div>
 	      <?php
 	      if(isset($_SESSION['pupil'])){?>
-	          <button id="add-image-btn" onclick="gallery_upload();">Neues Bild hinzufügen</button>
+	          <button id="add-image-btn" onclick="upload();">Neues Bild hinzufügen</button>
 	          <?php
 	      } else {
 			  ?>
@@ -48,4 +48,34 @@ if(isset($_SESSION['pupil'])){
 	    </main>
 	</div>
   </body>
+  <style>
+        
+		
+		
+  </style>
+  <script>
+      window.upload = function(){
+		  var e = document.createElement("input");
+		  e.type = "file";
+		  e.accept = "image/*";
+		  e.onchange = async function(){
+			var file = e.files[0];
+			if(!file) return;
+		    var dataUrl = await new Promise(resolve => {
+		      let reader = new FileReader();
+		      reader.onload = () => resolve(reader.result);
+		      reader.readAsDataURL(file);
+		    });
+		    document.getElementById("add-image-btn").innerText = "Hochladen...";
+		    post_request("/ajax/picture_upload.php", {data: dataUrl}, function(data){
+				document.getElementById("add-image-btn").innerText = "Neues Bild hinzufügen";
+		        if(data.length > 2){
+			        popup("Fehler!", data);
+			    }
+			    page_navigate(window.location.href, "#pictures");
+		    });
+		  };
+		  e.click();
+	  };
+  </script>
 </html>

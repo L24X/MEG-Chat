@@ -441,7 +441,7 @@ body {
   text-align: center;
   margin: 0;
 }
-.gallery_header {
+.gallery header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -449,12 +449,12 @@ body {
   background-color: #1f1f1f;
 }
 
-h1 {
+.gallery h1 {
   margin: 0;
   font-size: 32px;
 }
 
-button {
+.gallery button {
   padding: 10px 20px;
   background-color: #eeb111;
   border: none;
@@ -464,33 +464,33 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.gallery button:hover {
   background-color: #d7a009;
 }
 
-main {
+.gallery main {
   padding: 20px;
 }
 
-.image-gallery {
+.gallery .image-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
 }
 
-.image-gallery img {
+.gallery .image-gallery img {
   width: 100%;
   height: auto;
   border-radius: 5px;
   transition: all 0.2s;
 }
 
-.image-gallery img:hover {
+.gallery .image-gallery img:hover {
   transform: scale(1.05);
 }
 
 @media screen and (max-width: 600px) {
-  .image-gallery {
+  .gallery .image-gallery {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 }
