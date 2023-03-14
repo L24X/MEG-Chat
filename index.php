@@ -20,7 +20,7 @@ if(isset($_SESSION['pupil'])){
     <body>
 		<? require('internal/middleware/navbar.php'); ?>
         <div id="site_container">
-			<div style="width: 100%; height: 100%; " class="centriert">
+			<div style="width: 100%; height: 100%; margin-top: 100px; " class="centriert">
 			    <div style="width: 600px; max-width: 95%; text-align: center; min-height: 400px; height: auto; ">
 			        <h1 style="font-size: 28px; font-weight: bold; ">Der MEG-Chat! - Das sind wir und das wollen wir erreichen!</h1>
 			        <div style="font-size: 18px; ">
