@@ -9,6 +9,10 @@ html, body {
      overflow-x: hidden;
      overflow-y: auto;
 }
+*::-webkit-scrollbar {
+     width: 0 !important;
+     display: none;
+}
  h1, h2, p, a, .text {
      color: #fff;
 }
@@ -289,3 +293,12 @@ html, body {
              transform: translateY(-100%);
         }
     }
+    
+.container {
+  background-color: #333;
+  color: #fff;
+  width: 80%;
+  margin: 0 auto;
+  padding: 50px;
+  text-align: center;
+}

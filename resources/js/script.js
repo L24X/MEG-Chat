@@ -144,7 +144,7 @@ window.page_navigate = function(url, from, to, loading_message = true) {
 	    url = window.location.href;
 	}
 	page_navigate_loading = url;
-    if(!from) from = "body";
+    if(!from) from = "#site_container";
     if(to && to.split) to=document.querySelector(to);
     if(!to) to=document.querySelector(from);
     
