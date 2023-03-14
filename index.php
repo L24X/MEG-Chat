@@ -18,43 +18,7 @@ if(isset($_SESSION['pupil'])){
         <? require('internal/middleware/head.php'); ?>
     </head>
     <body>
-		<div class="head centriert">
-			<div style="text-align: center; ">
-				<div style="height: 100%; float: left; min-width: 120px; width: auto; " class="centriert">
-				    <img style="height: 120px; text-align: center; " src="/resources/images/logo.png">
-				</div>
-				<div style="height: 100%; min-height: 120px; margin-left: 20px; float: left; min-width: 180px; width: auto; " class="centriert">
-					<div style="text-align: center; ">
-		                <h1 style="font-size: 26px; margin: 0; padding: 0; ">Der MEG Chat!</h1>
-		                <h2 style="font-size: 18px; margin: 0; padding: 0; margin-top: 10px; ">Schüler unter Schülern</h2>
-		            </div>
-		        </div>
-		        <div style="height: 100%; min-height: 150px; margin-left: 20px; float: left; min-width: 200px; width: auto; max-width: calc( 100% - 40px ); " class="centriert">
-					<div style="max-width: 400px; width: auto; text-align: center; border: 1px solid black; border-radius: 10px; padding: 10px; margin-top: 10px; ">
-						<div>
-                            <?php
-							if(isset($_SESSION['pupil'])){
-								?>
-								<h2 style="margin-top: 5px; ">Du bist angemeldet als <?php echo htmlspecialchars($pupil_data['fullname']); ?>!</h2>
-                                <?php
-								if($pupil_data['activated'] == 0){
-									?>
-									<p style="color: red; font-size: 10px; ">Dein Account ist noch nicht freigeschaltet worden. Bitte gedulde dich einige Zeit oder Kontaktiere einen Administrator. Wir werden deine Identität Prüfen und den Account anschließend freischalten.</p>
-                                    <?php
-							    }
-								?>
-								<button onclick="page_navigate('/schueler/<?php echo htmlspecialchars($pupil_data['id']); ?>');" style="background-color: darkslategray; color: white; font-size: 16px; ">Einstellungen</button>
-								<button onclick="window.location.href='/account/logout';" style="background-color: red; color: white; font-size: 16px; ">Abmelden</button>
-                                <?php
-			                } else { ?>
-			                    <button onclick="page_navigate('/account/login');">Anmelden</button>
-			                    <button onclick="page_navigate('/account/register');">Mich als Schüler hinzufügen</button>
-                            <?php } ?>
-		                </div>
-		            </div>
-		        </div>
-	        </div>
-        </div>
+		<? require('internal/middleware/navbar.php'); ?>
         <div>
 			<div style="width: 100%; margin-top: 20px; ">
 		        <div id="all_container">
