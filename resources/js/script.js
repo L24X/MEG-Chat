@@ -307,4 +307,71 @@ window.ask_for_notification_permissions = function(){
 	if (Notification.permission !== "granted" && !localStorage.getItem('noNotifications')) {
 		html_popup("Benachrichtigungen für dieses Gerät aktivieren", '<p style="font-size: 16px; ">Der MEG-Chat braucht die Berechtigung Ihnen neue Nachrichten direkt anzuzeigen. Bitte aktivieren Sie diese Funktion wenn Sie immmer auf dem neuesten Stand bleiben wollen.</p><button onclick="never_ask_for_notifications();">Auf diesem Gerät nicht mehr Fragen</button><button onclick="get_notification_permission();">Benachrichtige mich</button>');
     }
-}; 
+};
+
+window.edit_about_me = function(){
+	html_popup("Erzähl etwas über dich..", '<textarea style="width: 100%; height: 200px; resize: none; " id="about_me_editor"><?php echo htmlspecialchars($s_data['about_me']); ?></textarea><button onclick="save_about_me();">Speichern</button>');
+};
+window.save_about_me = function(){
+	var value = document.getElementById("about_me_editor").value;
+	post_request("/ajax/profile_edit.php", {key: "about_me", value: value}, function(data){
+		if(data.length > 2){
+		    popup("Fehler!", data);
+		} else {
+			close_all_popups();
+		    page_navigate(window.location.href, "#about_me_text");
+		}
+	});
+	
+}
+window.edit_email = function(){
+	html_popup("Email Adresse bearbeiten", '<input type="email" id="email_editor" value="<?php echo htmlspecialchars($s_data['email']); ?>" placeholder="mustermann.max@meg-bruehl.de"></input><button onclick="save_email();">Speichern</button>');
+};
+window.save_email = function(){
+	var value = document.getElementById("email_editor").value;
+	post_request("/ajax/profile_edit.php", {key: "email", value: value}, function(data){
+		if(data.length > 2){
+		    popup("Fehler!", data);
+		} else {
+			close_all_popups();
+		    page_navigate(window.location.href, "#email_text");
+		}
+	});
+}
+window.edit_avatar = function(){
+	html_popup("Profilbild ändern", '<input type="text" id="avatar_editor" placeholder="https://example.com/bild.png"></input><button onclick="save_avatar();">Speichern</button>');
+};
+window.save_avatar = function(){
+	var value = document.getElementById("avatar_editor").value;
+	post_request("/ajax/profile_edit.php", {key: "avatar", value: value}, function(data){
+		if(data.length > 2){
+		    popup("Fehler!", data);
+		} else {
+			close_all_popups();
+		    document.getElementById("avatar").src = value;
+		}
+	});
+}
+window.upload_avatar = function(){
+	var e = document.createElement("input");
+	e.type = "file";
+	e.accept = "image/*";
+	e.onchange = async function(){
+		var file = e.files[0];
+		if(!file) return;
+	    var dataUrl = await new Promise(resolve => {
+	      let reader = new FileReader();
+	      reader.onload = () => resolve(reader.result);
+	      reader.readAsDataURL(file);
+	    });
+	    post_request("/ajax/profile_edit.php", {key: "avatar", value: dataUrl}, function(data){
+		if(data.length > 2){
+		    popup("Fehler!", data);
+		} else {
+			close_all_popups();
+		    document.getElementById("avatar").src = dataUrl;
+		}
+	});
+	};
+	e.click();
+};
