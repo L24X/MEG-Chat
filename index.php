@@ -20,13 +20,15 @@ if(isset($_SESSION['pupil'])){
     <body>
 		<? require('internal/middleware/navbar.php'); ?>
         <div id="site_container">
-			<div class="container">
-			  <h1 class="title">Der MEG-Chat! - Das sind wir und das wollen wir erreichen!</h1>
-			  <div class="info">
-			    <p>Willkommen beim MEG-Chat, der Website für Schüler des Max Ernst Gymnasiums in Brühl! Wir bieten eine Plattform für Schüler, um sich auszutauschen und vernetzen zu können.</p>
-			    <p>Auf unserem Portal kannst du Projekte vorstellen, nützliche Werkzeuge für den Unterricht finden, unsere online Schülerzeitung und unseren Blog lesen und dich über wichtige Neuigkeiten und Informationen auf dem Laufenden halten.</p>
-			    <p>Unser Ziel ist es, die Lernplattform der Schule zu ergänzen und fehlende Funktionen anzubieten, um das Lernen und den Austausch unter Schülern zu erleichtern. Wir freuen uns auf deine Teilnahme!</p>
-			  </div>
+			<div style="width: 100%; height: 100%; " class="centriert">
+			    <div style="width: 600px; max-width: 95%; text-align: center; min-height: 400px; height: auto; "></div>
+			        <h1 style="font-size: 18px; font-weight: bold; ">Der MEG-Chat! - Das sind wir und das wollen wir erreichen!</h1>
+			        <div style="font-size: 14px; ">
+			          <p>Willkommen beim MEG-Chat, der Website für Schüler des Max Ernst Gymnasiums in Brühl! Wir bieten eine Plattform für Schüler, um sich auszutauschen und vernetzen zu können.</p>
+			          <p>Auf unserem Portal kannst du Projekte vorstellen, nützliche Werkzeuge für den Unterricht finden, unsere online Schülerzeitung und unseren Blog lesen und dich über wichtige Neuigkeiten und Informationen auf dem Laufenden halten.</p>
+			          <p>Unser Ziel ist es, die Lernplattform der Schule zu ergänzen und fehlende Funktionen anzubieten, um das Lernen und den Austausch unter Schülern zu erleichtern. Wir freuen uns auf deine Teilnahme!</p>
+			        </div>
+			    </div>
 			</div>
 		</div>
     </body>

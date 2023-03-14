@@ -294,11 +294,3 @@ html, body {
         }
     }
     
-.container {
-  background-color: #333;
-  color: #fff;
-  width: 80%;
-  margin: 0 auto;
-  padding: 50px;
-  text-align: center;
-}
