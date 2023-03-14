@@ -25,6 +25,10 @@ if(isset($_SESSION['pupil'])){
         </div>
     </div>
     <div class="main">
+		<div class="jackpot-box">
+		   <h2>Aktueller Jackpot:</h2>
+		   <p class="jackpot-amount">10.000.000 MEG-Taler</p>
+		</div> 
         <div class="lotto-tickets" id="tickets-container">
             <!-- Hier werden die Lottoscheine angezeigt -->
         </div>

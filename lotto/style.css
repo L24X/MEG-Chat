@@ -55,41 +55,67 @@ body {
 }
 
 .lotto-ticket .numbers {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .lotto-ticket .number {
-display: flex;
-justify-content: center;
-align-items: center;
-width: 50px;
-height: 50px;
-margin: 5px;
-background-color: #555;
-border-radius: 50%;
-font-size: 24px;
-font-weight: bold;
-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  background-color: #555;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
 }
 
 .lotto-ticket .number.selected {
-background-color: #f00;
+  background-color: #f00;
 }
 
 .buy-ticket {
-padding: 10px 20px;
-font-size: 18px;
-background-color: #f00;
-color: #fff;
-border: none;
-border-radius: 5px;
-box-shadow: 0 5px 10px rgba(255, 0, 0, 0.5);
-cursor: pointer;
-transition: background-color 0.3s ease;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #f00;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(255, 0, 0, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .buy-ticket:hover {
-background-color: #c00;
+  background-color: #c00;
+}
+
+.jackpot-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #111;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.jackpot-box h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.jackpot-amount {
+  font-size: 72px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
 }
