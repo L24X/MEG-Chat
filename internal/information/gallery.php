@@ -48,11 +48,7 @@ if(isset($_SESSION['pupil'])){
 	    </main>
 	</div>
   </body>
-  <style>
-        
-		
-		
-  </style>
+
   <script>
       window.upload = function(){
 		  var e = document.createElement("input");
