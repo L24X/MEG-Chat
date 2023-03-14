@@ -26,8 +26,12 @@ if(isset($_SESSION['pupil'])){
     </div>
     <div class="main">
 		<div class="jackpot-box">
-		   <h2>Aktueller Jackpot:</h2>
-		   <p class="jackpot-amount">10.000.000 MEG-Taler</p>
+		    <h2>Aktueller Jackpot:</h2>
+		    <p class="jackpot-amount">10.000.000 MEG-Taler</p>
+		    <div class="countdown-box">
+		        <h2>Nächste Ziehung in:</h2>
+			    <p class="countdown-timer">00:00:00:00</p>
+		    </div>
 		</div> 
         <div class="lotto-tickets" id="tickets-container">
             <!-- Hier werden die Lottoscheine angezeigt -->
