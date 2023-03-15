@@ -444,6 +444,7 @@ window.updateJackpot = function() {
         startCountdown(new Date(data.draw));
 	});
 }
+addLoadEvent(updateJackpot);
 
 window.gallery_upload = async function(){
   var e = document.createElement("input");
