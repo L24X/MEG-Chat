@@ -529,9 +529,8 @@ window.get_messages_data = async function(){
 		var is_first = (last_message_id == -1);
 		var first_new = true;
 		data.forEach(function(z){
-			if(Number(z.id) <= Number(last_message_id) || document.getElementById("message_"+chat_id+"_"+z.id)) {
-			    return;
-			}
+			if(Number(z.id) <= Number(last_message_id) || document.getElementById("message_"+chat_id+"_"+z.id)) return;
+			
 			if(!document.getElementById("redline")){
 			    if(z.new && first_new){
 					first_new = false;
