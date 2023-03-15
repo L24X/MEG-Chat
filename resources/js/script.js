@@ -410,11 +410,6 @@ function addLottoTicket(numbers) {
     ticketsContainer.appendChild(ticketElement);
 }
 
-function updateJackpot(amount) {
-    const jackpotAmountElement = document.querySelector(".jackpot-amount");
-    jackpotAmountElement.textContent = `${amount} MEG-Taler`;
-}
-
 window.update_meg_taler_balance = function(){
 	page_navigate(window.location.href, ".my_meg_taler_count", ".my_meg_taler_count", false);
 }
@@ -439,6 +434,17 @@ function startCountdown(endDate) {
     }
   }, 1000);
 }
+
+function updateJackpot() {
+	post_request("/ajax/jackpot.php", {}, function(data){
+		data = JSON.parse(data);
+		var amount = data.balance;
+	    const jackpotAmountElement = document.querySelector(".jackpot-amount");
+        jackpotAmountElement.textContent = `${amount} MEG-Taler`;
+        startCountdown(data.draw);
+	});
+}
+
 window.gallery_upload = async function(){
   var e = document.createElement("input");
   e.type = "file";
