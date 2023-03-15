@@ -435,7 +435,7 @@ function startCountdown(endDate) {
   }, 1000);
 }
 
-function updateJackpot() {
+window.updateJackpot = function() {
 	post_request("/ajax/jackpot.php", {}, function(data){
 		data = JSON.parse(data);
 		var amount = data.balance;
