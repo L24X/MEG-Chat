@@ -2,7 +2,7 @@
 require_once("../internal/logic/db.php");
 
 $stmtData = $db->prepare("SELECT * FROM ".DBTBL.".jackpots ORDER BY id DESC LIMIT 1; ");
-$stmtData->execute(array('id' => $chat));
+$stmtData->execute();
 $row = $stmtData->fetchObject();
 if(!$row) return exit();
 if($row){
