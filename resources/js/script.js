@@ -144,6 +144,8 @@ window.page_navigate = async function(url, from, to, loading_message = true) {
 	    return;
 	}
 	page_navigate_loading = true;
+	if(url in page_navigate_queue) delete page_navigate_queue[url];
+	
 	var to_text = to;
 	if(!url) {
 	    url = window.location.href;
