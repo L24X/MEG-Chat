@@ -133,17 +133,17 @@ window.post_request = function(url, data = {}, then = false){
 };
 
 window.page_navigate_loading = false;
-window.page_navigate_reload = false;
-window.page_navigate = function(url, from, to, loading_message = true) {
-	if(page_navigate_loading == url){
-		page_navigate_reload = true;
+window.page_navigate_queue = {};
+window.page_navigate = async function(url, from, to, loading_message = true) {
+	if(page_navigate_loading){
+		page_navigate_queue[url] = {from: from, to: to, loading_message: loading_message};
 	    return;	
 	}
+	page_navigate_loading = true;
 	var to_text = to;
 	if(!url) {
 	    url = window.location.href;
 	}
-	page_navigate_loading = url;
     if(!from) from = "#site_container";
     if(to && to.split) to=document.querySelector(to);
     if(!to) to=document.querySelector(from);
@@ -160,34 +160,28 @@ window.page_navigate = function(url, from, to, loading_message = true) {
 	}, 50);
 	
     var XHRt = new XMLHttpRequest();
-    XHRt.onload = function() {
+    XHRt.onload = async function() {
 		fertig = true;
-		page_navigate_loading = false;
 		
 		var parser = new DOMParser();
         var doc = parser.parseFromString(XHRt.responseText, "text/html");
 		to.innerHTML = doc.querySelector(from).innerHTML;
-		Array.from(to.querySelectorAll("script")).forEach( oldScriptEl => {
-			const newScriptEl = document.createElement("script");
-			Array.from(oldScriptEl.attributes).forEach( attr => {
-				newScriptEl.setAttribute(attr.name, attr.value) 
-			});
-			const scriptText = document.createTextNode(oldScriptEl.innerHTML);
-			newScriptEl.appendChild(scriptText);
-			oldScriptEl.parentNode.replaceChild(newScriptEl, oldScriptEl);
-		});
+		
 		if(document.querySelector("title") && doc.querySelector("title")){
 		    document.querySelector("title").innerText = doc.querySelector("title").innerText;
-		}
-		if(page_navigate_reload){
-		    page_navigate_reload = false;
-		    page_navigate (url, from, to_text, loading_message);
 		}
 		
 		if(loading_message) window.history.pushState({}, "", url);
 		
 		//Only for MEG-Chat App:
-		if(document.getElementById("chat_container")) get_messages_data();
+		if(document.getElementById("chat_container")) await get_messages_data();
+		
+		page_navigate_loading = false;
+		if(Object.keys(page_navigate_queue).length > 0){
+			var url = Object.keys(page_navigate_queue)[0];
+			var data = page_navigate_queue[url];
+			page_navigate(url, data.from, data.to, data.loading_message);
+		}
 	};
 	XHRt.onerror = function() {
 		fertig = true;
