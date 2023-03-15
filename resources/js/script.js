@@ -137,7 +137,11 @@ window.page_navigate_queue = {};
 window.page_navigate = async function(url, from, to, loading_message = true) {
 	if(page_navigate_loading){
 		page_navigate_queue[url] = {from: from, to: to, loading_message: loading_message};
-	    return;	
+		if(Object.keys(page_navigate_queue).length > 3){
+			delete page_navigate_queue[Object.keys(page_navigate_queue)[0]];
+			console.log("[WARNING] Running 3 Reqeusts behind!");
+	    }
+	    return;
 	}
 	page_navigate_loading = true;
 	var to_text = to;
@@ -178,7 +182,7 @@ window.page_navigate = async function(url, from, to, loading_message = true) {
 		
 		page_navigate_loading = false;
 		if(Object.keys(page_navigate_queue).length > 0){
-			var url = Object.keys(page_navigate_queue)[0];
+			var url = Object.keys(page_navigate_queue)[Object.keys(page_navigate_queue).length-1];
 			var data = page_navigate_queue[url];
 			page_navigate(url, data.from, data.to, data.loading_message);
 		}
