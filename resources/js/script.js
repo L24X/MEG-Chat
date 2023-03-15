@@ -625,6 +625,7 @@ window.get_messages_data = async function(){
 						z.saved = true;
 						var o = JSON.parse(localStorage.getItem("chat_"+chat_id) || "[]");
 						o.push(z);
+						if(o.length > 255) delete o[0];
 						localStorage.setItem("chat_"+chat_id, JSON.stringify(o));
 					}
 				} catch(e){
@@ -656,6 +657,7 @@ window.get_messages_data = async function(){
 			}, 200);
 			
 			data = JSON.parse(data);
+			while(data.length > 255) delete data[0];
 			add_to_chat(data);
 			
 			resolve();

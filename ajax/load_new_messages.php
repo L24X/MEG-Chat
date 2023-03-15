@@ -43,7 +43,7 @@ if($chat_data){
 
 if(!$chat_data) return;
 
-$stmtMessage = $db->prepare("SELECT * FROM ".DBTBL.".chats_messages WHERE chat = :chat AND id > :last; ");
+$stmtMessage = $db->prepare("SELECT * FROM (SELECT * FROM ".DBTBL.".chats_messages WHERE chat = :chat AND id > :last ORDER BY id DESC LIMIT 255) ORDER BY id ASC; ");
 $stmtMessage->execute(array('chat' => $chat_data['id'], 'last' => $_POST['last']));
 
 $messages = array();
