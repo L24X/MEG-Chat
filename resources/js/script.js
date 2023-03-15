@@ -132,6 +132,7 @@ window.post_request = function(url, data = {}, then = false){
 	xhr.send(postdata);
 };
 
+window.spa_url = window.location.pathname;
 window.page_navigate_loading = false;
 window.page_navigate_queue = {};
 window.page_navigate = async function(url, from, to, loading_message = true) {
@@ -177,7 +178,10 @@ window.page_navigate = async function(url, from, to, loading_message = true) {
 		    document.querySelector("title").innerText = doc.querySelector("title").innerText;
 		}
 		
-		if(loading_message) window.history.pushState({}, "", url);
+		if(loading_message) {
+			spa_url = url;
+			window.history.pushState({}, "", url);
+		}
 		
 		//Only for MEG-Chat App:
 		if(document.getElementById("chat_container")) await get_messages_data();
@@ -497,9 +501,9 @@ window.get_messages_data = async function(){
 		try {
 			if(document.getElementById("chat_inner_data")) document.getElementById("chat_inner_data").innerHTML = "";
 		    chat_id = false;
-			if(window.location.pathname.startsWith("/chat/") && window.location.pathname != "/chat/list"){
+			if(spa_url.startsWith("/chat/") && spa_url != "/chat/list"){
 				try {
-			        chat_id = Number(window.location.href.split("/")[window.location.href.split("/").length-1]);
+			        chat_id = Number(spa_url.split("/")[spa_url.split("/").length-1]);
 			    } catch(e){
 				    console.log(e);	
 				}
