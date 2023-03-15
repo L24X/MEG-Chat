@@ -41,6 +41,36 @@ if(isset($_SESSION['pupil'])){
 		    }
 		    ?>
 	    </div>
+	    <div id="buy-ticket-popup">
+		  <div class="popup-content">
+		    <div class="rules">
+		      <h2>Spielregeln</h2>
+		      <p>Wählen Sie 6 Ziffern zwischen 1 und 100.</p>
+		      <p>Bei 6 Richtigen gewinnen Sie den Jackpot.</p>
+		      <p>Bei 5 Richtigen bekommen Sie die Hälfte des Jackpots.</p>
+		      <p>Bei 4 Richtigen bekommen Sie ein Viertel des Jackpots.</p>
+		      <p>Bei weniger als 4 Richtigen gewinnen Sie nichts.</p>
+		    </div>
+		    <div class="ticket">
+		      <h2>Tippfelder</h2>
+		      <form id="ticket-form">
+		        <label for="num1">Nummer 1:</label>
+		        <input type="number" id="num1" name="num1" min="1" max="100" required>
+		        <label for="num2">Nummer 2:</label>
+		        <input type="number" id="num2" name="num2" min="1" max="100" required>
+		        <label for="num3">Nummer 3:</label>
+		        <input type="number" id="num3" name="num3" min="1" max="100" required>
+		        <label for="num4">Nummer 4:</label>
+		        <input type="number" id="num4" name="num4" min="1" max="100" required>
+		        <label for="num5">Nummer 5:</label>
+		        <input type="number" id="num5" name="num5" min="1" max="100" required>
+		        <label for="num6">Nummer 6:</label>
+		        <input type="number" id="num6" name="num6" min="1" max="100" required>
+		        <button type="submit" id="buy-ticket-submit">Schein kaufen</button>
+		      </form>
+		    </div>
+		  </div>
+		</div>
 	</div>
 </body>
 </html>

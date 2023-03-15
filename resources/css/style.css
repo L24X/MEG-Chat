@@ -537,3 +537,47 @@ html, body {
 .login-register {
 	padding: 1%;
 }
+
+/* Styling für den Button zum Öffnen des Popups */
+#buy-ticket-popup #buy-ticket-btn {
+  background-color: #0099ff;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Styling für das Popup-Fenster */
+#buy-ticket-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
+
+#buy-ticket-popup .popup-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#buy-ticket-popup .rules {
+  width: 45%;
+  height: 100%;
+  padding: 10px;
+}
