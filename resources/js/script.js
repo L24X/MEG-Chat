@@ -280,7 +280,7 @@ setInterval(function(){
 	if(document.getElementById("all_container")){
 		page_navigate("/chat/list", "#all_container", "#all_container", false);
 	}
-}, 1000);
+}, 2000);
 
 window.get_notification_permission = function(){
 	close_all_popups();
