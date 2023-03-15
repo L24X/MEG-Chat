@@ -182,7 +182,6 @@ window.page_navigate = async function(url, from, to, loading_message = true) {
 		}
 		
 		if(loading_message) {
-			console.log("SCITCH TO: "+page_navigate_working_url);
 			spa_url = page_navigate_working_url;
 			window.history.pushState({}, "", page_navigate_working_url);
 		}
@@ -649,7 +648,7 @@ window.get_messages_data = async function(){
 			window.running_chat_reader = false;
 			setTimeout(async function(){
 			    get_messages_data();
-			}, 100);
+			}, 200);
 			data = JSON.parse(data);
 			add_to_chat(data);
 			resolve();
