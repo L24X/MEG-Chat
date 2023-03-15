@@ -449,13 +449,6 @@ window.gallery_upload = function(){
 window.last_message_id = -1;
 window.loaded_messages_count = 0;
 window.chat_id = false;
-if(window.location.href.startsWith("/chat/") && window.location.href != "/chat/list"){
-	try {
-        chat_id = Number(window.location.href.split("/")[window.location.href.split("/").length-1]);
-    } catch(e){
-	    console.log(e);	
-	}
-}
 window.last_message_author_id = false;
 window.member_window = false;
 
@@ -502,7 +495,7 @@ window.get_messages_data = async function(){
 	}
 	function reset_chat(){
 		try {
-			if(document.getElementById("chat_inner_data") document.getElementById("chat_inner_data").innerHTML = "";
+			if(document.getElementById("chat_inner_data")) document.getElementById("chat_inner_data").innerHTML = "";
 		    chat_id = false;
 			if(window.location.href.startsWith("/chat/") && window.location.href != "/chat/list"){
 				try {
@@ -647,6 +640,7 @@ window.get_messages_data = async function(){
 	});
 }
 get_messages_data();
+
 window.jump_to_message = function(message_id){
 	if(!document.getElementById("message_"+chat_id+"_"+message_id)) return;
 	document.getElementById("message_"+chat_id+"_"+message_id).scrollIntoView();
