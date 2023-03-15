@@ -25,10 +25,10 @@ if(isset($_SESSION['pupil'])){
 	    <div class="main" style="margin-top: 80px; ">
 			<div class="jackpot-box">
 			    <h2>Aktueller Jackpot:</h2>
-			    <p class="jackpot-amount">10.000.000 MEG-Taler</p>
+			    <p class="jackpot-amount">----- MEG-Taler</p>
 			    <div class="countdown-box">
 			        <h2>Nächste Ziehung in:</h2>
-				    <p class="countdown-timer">00:00:00:00</p>
+				    <p class="countdown-timer">--:--:--:--</p>
 			    </div>
 			</div>
 			<?php

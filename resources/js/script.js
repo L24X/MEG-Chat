@@ -151,7 +151,7 @@ window.page_navigate = async function(url, from, to, loading_message = true) {
 	
 	var to_text = to;
 	if(!url) {
-	    url = window.location.href;
+	    url = window.location.pathname;
 	}
     if(!from) from = "#site_container";
     if(to && to.split) to=document.querySelector(to);
@@ -195,8 +195,11 @@ window.page_navigate = async function(url, from, to, loading_message = true) {
 			window.history.pushState({}, "", page_navigate_working_url);
 		}
 		
+		//Only fpr MEG-Chat Lotto App:
+		if(spa_url.startsWith("/lotto/")) updateJackpot();
+		
 		//Only for MEG-Chat App:
-		if(document.getElementById("chat_container")) setTimeout(get_messages_data, 50);
+		if(spa_url.startsWith("/chat/") && document.getElementById("chat_container")) setTimeout(get_messages_data, 50);
 	};
 	XHRt.onerror = function() {
 		fertig = true;
@@ -437,14 +440,21 @@ function startCountdown(endDate) {
 
 window.updateJackpot = function() {
 	post_request("/ajax/jackpot.php", {}, function(data){
-		data = JSON.parse(data);
-		var amount = data.balance;
-	    const jackpotAmountElement = document.querySelector(".jackpot-amount");
-        jackpotAmountElement.textContent = `${amount} MEG-Taler`;
-        startCountdown(new Date(data.draw));
+		try {
+			data = JSON.parse(data);
+			var amount = data.balance;
+		    const jackpotAmountElement = document.querySelector(".jackpot-amount");
+	        jackpotAmountElement.textContent = `${amount} MEG-Taler`;
+	        startCountdown(new Date(data.draw));
+	    } catch(e){
+		    console.log(e);	
+		}
 	});
 }
-addLoadEvent(updateJackpot);
+if(window.location.pathname.startsWith("/lotto/")){
+	updateJackpot();
+	addLoadEvent(updateJackpot);
+}
 
 window.gallery_upload = async function(){
   var e = document.createElement("input");
