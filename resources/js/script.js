@@ -640,6 +640,7 @@ window.get_messages_data = async function(){
 	});
 }
 get_messages_data();
+addLoadEvent(get_messages_data);
 
 window.jump_to_message = function(message_id){
 	if(!document.getElementById("message_"+chat_id+"_"+message_id)) return;
