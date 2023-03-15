@@ -187,7 +187,7 @@ window.page_navigate = function(url, from, to, loading_message = true) {
 		window.history.pushState({}, "", url);
 		
 		//Only for MEG-Chat App:
-		if("get_messages_data" in window) get_messages_data();
+		if(document.getElementById("chat_container")) get_messages_data();
 	};
 	XHRt.onerror = function() {
 		fertig = true;
@@ -448,7 +448,14 @@ window.gallery_upload = function(){
 
 window.last_message_id = -1;
 window.loaded_messages_count = 0;
-window.chat_id = Number(window.location.href.split("/")[window.location.href.split("/").length-1]);
+window.chat_id = false;
+if(window.location.href.startsWith("/chat/") && window.location.href != "/chat/list"){
+	try {
+        chat_id = Number(window.location.href.split("/")[window.location.href.split("/").length-1]);
+    } catch(e){
+	    console.log(e);	
+	}
+}
 window.last_message_author_id = false;
 window.member_window = false;
 
@@ -491,15 +498,19 @@ window.message_input_keydown = function(evt) {
 
 window.get_messages_data = async function(){
 	if(!document.getElementById("chat_container") || !document.getElementById("chat_inner_data_container")){
-		setTimeout(function(){
-		    get_messages_data();
-		}, 200);
 	    return;
 	}
 	function reset_chat(){
 		try {
-			document.getElementById("chat_inner_data").innerHTML = "";
-		    chat_id = Number(window.location.href.split("/")[window.location.href.split("/").length-1]);
+			if(document.getElementById("chat_inner_data") document.getElementById("chat_inner_data").innerHTML = "";
+		    chat_id = false;
+			if(window.location.href.startsWith("/chat/") && window.location.href != "/chat/list"){
+				try {
+			        chat_id = Number(window.location.href.split("/")[window.location.href.split("/").length-1]);
+			    } catch(e){
+				    console.log(e);	
+				}
+			}
 		    last_message_id = -1;
 		    loaded_messages_count = 0;
 		    last_message_author_id = false;
@@ -507,10 +518,9 @@ window.get_messages_data = async function(){
 		    console.log(e);	
 		}
 	}
-	if(chat_id !== Number(window.location.href.split("/")[window.location.href.split("/").length-1])){
+	if(chat_id != Number(window.location.href.split("/")[window.location.href.split("/").length-1])){
 		reset_chat();
-	}
-	if(last_message_id > -1){
+	} else if(last_message_id > -1){
 		if(!document.getElementById("message_"+chat_id+"_"+last_message_id)){
 			reset_chat();
 		}
