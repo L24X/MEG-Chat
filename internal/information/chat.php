@@ -64,8 +64,8 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MEG Chat | Chat | <?php echo htmlspecialchars($chat_data ? $chat_data['name'] : "Nicht Gefunden"); ?></title>
-        <meta name="description" content="<?php echo htmlspecialchars($chat_data ? $chat_data['description'] : "Dieser Chat exestiert nicht, oder Sie haben keinen Zugriff darauf!"); ?>">
+        <title>MEG Chat | Chat | <?php echo htmlspecialchars(isset($_GET['list']) ? "Übersicht" : ($chat_data ? $chat_data['name'] : "Nicht Gefunden")); ?></title>
+        <meta name="description" content="<?php echo htmlspecialchars(isset($_GET['list']) ? "Alle Chats übder die MEG-Chat Seite. Hier könnt Ihr euch zu vielen Themen austauschen!" : ($chat_data ? $chat_data['description'] : "Dieser Chat exestiert nicht, oder Sie haben keinen Zugriff darauf!")); ?>">
         <meta name="keywords" lang="de" content="meg, max, ernst, gymnasium, max ernst gymnasium, brühl, chat, online, schueler, chatten, austauschen, hausaufgaben, fragen, blog, artikel, austausch, kontakt, neues">
         <?php require('../middleware/head.php'); ?>
     </head>
