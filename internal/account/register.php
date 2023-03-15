@@ -83,78 +83,34 @@ if(isset($_POST['submit'])){
         <?php require('../middleware/head.php'); ?>
     </head>
     <body>
-    <div class="login-wrapper">
-        <div class="login-container">
-			<form action="/account/register" method="POST">
-              <h2>Mich als Schüler anmelden</h2>
-                <?php
-              if($error) {
-				  ?>
-				  <p style="color: red; text-align: center; font-size: 16px; "><?php echo htmlspecialchars($error); ?></p>
-                  <?php
-		      }
-			  ?>
-			  <label for="name">Vor und Nachname:</label><br>
-			  <input type="text" id="name" name="name" placeholder="Max Mustermann" autocomplete="on"><br>
-			  <label for="email" id="email">E-mail:</label><br>
-			  <input type="email" id="email" name="email" placeholder="muster.max@meg-bruehl.de" autocomplete="on"><br>
-			  <label for="password">Passwort:</label><br>
-			  <input type="password" id="password" name="password"  autocomplete="on"><br><br>
-              <div class="login-register">
-					<a href="/account/login">Anmelden</a>
-					<a href="/">Zur Startseite</a>
-			   </div>
-			  <input id="submit" name="submit" type="submit" value="Eintragen">
-			</form>
+		<?php require('../middleware/navbar.php'); ?>
+	    <div id="site_container">
+		    <div class="login-wrapper">
+		        <div class="login-container">
+					<form action="/account/register" method="POST">
+		              <h2>Mich als Schüler anmelden</h2>
+		                <?php
+		              if($error) {
+						  ?>
+						  <p style="color: red; text-align: center; font-size: 16px; "><?php echo htmlspecialchars($error); ?></p>
+		                  <?php
+				      }
+					  ?>
+					  <label for="name">Vor und Nachname:</label><br>
+					  <input type="text" id="name" name="name" placeholder="Max Mustermann" autocomplete="on"><br>
+					  <label for="email" id="email">E-mail:</label><br>
+					  <input type="email" id="email" name="email" placeholder="muster.max@meg-bruehl.de" autocomplete="on"><br>
+					  <label for="password">Passwort:</label><br>
+					  <input type="password" id="password" name="password"  autocomplete="on"><br><br>
+		              <div class="login-register">
+							<a href="/account/login">Anmelden</a>
+							<a href="/">Zur Startseite</a>
+					   </div>
+					  <input id="submit" name="submit" type="submit" value="Eintragen">
+					</form>
+		        </div>
+		    </div>
         </div>
-    </div>
-
     </body>
-    <style>
-        .login-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            height: 50%;
-            min-height: 500px;
-        }
-        .login-container {
-            background:#525252;
-            min-width: 20%;
-            width: 300px;
-            max-width: 100%;
-            display: flex;
-            flex-direction: row;
-            border-radius: 15px;
-            height: auto;
-            min-height: 100px;
-            padding: 20px;
-        }
-        #submit {
-            border-radius: 15px;
-            border: none;
-            width: 30%;
-            height: 40px;
-            padding: 2%;
-            margin-top: 15px;
-        }
-        #name {
-            border-radius: 15px;
-            padding: 2px;
-            margin-bottom: 2px;
-        }
-        #password {
-            border-radius: 15px;
-            padding: 2px;
-        }
-        #email {
-            border-radius: 15px;
-            margin-bottom: 2px;
-        }
-        .login-register {
-            padding: 1%;
-        }
-    </style>
 </html>
 

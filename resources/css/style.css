@@ -496,3 +496,50 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 }
+
+.login-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: 50%;
+}
+.login-container {
+	background:#525252;
+	min-width: 20%;
+	width: 300px;
+	max-width: 100%;
+	display: flex;
+	flex-direction: row;
+	border-radius: 15px;
+	height: auto;
+	min-height: 100px;
+	padding: 20px;
+}
+#submit {
+	border-radius: 15px;
+	border: none;
+	width: 30%;
+	height: 40px;
+	padding: 2%;
+	margin-top: 15px;
+}
+#name {
+	border-radius: 15px;
+	padding: 2px;
+	margin-bottom: 5%;
+}
+#password {
+	border-radius: 15px;
+	padding: 2px;
+}
+#email {
+	border-radius: 15px;
+	margin-bottom: 2px;
+}
+.password {
+	padding-bottom: 1%;
+}
+.login-register {
+	padding: 1%;
+}
