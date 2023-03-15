@@ -276,7 +276,7 @@ window.vote = function(id){
 		if(data.length > 2){
 		    popup("Fehler!", data);
 		} else {
-		    page_navigate(window.location.href, ".schueler_vote_count_"+id);	
+		    page_navigate(window.location.href, ".schueler_vote_count_"+id, ".schueler_vote_count_"+id, false);	
 		}
 	});
 };
@@ -415,6 +415,10 @@ function updateJackpot(amount) {
     jackpotAmountElement.textContent = `${amount} MEG-Taler`;
 }
 
+window.update_meg_taler_balance = function(){
+	page_navigate(window.location.href, ".my_meg_taler_count", ".my_meg_taler_count", false);
+}
+
 function startCountdown(endDate) {
   const countdownElement = document.querySelector(".countdown-timer");
 
@@ -454,6 +458,7 @@ window.gallery_upload = async function(){
 	        popup("Fehler!", data);
 	    }
 	    page_navigate(window.location.href, "#pictures");
+	    update_meg_taler_balance();
     });
   };
   e.click();
@@ -495,7 +500,7 @@ window.message_input_keydown = function(evt) {
 			document.getElementById("private_message_text").style.height = "30px";
 			
 			function send_chess_message(){
-				post_request("/ajax/send_message.php", {text: value, chat: chat_id});
+				post_request("/ajax/send_message.php", {text: value, chat: chat_id, then: update_meg_taler_balance});
 			}
 			send_chess_message();
 		}

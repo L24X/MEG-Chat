@@ -15,7 +15,7 @@
     <img src="<?php echo htmlspecialchars(empty($pupil_data['avatar']) ? "/resources/images/avatar.png" : $pupil_data['avatar']); ?>" alt="Profilbild">
     <div class="user-info">
       <span class="user-name"><?php echo htmlspecialchars($pupil_data['fullname']); ?></span>
-      <span class="user-balance"><?php echo htmlspecialchars(isset($pupil_data['money']) ? $pupil_data['fullname'] : 0); ?> MEG-Taler</span>
+      <span class="user-balance"><span class="my_meg_taler_count"><?php echo htmlspecialchars(isset($pupil_data['money']) ? $pupil_data['fullname'] : 0); ?></span> MEG-Taler</span>
     </div>
     <a href="javascript:page_navigate('/schueler/<?php echo htmlspecialchars($pupil_data['id']); ?>');" class="settings-icon">&#9881;</a>
     <?php } else { ?>
