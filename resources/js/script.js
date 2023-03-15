@@ -184,7 +184,7 @@ window.page_navigate = function(url, from, to, loading_message = true) {
 		    page_navigate (url, from, to_text, loading_message);
 		}
 		
-		window.history.pushState({}, "", url);
+		if(loading_message) window.history.pushState({}, "", url);
 		
 		//Only for MEG-Chat App:
 		if(document.getElementById("chat_container")) get_messages_data();
@@ -497,7 +497,7 @@ window.get_messages_data = async function(){
 		try {
 			if(document.getElementById("chat_inner_data")) document.getElementById("chat_inner_data").innerHTML = "";
 		    chat_id = false;
-			if(window.location.href.startsWith("/chat/") && window.location.href != "/chat/list"){
+			if(window.location.pathname.startsWith("/chat/") && window.location.pathname != "/chat/list"){
 				try {
 			        chat_id = Number(window.location.href.split("/")[window.location.href.split("/").length-1]);
 			    } catch(e){
