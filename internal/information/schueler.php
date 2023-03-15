@@ -43,7 +43,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 	                <?php
 				} else { ?>
 	                <h1><?php echo htmlspecialchars($s_data['fullname']); ?></h1>
-	                <div style="width: 100%; height: auto; " class="centriert">
+	                <div style="width: 100%; height: auto; margin-top: 20px; " class="centriert">
 	                    <img loading="lazy" id="avatar" style="width: 300px; height: 300px; max-width: 100%; max-height: 100%; border-radius: 50%; " src="<?php echo htmlspecialchars(empty($s_data['avatar']) ? "/resources/images/avatar.png" : $s_data['avatar']); ?>">
 	                </div>
 	                <div style="width: 100%; height: auto; margin-top: 25px; " class="centriert">
@@ -67,14 +67,14 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 							  if(isset($_SESSION['pupil'])){
 								  if($pupil_data['id'] == $s_data['id']){
 									  ?>
-									  <h3>Mein Profilbild ändern:</h3>
+									  <h3 style="margin-top: 20px; ">Mein Profilbild ändern:</h3>
 									  <button onclick="upload_avatar();">Bild hochladen</button>
 									  <button onclick="edit_avatar();">URL auswählen</button>
 	                                  <?php
 							      }
 							  }
 							  ?>
-							  <h3>Beliebtheit:</h3>
+							  <h3 style="margin-top: 20px; ">Beliebtheit:</h3>
 							  <div style="width: 100%; height: 20px; font-size: 14px; ">
 				                  <div style="width: 100%; text-align: left ">
 								      <div style="text-align: left; width: auto; height: auto; ">
