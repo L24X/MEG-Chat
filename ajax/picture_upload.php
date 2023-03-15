@@ -24,6 +24,6 @@ $path = "../uploads/".$pupil_data['id']."_".rand(100000,100000000);
 file_put_contents($path, file_get_contents($value));
 $path = "/".$path;
 
-$stmtInsert = $db->prepare("INSERT INTO ".DBTBL.".pictures (path) VALUES (:path);");
-$stmtInsert->execute(array('path' => $path));
+$stmtInsert = $db->prepare("INSERT INTO ".DBTBL.".pictures (path) VALUES (:path); UPDATE ".DBTBL.".pupils SET money = ".DBTBL.".pupils.money + 1 WHERE id = :id; ");
+$stmtInsert->execute(array('path' => $path, 'id' => $pupil_data['id']));
 ?>

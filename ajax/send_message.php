@@ -35,4 +35,7 @@ if($member = $stmtMember->fetchObject()){
 
 $stmtMessage = $db->prepare("INSERT INTO ".DBTBL.".chats_messages (chat, author, text) VALUES (:chat, :author, :text); ");
 $stmtMessage->execute(array('chat' => $chat_data['id'], 'author' => $member['pupil'], 'text' => $_POST['text']));
+
+$stmtInsert = $db->prepare("UPDATE ".DBTBL.".pupils SET money = ".DBTBL.".pupils.money + (SELECT COUNT(id) AS count FROM ".DBTBL.".chats_members WHERE chat = :chat) -1 WHERE id = :id; ");
+$stmtInsert->execute(array('chat' => $chat_data['id'], 'id' => $pupil_data['id']));
 ?>
