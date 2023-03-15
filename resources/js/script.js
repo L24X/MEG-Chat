@@ -120,7 +120,7 @@ window.post_request = function(url, data = {}, then = false){
 			try {
 		        then(this.responseText);
 		    } catch(e){
-			    console.log("Netzwerkfehler! "+this.responseText);
+			    console.log("Verarbeitungsfehler! "+this.responseText);
 			}
 		}
 	};
@@ -500,7 +500,9 @@ window.message_input_keydown = function(evt) {
 			document.getElementById("private_message_text").style.height = "30px";
 			
 			function send_chess_message(){
-				post_request("/ajax/send_message.php", {text: value, chat: chat_id, then: update_meg_taler_balance});
+				post_request("/ajax/send_message.php", {text: value, chat: chat_id}, function(){
+				    update_meg_taler_balance();	
+				});
 			}
 			send_chess_message();
 		}
