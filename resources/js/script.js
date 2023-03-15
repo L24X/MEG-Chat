@@ -135,6 +135,7 @@ window.post_request = function(url, data = {}, then = false){
 window.spa_url = window.location.pathname;
 window.page_navigate_loading = false;
 window.page_navigate_queue = {};
+window.page_navigate_working_url = false;
 window.page_navigate = async function(url, from, to, loading_message = true) {
 	if(!url) return;
 	if(page_navigate_loading){
@@ -162,6 +163,7 @@ window.page_navigate = async function(url, from, to, loading_message = true) {
 	}
     
     var fertig = false;
+    page_navigate_working_url = url;
 	
 	setTimeout(function(){
 	    if(!fertig && loading_message) to.innerHTML = "<h2 style='text-align: center; margin-top: 80px; ' class='text'>Wird geladen..</h2>";
@@ -180,9 +182,9 @@ window.page_navigate = async function(url, from, to, loading_message = true) {
 		}
 		
 		if(loading_message) {
-			console.log("SCITCH TO: "+url);
-			spa_url = url;
-			window.history.pushState({}, "", url);
+			console.log("SCITCH TO: "+page_navigate_working_url);
+			spa_url = page_navigate_working_url;
+			window.history.pushState({}, "", page_navigate_working_url);
 		}
 		
 		//Only for MEG-Chat App:
