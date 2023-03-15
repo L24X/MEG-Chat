@@ -20,7 +20,7 @@ if(isset($_POST['vote']) && isset($_SESSION['pupil']) && $pupil_data['activated'
 	$stmtCheck = $db->prepare("SELECT * FROM ".DBTBL.".pupils_votes WHERE s_from = :from AND s_to = :to AND DATE(`time`) = CURDATE();");
 	$stmtCheck->execute(array('from' => $_SESSION['pupil'], 'to' => $_POST['vote']));
 	if($stmtCheck->rowCount() == 0){
-		$stmtInsert = $db->prepare("INSERT INTO ".DBTBL.".pupils_votes (s_from, s_to) VALUES (:from, :to);");
+		$stmtInsert = $db->prepare("INSERT INTO ".DBTBL.".pupils_votes (s_from, s_to) VALUES (:from, :to); UPDATE ".DBTBL.".pupils SET money = ".DBTBL.".pupils.money + 10 WHERE id = :to; ");
 	    $stmtInsert->execute(array('from' => $_SESSION['pupil'], 'to' => $_POST['vote']));
     } else {
 	    ?>
