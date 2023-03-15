@@ -9,7 +9,7 @@
     <?php require('../middleware/head.php'); ?>
 </head>
 <body>
-	<? require('internal/middleware/navbar.php'); ?>
+	<? require('../middleware/navbar.php'); ?>
     <div id="site_container">
 		<div style="text-align: center; margin-top 120px; ">
 			<h1>Impressum</h1>
