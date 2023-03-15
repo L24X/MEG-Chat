@@ -620,10 +620,13 @@ window.get_messages_data = async function(){
 				}
 				
 				try {
-					z.new = false;
-					var o = JSON.parse(localStorage.getItem("chat_"+chat_id) || "[]");
-					o.push(z);
-					localStorage.setItem("chat_"+chat_id, JSON.stringify(o));
+					if(!("saved" in z)){
+						z.new = false;
+						z.saved = true;
+						var o = JSON.parse(localStorage.getItem("chat_"+chat_id) || "[]");
+						o.push(z);
+						localStorage.setItem("chat_"+chat_id, JSON.stringify(o));
+					}
 				} catch(e){
 				    console.log(e);	
 				}
