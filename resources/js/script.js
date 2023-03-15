@@ -441,7 +441,7 @@ window.updateJackpot = function() {
 		var amount = data.balance;
 	    const jackpotAmountElement = document.querySelector(".jackpot-amount");
         jackpotAmountElement.textContent = `${amount} MEG-Taler`;
-        startCountdown(data.draw);
+        startCountdown(new Date(data.draw));
 	});
 }
 
