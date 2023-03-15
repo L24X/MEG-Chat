@@ -19,33 +19,35 @@ if(isset($_SESSION['pupil'])){
   </head>
   <body>
 	<?php require('../middleware/navbar.php'); ?>
-	<div id="site_container" class="gallery">
-	    <header style="margin-top: 80px; ">
-		  <div>
-	      <h1>MEG - Bildergalerie</h1>
-	      <h4>Wie auf den IPads nur in Besser!</h4>
-	      </div>
-	      <?php
-	      if(isset($_SESSION['pupil'])){?>
-	          <button id="add-image-btn" onclick="gallery_upload();">Neues Bild hinzufügen</button>
-	          <?php
-	      } else {
-			  ?>
-			  <button id="add-image-btn" onclick="page_navigate('/account/login');">Anmelden / Regestrieren</button>
-			  <?php  
-		  }
-	      ?>
-	    </header>
-	    <main>
-	      <div class="image-gallery" id="pictures">
-			<?php
-			$stmtData = $db->prepare("SELECT * FROM ".DBTBL.".pictures ORDER BY id DESC;");
-			$stmtData->execute();
-			while($row = $stmtData->fetchObject()){ $row = (array)$row; ?>
-				<img loading="lazy" src="<?php echo htmlspecialchars($row['path']); ?>" alt="Bild aus der MEG Chat Gallerie">
-		    <?php } ?>
-	      </div>
-	    </main>
+	<div id="site_container">
+		<div class="gallery">
+		    <header style="margin-top: 80px; ">
+			  <div>
+		      <h1>MEG - Bildergalerie</h1>
+		      <h4>Wie auf den IPads nur in Besser!</h4>
+		      </div>
+		      <?php
+		      if(isset($_SESSION['pupil'])){?>
+		          <button id="add-image-btn" onclick="gallery_upload();">Neues Bild hinzufügen</button>
+		          <?php
+		      } else {
+				  ?>
+				  <button id="add-image-btn" onclick="page_navigate('/account/login');">Anmelden / Regestrieren</button>
+				  <?php  
+			  }
+		      ?>
+		    </header>
+		    <main>
+		      <div class="image-gallery" id="pictures">
+				<?php
+				$stmtData = $db->prepare("SELECT * FROM ".DBTBL.".pictures ORDER BY id DESC;");
+				$stmtData->execute();
+				while($row = $stmtData->fetchObject()){ $row = (array)$row; ?>
+					<img loading="lazy" src="<?php echo htmlspecialchars($row['path']); ?>" alt="Bild aus der MEG Chat Gallerie">
+			    <?php } ?>
+		      </div>
+		    </main>
+	    </div>
 	</div>
   </body>
 </html>
