@@ -172,6 +172,15 @@ window.page_navigate = async function(url, from, to, loading_message = true) {
     var XHRt = new XMLHttpRequest();
     XHRt.onload = async function() {
 		fertig = true;
+		page_navigate_loading = false;
+		if(Object.keys(page_navigate_queue).length > 0){
+			setTimeout(function(){
+				if(Object.keys(page_navigate_queue).length == 0) return;
+				var url = Object.keys(page_navigate_queue)[Object.keys(page_navigate_queue).length-1];
+				var data = page_navigate_queue[url];
+				page_navigate(url, data.from, data.to, data.loading_message);
+			}, 20);
+		}
 		
 		var parser = new DOMParser();
         var doc = parser.parseFromString(XHRt.responseText, "text/html");
@@ -187,14 +196,7 @@ window.page_navigate = async function(url, from, to, loading_message = true) {
 		}
 		
 		//Only for MEG-Chat App:
-		if(document.getElementById("chat_container")) get_messages_data();
-		
-		page_navigate_loading = false;
-		if(Object.keys(page_navigate_queue).length > 0){
-			var url = Object.keys(page_navigate_queue)[Object.keys(page_navigate_queue).length-1];
-			var data = page_navigate_queue[url];
-			page_navigate(url, data.from, data.to, data.loading_message);
-		}
+		if(document.getElementById("chat_container")) setTimeout(get_messages_data, 50);
 	};
 	XHRt.onerror = function() {
 		fertig = true;
@@ -433,7 +435,7 @@ function startCountdown(endDate) {
     }
   }, 1000);
 }
-window.gallery_upload = function(){
+window.gallery_upload = async function(){
   var e = document.createElement("input");
   e.type = "file";
   e.accept = "image/*";
@@ -628,6 +630,8 @@ window.get_messages_data = async function(){
 			});
 		}
 		try {
+			var startTime = new Date().getTime();
+			
 			var has = [];
 			var o = JSON.parse(localStorage.getItem("chat_"+chat_id) || "[]");
 			o.forEach(function(z){
@@ -636,6 +640,9 @@ window.get_messages_data = async function(){
 			if(has.length > 0){
 				add_to_chat(has);
 			}
+			
+			var endTime = new Date().getTime();
+            console.log(`Call to load cache and show took ${endTime - startTime} milliseconds`);
 		} catch(e){
 		    console.log(e);	
 		}
@@ -649,8 +656,15 @@ window.get_messages_data = async function(){
 			setTimeout(async function(){
 			    get_messages_data();
 			}, 200);
+			
+			var startTime = new Date().getTime();
+			
 			data = JSON.parse(data);
 			add_to_chat(data);
+			
+			var endTime = new Date().getTime();
+            console.log(`Call to save and show loaded data took ${endTime - startTime} milliseconds`);
+            
 			resolve();
 		});
     });
