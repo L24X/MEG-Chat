@@ -634,10 +634,10 @@ window.get_messages_data = async function(){
 		if(running_chat_reader) return;
 		window.running_chat_reader = true;
 		post_request("/ajax/load_new_messages.php", {chat: chat_id, last: Number(last_message_id)}, function(data){
-			setTimeout(function(){
-				window.running_chat_reader = false;
+			window.running_chat_reader = false;
+			setTimeout(async function(){
 			    get_messages_data();
-			}, 50);
+			}, 100);
 			data = JSON.parse(data);
 			add_to_chat(data);
 			resolve();
