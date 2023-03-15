@@ -3,3 +3,4 @@ geany.geany
 .idea
 /push.sh
 geany.geany
+*.geany
