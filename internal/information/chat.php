@@ -72,46 +72,24 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
     <body>
 		<?php require('../middleware/navbar.php'); ?>
 		<div id="site_container" style="margin-top: 80px; ">
-			<?php if(!$is_mobile || isset($_GET['list'])){ ?>
-	        <div style="float: left; width: 540px; max-width: 100%; height: auto; max-height: 100%; overflow-x: hidden; overflow-y: auto; " class="no_scrollbar">
-				<div style="width: 100%; height: 145px; margin-top: 20px; ">
-				    <div style="width: 50%; height: 100%; float: left; cursor: pointer; " class="centriert" onclick="page_navigate('/');">
-				        <div style="width: 100%; height: 100%; " class="centriert"><img style="height: 100%; width: auto; max-width: 100%; " src="/resources/images/logo.png" alt="MEG Chat Logo"></div>
-				    </div>
-				    <div style="width: 50%; height: 100%; float: right; " class="centriert">
-					    <div style="width: calc( 100% - 20px ); text-align: center; height: auto; ">
-	                        <?php
-							if(isset($_SESSION['pupil'])){
-								?>
-								<h2 style="margin-top: 5px; font-size: 14px; word-wrap: break-word; ">Du bist angemeldet als <?php echo htmlspecialchars($pupil_data['fullname']); ?>!</h2>
-	                            <?php
-								if($pupil_data['activated'] == 0){
-									?>
-									<p style="color: red; font-size: 10px; ">Dein Account ist noch nicht freigeschaltet worden. Bitte gedulte dich einige Zeit oder Kontaktiere einen Administrator. Wir werden deine Identität Prüfen und den Account anschließend freischalten. Wenn nicht Pech gehabt su Opfer!</p>
-	                                <?php
-							    }
-								?>
-								<div style="width: 100%; height: auto; margin-top: 10px; ">
-								    <button onclick="page_navigate('/schueler/<?php echo htmlspecialchars($pupil_data['id']); ?>');" style="background-color: darkslategray; color: white; font-size: 16px; width: 100%; height: 25px; margin-top: 10px; ">Einstellungen</button>
-								    <button onclick="window.location.href='/account/logout';" style="background-color: red; color: white; font-size: 16px; width: 100%; height: 25px; margin-top: 10px; ">Abmelden</button>
-								</div>
-	                            <?php
-			                } else { ?>
-								<div style="width: 100%; height: auto; ">
-			                        <button onclick="page_navigate('/account/login');" style="width: 100%; height: 25px; ">Anmelden</button>
-			                        <button onclick="page_navigate('/account/register');" style="width: 100%; height: 50px; margin-top: 10px; ">Mich als Schüler hinzufügen</button>
-			                    </div>
-	                        <?php } ?>
-		                </div>
-				    </div>
-				</div>
+			<?php if(isset($_GET['list'])){ ?>
+			<div style="float: left; width: 100%; max-width: 100%; height: auto; max-height: 100%; overflow-x: hidden; overflow-y: auto; " class="no_scrollbar">
 	            <div style="width: 100%; height: auto; margin-top: 20px; ">
 					<div id="all_container">
 	                    <?php require("public_chats.php"); ?>
 		            </div>
 		        </div>
 	        </div>
-	        <?php } if(!isset($_GET['list'])){ ?>
+			<?php } else { ?>
+				<?php if(!$is_mobile){ ?>
+			        <div style="float: left; width: 540px; max-width: 100%; height: auto; max-height: 100%; overflow-x: hidden; overflow-y: auto; " class="no_scrollbar">
+			            <div style="width: 100%; height: auto; margin-top: 20px; ">
+							<div id="all_container">
+			                    <?php require("public_chats.php"); ?>
+				            </div>
+				        </div>
+			        </div>
+			    <?php } else { ?>
 		        <div style="float: left; width: <?php if(!$is_mobile){ ?>calc( 100% - 542px )<?php } else { ?>100%<?php } ?>; min-width: 350px; max-width: 100%; text-align: center; height: 100%; " id="chat_container">
 	            <?php if(!$chat_data){
 				    ?>
@@ -220,8 +198,8 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 							?>
 	                    </div>
 	                </div>
-	            <?php } } ?>
-		    </div>
+	            <?php } ?>
+		    <?php } ?>
 		</div>
     </body>
 </html>
