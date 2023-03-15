@@ -180,6 +180,7 @@ window.page_navigate = async function(url, from, to, loading_message = true) {
 		}
 		
 		if(loading_message) {
+			console.log("SCITCH TO: "+url);
 			spa_url = url;
 			window.history.pushState({}, "", url);
 		}
