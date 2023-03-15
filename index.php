@@ -28,6 +28,7 @@ if(isset($_SESSION['pupil'])){
 			          <p>Auf unserem Portal kannst du Projekte vorstellen, nützliche Werkzeuge für den Unterricht finden, unsere online Schülerzeitung und unseren Blog lesen und dich über wichtige Neuigkeiten und Informationen auf dem Laufenden halten.</p>
 			          <p>Unser Ziel ist es, die Lernplattform der Schule zu ergänzen und fehlende Funktionen anzubieten, um das Lernen und den Austausch unter Schülern zu erleichtern. Wir freuen uns auf deine Teilnahme!</p>
 			        </div>
+			        <a href="javascript:page_naviagte('/impressum');">Impressum</a>
 			    </div>
 			</div>
 		</div>
