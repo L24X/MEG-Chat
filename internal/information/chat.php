@@ -89,7 +89,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 				            </div>
 				        </div>
 			        </div>
-			    <?php } else { ?>
+			    <?php } ?>
 		        <div style="float: left; width: <?php if(!$is_mobile){ ?>calc( 100% - 542px )<?php } else { ?>100%<?php } ?>; min-width: 350px; max-width: 100%; text-align: center; height: 100%; " id="chat_container">
 	            <?php if(!$chat_data){
 				    ?>
