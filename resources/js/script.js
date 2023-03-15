@@ -188,7 +188,7 @@ window.page_navigate = async function(url, from, to, loading_message = true) {
 		}
 		
 		//Only for MEG-Chat App:
-		if(document.getElementById("chat_container")) await get_messages_data();
+		if(document.getElementById("chat_container")) get_messages_data();
 		
 		page_navigate_loading = false;
 		if(Object.keys(page_navigate_queue).length > 0){
@@ -201,7 +201,7 @@ window.page_navigate = async function(url, from, to, loading_message = true) {
 		fertig = true;
 		to.innerHTML = "<h2 style='text-align: center; margin-top: 80px; color: red; '>Ladefehler!</h2>";
 		page_navigate_loading = false;
-		page_navigate(url, from, to_text, loading_message);
+		page_navigate(page_navigate_working_url, from, to_text, loading_message);
 		if(Object.keys(page_navigate_queue).length > 0){
 			var url = Object.keys(page_navigate_queue)[Object.keys(page_navigate_queue).length-1];
 			var data = page_navigate_queue[url];
