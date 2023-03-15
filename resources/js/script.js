@@ -633,8 +633,6 @@ window.get_messages_data = async function(){
 			});
 		}
 		try {
-			var startTime = new Date().getTime();
-			
 			var has = [];
 			var o = JSON.parse(localStorage.getItem("chat_"+chat_id) || "[]");
 			o.forEach(function(z){
@@ -643,9 +641,6 @@ window.get_messages_data = async function(){
 			if(has.length > 0){
 				add_to_chat(has);
 			}
-			
-			var endTime = new Date().getTime();
-            console.log(`Call to load cache and show took ${endTime - startTime} milliseconds`);
 		} catch(e){
 		    console.log(e);	
 		}
@@ -660,14 +655,9 @@ window.get_messages_data = async function(){
 			    get_messages_data();
 			}, 200);
 			
-			var startTime = new Date().getTime();
-			
 			data = JSON.parse(data);
 			add_to_chat(data);
 			
-			var endTime = new Date().getTime();
-            console.log(`Call to save and show loaded data took ${endTime - startTime} milliseconds`);
-            
 			resolve();
 		});
     });
