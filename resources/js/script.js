@@ -127,7 +127,7 @@ window.post_request = function(url, data = {}, then = false){
 	xhr.onerror = function () {
 	    setTimeout(function(){
 			post_request(url, data, then);
-		}, 100);
+		}, 250);
 	};
 	xhr.send(postdata);
 };
