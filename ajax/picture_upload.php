@@ -26,5 +26,4 @@ $path = "/".$path;
 
 $stmtInsert = $db->prepare("INSERT INTO ".DBTBL.".pictures (path) VALUES (:path);");
 $stmtInsert->execute(array('path' => $path));
-
 ?>

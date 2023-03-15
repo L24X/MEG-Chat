@@ -79,7 +79,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 				                  <div style="width: 100%; text-align: left ">
 								      <div style="text-align: left; width: auto; height: auto; ">
 	                                      <?php if(isset($_SESSION['pupil']) && $pupil_data['activated'] == 1 && $s_data['id'] != $pupil_data['id']){ ?><a style="color: white; " href="javascript:void(0); " onclick="event.stopPropagation(); vote('<?php echo htmlspecialchars($s_data['id']); ?>');"><?php } ?>
-										  <div class="schueler_vote_count_<?php echo htmlspecialchars($s_data['id']); ?>" style="float: left; color: white; "><?php echo $s_data['rating']; ?></div>
+										  <div class="schueler_vote_count_<?php echo htmlspecialchars($pupil_data['id']); ?>" style="float: left; color: white; "><?php echo $s_data['rating']; ?></div>
 										  <div style="float: left; margin-left: 8px; color: white; ">Stimmen</div>
 	                                          <?php if(isset($_SESSION['pupil']) && $pupil_data['activated'] == 1 && $s_data['id'] != $pupil_data['id']){ ?></a><?php } ?>
 									  </div>

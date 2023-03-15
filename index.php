@@ -23,7 +23,7 @@ if(isset($_SESSION['pupil'])){
 			<div style="width: 100%; height: 100%; margin-top: 180px; " class="centriert">
 			    <div style="width: 600px; max-width: 95%; text-align: center; min-height: 400px; height: auto; ">
 			        <h1 style="font-size: 28px; font-weight: bold; ">Der MEG-Chat! - Das sind wir und das wollen wir erreichen!</h1>
-			        <div style="font-size: 18px; ">
+			        <div style="font-size: 18px; margin-top: 10px; ">
 			          <p>Willkommen beim MEG-Chat, der Website für Schüler des Max Ernst Gymnasiums in Brühl! Wir bieten eine Plattform für Schüler, um sich auszutauschen und vernetzen zu können.</p>
 			          <p>Auf unserem Portal kannst du Projekte vorstellen, nützliche Werkzeuge für den Unterricht finden, unsere online Schülerzeitung und unseren Blog lesen und dich über wichtige Neuigkeiten und Informationen auf dem Laufenden halten.</p>
 			          <p>Unser Ziel ist es, die Lernplattform der Schule zu ergänzen und fehlende Funktionen anzubieten, um das Lernen und den Austausch unter Schülern zu erleichtern. Wir freuen uns auf deine Teilnahme!</p>

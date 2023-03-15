@@ -85,7 +85,7 @@ if(isset($_POST['submit'])){
     <body>
 		<?php require('../middleware/navbar.php'); ?>
 	    <div id="site_container">
-		    <div class="login-wrapper">
+		    <div class="login-wrapper" style="margin-top: 100px; ">
 		        <div class="login-container">
 					<form action="/account/register" method="POST">
 		              <h2>Mich als Schüler anmelden</h2>

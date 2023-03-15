@@ -53,7 +53,7 @@ if(isset($_POST['submit'])){
     <body>
 		<?php require('../middleware/navbar.php'); ?>
 	    <div id="site_container">
-		    <div class="login-wrapper">
+		    <div class="login-wrapper" style="margin-top: 100px; ">
 		        <div class="login-container">
 	                <form class="bottom_login" action="/account/login" method="POST">
 	                    <h2>Anmelden</h2>

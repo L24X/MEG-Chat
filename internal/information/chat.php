@@ -75,7 +75,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 			<div style="margin-top: 80px; ">
 				<?php if(isset($_GET['list'])){ ?>
 					<div style="float: left; width: 100%; max-width: 100%; height: auto; max-height: 100%; overflow-x: hidden; overflow-y: auto; " class="no_scrollbar">
-			            <div style="width: 100%; height: auto; margin-top: 20px; ">
+			            <div style="width: 100%; height: auto; margin-top: 40px; ">
 							<div id="all_container">
 			                    <?php require("public_chats.php"); ?>
 				            </div>
@@ -84,7 +84,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 				<?php } else { ?>
 					<?php if(!$is_mobile){ ?>
 				        <div style="float: left; width: 540px; max-width: 100%; height: auto; max-height: 100%; overflow-x: hidden; overflow-y: auto; " class="no_scrollbar">
-				            <div style="width: 100%; height: auto; margin-top: 20px; ">
+				            <div style="width: 100%; height: auto; ">
 								<div id="all_container">
 				                    <?php require("public_chats.php"); ?>
 					            </div>
