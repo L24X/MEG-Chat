@@ -2,11 +2,13 @@
 require_once("../internal/logic/db.php");
 
 if(!isset($_SESSION['pupil'])){
-	return;
+	echo json_encode(array('error' => "Bitte melde dich erneut an, um ein Lotto-Ticket kaufen zu können."));	
+    return exit();
 }
 
 if(!isset($_POST['1']) || (!isset($_POST['2']) || (!isset($_POST['3']) || (!isset($_POST['4']) || (!isset($_POST['5']) || (!isset($_POST['6'])){
-    return;	
+    echo json_encode(array('error' => "Ungültiger Tipp. Bitte wähle 6 Zahlen."));	
+    return exit();
 }
 
 $price = 25;
@@ -17,15 +19,17 @@ $pupil_data = (array)$stmtCheck->fetchObject();
 
 if($pupil_data['money'] < $price){
     echo json_encode(array('error' => "Du hast nicht genug Guthaben. Ein Ticket kostet 25 MEG-Taler."));	
+    return exit();
 }
 
 $stmtData = $db->prepare("SELECT * FROM ".DBTBL.".jackpots ORDER BY id DESC LIMIT 1; ");
 $stmtData->execute();
 $row = $stmtData->fetchObject();
-if(!$row) return exit();
-if($row){
-	$jackpot_data = (array)$row;
+if(!$row) {
+	echo json_encode(array('error' => "Es exestiert aktuell kein Jackpot auf dem du deinen Tipp absetzen kanst. Bitte habe noch etwas Gedult!"));	
+    return exit();
 }
+$jackpot_data = (array)$row;
 
 $tipp = array();
 $tipp[1] = (int)$_POST['1'];

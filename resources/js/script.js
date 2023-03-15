@@ -419,22 +419,29 @@ window.update_meg_taler_balance = function(){
 
 function startCountdown(endDate) {
   const countdownElement = document.querySelector(".countdown-timer");
-
-  const countdownInterval = setInterval(() => {
-    const now = new Date().getTime();
-    const distance = endDate.getTime() - now;
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    countdownElement.textContent = `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-
-    if (distance < 0) {
-        clearInterval(countdownInterval);
-        countdownElement.textContent = "00:00:00:00";
-    }
+   
+  if("countdownInterval" in window){
+	  clearInterval(window.countdownInterval);
+  }
+  window.countdownInterval = setInterval(() => {
+	  try {
+	    const now = new Date().getTime();
+	    const distance = endDate.getTime() - now;
+	
+	    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+	    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+	
+	    countdownElement.textContent = `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+	
+	    if (distance < 0) {
+	        clearInterval(countdownInterval);
+	        countdownElement.textContent = "00:00:00:00";
+	    }
+	  } catch(e){
+        console.log(e);  
+	  }
   }, 1000);
 }
 
@@ -455,6 +462,16 @@ if(window.location.pathname.startsWith("/lotto/")){
 	updateJackpot();
 	addLoadEvent(updateJackpot);
 }
+
+window.lotto_buy_ticket = function(tipp){
+	post_request("/ajax/buy_ticket.php", tipp, function(data){
+		data = JSON.parse(data);
+		if(data.error){
+			popup("Fehler!", data.error);
+		    return;	
+		}
+    });
+};
 
 window.gallery_upload = async function(){
   var e = document.createElement("input");
