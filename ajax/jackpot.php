@@ -32,6 +32,5 @@ if(isset($_SESSION['pupil'])){
 	}
 }
 
-
 echo json_encode($jackpot_data);
 ?>

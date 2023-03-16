@@ -452,10 +452,10 @@ window.updateJackpot = function() {
 			var amount = data.balance;
 		    const jackpotAmountElement = document.querySelector(".jackpot-amount");
 	        jackpotAmountElement.textContent = `${amount} MEG-Taler`;
-	        startCountdown(new Date(data.draw));
 	        data.tickets.reverse().forEach(function(t){
-				addLottoTicket(t.id, t.numbers);
+				addLottoTicket(t.id, Object.values(t.numbers));
 			});
+	        startCountdown(new Date(data.draw));
 	    } catch(e){
 		    console.log(e);	
 		}
