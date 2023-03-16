@@ -778,7 +778,7 @@ window.startJackpotVibration = function() {
   let intensity = 0;
   let duration = 100;
   const maxIntensity = 40;
-  const maxDuration = 50;
+  const maxDuration = 200;
 
   const interval = setInterval(() => {
     if (intensity >= maxIntensity) {
