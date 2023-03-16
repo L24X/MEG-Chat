@@ -548,6 +548,8 @@ html, body {
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+  float: right;
+  margin-top: 15px; 
 }
 
 /* Styling für das Popup-Fenster */
