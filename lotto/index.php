@@ -44,16 +44,16 @@ if(isset($_SESSION['pupil'])){
 	    <div id="buy-ticket-popup">
 		  <div class="popup-content">
 		    <div class="rules">
-		      <h2>Spielregeln:</h2>
-		      <p>Wählen Sie 6 Ziffern zwischen 1 und 100 in einer bestimmten Reihenfolge. Eine Zahl kann mehrmals gewählt werden. Bei der nächsten Ziehung werden 6 zufälliege Zahlen in eine zufälligen Reiehnfolge generiert. Eine Ihrer Zahlen ist Riichtig wenn genau diese Zahl an genau derselben Stelle in der zegogenen Zahlenreihe vorkommt. </p>
-		      <p>Bei 6 Richtigen gewinnen Sie den gesammten Jackpot!</p>
-		      <p>Bei 5 Richtigen bekommen Sie die Hälfte des Jackpots.</p>
-		      <p>Bei 4 Richtigen bekommen Sie ein Viertel des Jackpots.</p>
-		      <p>Bei 3 Richtigen bekommen Sie ein Achtel des Jackpots.</p>
-		      <p>Bei 2 Richtigen bekommen Sie ein Sechzehntel des Jackpots.</p>
-		      <p>Bei 1 Richtigen bekommen Sie ein Zeiunddreizigstel des Jackpots.</p>
-		      <p>Bei 0 Richtigen gewinnen Sie nichts.</p>
-		      <p>Ihr Tipp-Ticket verfällt automatisch nach der nächsten Ziehung.</p>
+		      <h2 style="color: black; ">Spielregeln:</h2>
+		      <p style="color: black; ">Wählen Sie 6 Ziffern zwischen 1 und 100 in einer bestimmten Reihenfolge. Eine Zahl kann mehrmals gewählt werden. Bei der nächsten Ziehung werden 6 zufälliege Zahlen in eine zufälligen Reiehnfolge generiert. Eine Ihrer Zahlen ist Riichtig wenn genau diese Zahl an genau derselben Stelle in der zegogenen Zahlenreihe vorkommt. </p>
+		      <p style="color: black; ">Bei 6 Richtigen gewinnen Sie den gesammten Jackpot!</p>
+		      <p style="color: black; ">Bei 5 Richtigen bekommen Sie die Hälfte des Jackpots.</p>
+		      <p style="color: black; ">Bei 4 Richtigen bekommen Sie ein Viertel des Jackpots.</p>
+		      <p style="color: black; ">Bei 3 Richtigen bekommen Sie ein Achtel des Jackpots.</p>
+		      <p style="color: black; ">Bei 2 Richtigen bekommen Sie ein Sechzehntel des Jackpots.</p>
+		      <p style="color: black; ">Bei 1 Richtigen bekommen Sie ein Zeiunddreizigstel des Jackpots.</p>
+		      <p style="color: black; ">Bei 0 Richtigen gewinnen Sie nichts.</p>
+		      <p style="color: black; ">Ihr Tipp-Ticket verfällt automatisch nach der nächsten Ziehung.</p>
 		    </div>
 		    <div class="ticket">
 		      <h2>Tippfelder</h2>
