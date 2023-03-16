@@ -29,7 +29,7 @@ if(isset($_SESSION['pupil'])){
 			          <p>Unser Ziel ist es, die Lernplattform der Schule zu ergänzen und fehlende Funktionen anzubieten, um das Lernen und den Austausch unter Schülern zu erleichtern. Wir freuen uns auf deine Teilnahme!</p>
 			        </div>
 			        <div style="margin-top: 20px; ">
-			            <p><a href="javascript:page_naviagte('/impressum');">Impressum</a></p>
+			            <p><a href="javascript:page_navigate('/impressum');">Impressum</a></p>
 			        </div>
 			    </div>
 			</div>
