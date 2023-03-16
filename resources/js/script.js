@@ -477,6 +477,18 @@ window.lotto_buy_ticket = function(tipp){
 		update_meg_taler_balance();
     });
 };
+window.start_tipp = function(){
+	const numberContainers = document.querySelectorAll('.tipp-number');
+	      
+	lotto_buy_ticket({
+		1: parseInt(numberContainers[0].textContent),
+		2: parseInt(numberContainers[1].textContent),
+		3: parseInt(numberContainers[2].textContent),
+		4: parseInt(numberContainers[3].textContent),
+		5: parseInt(numberContainers[4].textContent),
+		6: parseInt(numberContainers[5].textContent)
+	});
+};
 
 window.gallery_upload = async function(){
   var e = document.createElement("input");

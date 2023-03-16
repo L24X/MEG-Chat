@@ -66,7 +66,7 @@ if(isset($_SESSION['pupil'])){
 				  <div class="tipp-number">1</div>
 				  <div class="tipp-number">1</div>
 				</div>
-		        <button type="submit" id="buy-ticket-submit">Schein kaufen</button>
+		        <button type="submit" id="buy-ticket-submit" onclick="start_tipp();">Für 25 MEG-Taler Spielen</button>
 		      </form>
 		    </div>
 		  </div>
