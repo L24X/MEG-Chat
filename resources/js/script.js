@@ -392,25 +392,25 @@ window.upload_avatar = function(){
 	e.click();
 };
 
-function addLottoTicket(numbers) {
-    const ticketsContainer = document.getElementById("tickets-container");
-
-    const ticketElement = document.createElement("div");
-    ticketElement.classList.add("lotto-ticket");
-
-    const numbersContainer = document.createElement("div");
-    numbersContainer.classList.add("numbers");
-
-    for (let number of numbers) {
-	    const numberElement = document.createElement("div");
-	    numberElement.classList.add("number");
-	    numberElement.textContent = number;
-	    numbersContainer.appendChild(numberElement);
-    }
-
-    ticketElement.appendChild(numbersContainer);
-
-    ticketsContainer.appendChild(ticketElement);
+function addLottoTicket(id, numbers, status) {
+	if(!document.getElementById("lotto_ticket_"+id)){
+	    const ticketsContainer = document.getElementById("tickets-container");
+	
+	    const ticketElement = document.createElement("div");
+	    ticketElement.id = id;
+	    ticketElement.classList.add("lotto-ticket");
+	
+	    const numbersContainer = document.createElement("div");
+	    numbersContainer.classList.add("numbers");
+	    for (let number of numbers) {
+		    const numberElement = document.createElement("div");
+		    numberElement.classList.add("number");
+		    numberElement.textContent = number;
+		    numbersContainer.appendChild(numberElement);
+	    }
+	    ticketElement.appendChild(numbersContainer);
+	    ticketsContainer.appendChild(ticketElement);
+	}
 }
 
 window.update_meg_taler_balance = function(){
@@ -453,6 +453,9 @@ window.updateJackpot = function() {
 		    const jackpotAmountElement = document.querySelector(".jackpot-amount");
 	        jackpotAmountElement.textContent = `${amount} MEG-Taler`;
 	        startCountdown(new Date(data.draw));
+	        data.tickets.reverse().forEach(function(t){
+				addLottoTicket(t.id, t.numbers);
+			});
 	    } catch(e){
 		    console.log(e);	
 		}
@@ -466,11 +469,12 @@ if(window.location.pathname.startsWith("/lotto/")){
 window.lotto_buy_ticket = function(tipp){
 	post_request("/ajax/buy_ticket.php", tipp, function(data){
 		data = JSON.parse(data);
-		console.log(data);
 		if(data.error){
 			popup("Fehler!", data.error);
 		    return;	
 		}
+		updateJackpot();
+		update_meg_taler_balance();
     });
 };
 

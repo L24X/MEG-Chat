@@ -33,10 +33,10 @@ if(isset($_SESSION['pupil'])){
 			</div>
 			<?php
 			if(isset($_SESSION['pupil'])){ ?>
+				<button onclick="document.getElementById('buy-ticket-popup').style.display = 'block';" class="buy-ticket">Neuen Schein kaufen (25 MEG-Taler)</button>
 		        <div class="lotto-tickets" id="tickets-container">
 		            <!-- Hier werden die Lottoscheine angezeigt -->
 		        </div>
-		        <button class="buy-ticket">Neuen Schein kaufen</button>
 		        <?php
 		    }
 		    ?>
