@@ -773,6 +773,33 @@ addLoadEvent(function(){
 	});
 });
 
+window.startJackpotVibration = function() {
+  const jackpotBox = document.querySelector('.jackpot-box');
+  let intensity = 0;
+  let duration = 100;
+  const maxIntensity = 20;
+  const maxDuration = 50;
+
+  const interval = setInterval(() => {
+    if (intensity >= maxIntensity) {
+      clearInterval(interval);
+      return;
+    }
+
+    const randomX = Math.random() * intensity - intensity / 2;
+    const randomY = Math.random() * intensity - intensity / 2;
+    jackpotBox.style.transform = `translate(${randomX}px, ${randomY}px)`;
+
+    intensity += 2;
+    duration -= 1;
+
+    if (duration <= 0) {
+      duration = maxDuration;
+      intensity -= 1;
+    }
+  }, 10);
+}
+
 window.showConfetti = function(duration) {
   const confettiContainer = document.createElement('div');
   confettiContainer.style.position = 'fixed';
