@@ -466,6 +466,7 @@ if(window.location.pathname.startsWith("/lotto/")){
 window.lotto_buy_ticket = function(tipp){
 	post_request("/ajax/buy_ticket.php", tipp, function(data){
 		data = JSON.parse(data);
+		console.log(data);
 		if(data.error){
 			popup("Fehler!", data.error);
 		    return;	
