@@ -448,6 +448,8 @@ function startCountdown(endDate) {
 	    if (distance < 0) {
 	        clearInterval(countdownInterval);
 	        countdownElement.textContent = "00:00:00:00";
+	        startJackpotVibration();
+	        showConfetti();
 	    }
 	  } catch(e){
         console.log(e);  
@@ -778,7 +780,7 @@ window.startJackpotVibration = function() {
   let intensity = 0;
   let duration = 100;
   const maxIntensity = 40;
-  const maxDuration = 200;
+  const maxDuration = 5000;
 
   const interval = setInterval(() => {
     if (intensity >= maxIntensity) {
@@ -800,7 +802,7 @@ window.startJackpotVibration = function() {
   }, 50);
 }
 
-window.showConfetti = function(duration) {
+window.showConfetti = function(duration = 10) {
   const confettiContainer = document.createElement('div');
   confettiContainer.style.position = 'fixed';
   confettiContainer.style.top = '0';
@@ -808,6 +810,7 @@ window.showConfetti = function(duration) {
     confettiContainer.style.bottom = '0';
   confettiContainer.style.right = '0';
   confettiContainer.style.zIndex = '9999';
+  confettiContainer.style.mouseEvents = 'none';
   document.body.appendChild(confettiContainer);
 
   const colors = ['#f6c667', '#ef6eae', '#53b3cb', '#8bc34a', '#e65100', '#e91e63', '#4caf50'];
@@ -841,9 +844,18 @@ window.showConfetti = function(duration) {
     confettiElements.push(confetti);
     confettiContainer.appendChild(confetti);
   }
-
+  
+  var count = 0;
+  var spammer = setInterval(function(){
+	  count++;
+	  if(count >= duration){
+		  clearInterval(spammer);
+	      return;  
+	  }
+	  showConfetti(duration-count);
+  }, 200);
   setTimeout(() => {
     confettiElements.forEach(confetti => confetti.remove());
     confettiContainer.remove();
-  }, duration * 1000);
+  }, maxSpeed);
 }
