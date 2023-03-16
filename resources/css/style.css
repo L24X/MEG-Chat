@@ -399,7 +399,7 @@ html, body {
   color: #fff;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-  transition: all 1s;
+  transition: all 0.1s;
 }
 
 .jackpot-box h2 {

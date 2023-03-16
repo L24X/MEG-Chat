@@ -777,7 +777,7 @@ window.startJackpotVibration = function() {
   const jackpotBox = document.querySelector('.jackpot-box');
   let intensity = 0;
   let duration = 100;
-  const maxIntensity = 20;
+  const maxIntensity = 40;
   const maxDuration = 50;
 
   const interval = setInterval(() => {
@@ -797,7 +797,7 @@ window.startJackpotVibration = function() {
       duration = maxDuration;
       intensity -= 1;
     }
-  }, 10);
+  }, 50);
 }
 
 window.showConfetti = function(duration) {
