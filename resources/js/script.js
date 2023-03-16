@@ -785,7 +785,7 @@ window.showConfetti = function(duration) {
 
   const colors = ['#f6c667', '#ef6eae', '#53b3cb', '#8bc34a', '#e65100', '#e91e63', '#4caf50'];
   const shapes = ['circle', 'square', 'triangle', 'heart'];
-  const animations = ['a', 'b'];
+  const animations = ['a', 'b', 'c', 'd', 'e'];
   const numConfettis = 100;
   const minSize = 10;
   const maxSize = 30;
