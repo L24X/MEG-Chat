@@ -37,7 +37,7 @@ if(isset($_SESSION['pupil'])){
 		} else {
 		    $status = array('text' => "Gewonnen! Du hast ".$ticket_data['status']." MEG-Taler Erhalten!", 'color' => "green");
 		}
-		$jackpot_data['tickets'][] = array('id' => $ticket_data['id'], 'numbers' => json_decode($ticket_data['tipp'], 'status' => $status));
+		$jackpot_data['tickets'][] = array('id' => $ticket_data['id'], 'numbers' => json_decode($ticket_data['tipp']), 'status' => $status);
 	}
 }
 
