@@ -467,6 +467,7 @@ if(window.location.pathname.startsWith("/lotto/")){
 }
 
 window.lotto_buy_ticket = function(tipp){
+	document.getElementById('buy-ticket-popup').style.display = 'none';
 	post_request("/ajax/buy_ticket.php", tipp, function(data){
 		data = JSON.parse(data);
 		if(data.error){
