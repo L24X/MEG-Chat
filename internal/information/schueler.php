@@ -12,7 +12,7 @@ $s = $_GET['schueler'];
 $stmtData = $db->prepare("SELECT ".DBTBL.".pupils.*, COUNT(".DBTBL.".pupils_votes.s_to) AS rating_count, COALESCE(SUM(points),0) as rating FROM ".DBTBL.".pupils LEFT JOIN ".DBTBL.".pupils_votes ON ".DBTBL.".pupils.id = ".DBTBL.".pupils_votes.s_to WHERE pupils.id = :id GROUP BY ".DBTBL.".pupils.id;");
 $stmtData->execute(array('id' => $s));
 $row = $stmtData->fetchObject();
-$s_data = (array)$row;
+$s_data = $row ? (array)$row : false;
 
 if(isset($_SERVER['HTTP_USER_AGENT'])){
     $is_mobile = preg_match("/(android|webos|avantgo|iphone|ipad|ipod|blackberry|iemobile|bolt|boost|cricket|docomo|fone|hiptop|mini|opera mini|kitkat|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
