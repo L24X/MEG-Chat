@@ -806,8 +806,8 @@ window.showConfetti = function(duration) {
     confetti.style.height = `${size}px`;
     confetti.style.borderRadius = shape === 'circle' ? '50%' : '0';
     confetti.style.backgroundColor = color;
-    confetti.style.position = 'absolute';
-    confetti.style.top = '-20px';
+    confetti.style.position = 'fixed';
+    confetti.style.top = '-'+maxSize+'px';
     confetti.style.left = `${Math.random() * 100}%`;
     confetti.style.animation = `confetti-${animation} ${speed}s linear forwards`;
 
