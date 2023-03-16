@@ -372,6 +372,7 @@ html, body {
 }
 
 .buy-ticket {
+  margin-top: 40px;
   padding: 10px 20px;
   font-size: 18px;
   background-color: #f00;
@@ -582,4 +583,12 @@ html, body {
   height: 100%;
   padding: 10px;
   color: black;
+}
+.tipp-number {
+  font-size: 100px;
+  margin: 0 20px;
+  border-bottom: 3px solid #ccc;
+  width: 100px;
+  text-align: center;
+  user-select: none;
 }

@@ -729,3 +729,23 @@ window.chat_messages_info = function(){
 	page_navigate("/chat/"+chat_id, "#chat_inner_data_content_container");
 	member_window = false;
 };
+
+addLoadEvent(function(){
+	const numberContainers = document.querySelectorAll('.tipp-number');
+
+	document.addEventListener('wheel', (event) => {
+	  if (event.target.closest('.tipp-numbers-container')) {
+	    const direction = event.deltaY > 0 ? 1 : -1;
+	    
+	    const index = Array.from(numberContainers).indexOf(event.target);
+	  
+	    if (index !== -1) {
+	      const currentNumber = parseInt(numberContainers[index].textContent);
+	      
+	      const newNumber = (currentNumber + direction + 100) % 100;
+	      
+	      numberContainers[index].textContent = newNumber;
+	    }
+	  }
+	});
+});
