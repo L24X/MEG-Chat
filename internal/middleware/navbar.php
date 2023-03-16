@@ -19,8 +19,7 @@
     </div>
     <a href="javascript:page_navigate('/schueler/<?php echo htmlspecialchars($pupil_data['id']); ?>');" class="settings-icon">&#9881;</a>
     <?php } else { ?>
-		<button onclick="page_navigate('/account/login');" class="login-button">Anmelden</button>
-        <button style="margin-left: 8px; " onclick="page_navigate('/account/register');" class="register-button">Regestrieren</button>
+		<button onclick="page_navigate('/account/login');" class="login-button">Anmelden</button><button style="margin-left: 8px; " onclick="page_navigate('/account/register');" class="register-button">Registrieren</button>
 	<?php } ?>
   </div>
 </header>
