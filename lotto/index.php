@@ -41,11 +41,11 @@ if(isset($_SESSION['pupil'])){
 		    }
 		    ?>
 	    </div>
-	    <div id="buy-ticket-popup">
-		  <div class="popup-content">
+	    <div id="buy-ticket-popup" onclick="document.getElementById('buy-ticket-popup').style.display = 'none'; ">
+		  <div class="popup-content" onclick="event.preventDefault(); event.stopPropagation(); ">
 		    <div class="rules">
 		      <h2 style="color: black; ">Spielregeln:</h2>
-		      <p style="color: black; ">Wählen Sie 6 Ziffern zwischen 1 und 100 in einer bestimmten Reihenfolge. Eine Zahl kann mehrmals gewählt werden. Bei der nächsten Ziehung werden 6 zufälliege Zahlen in eine zufälligen Reiehnfolge generiert. Eine Ihrer Zahlen ist Riichtig wenn genau diese Zahl an genau derselben Stelle in der zegogenen Zahlenreihe vorkommt. </p>
+		      <p style="color: black; margin-top: 10p; ">Wählen Sie 6 Ziffern zwischen 1 und 100 in einer bestimmten Reihenfolge. Eine Zahl kann mehrmals gewählt werden. Bei der nächsten Ziehung werden 6 zufälliege Zahlen in eine zufälligen Reiehnfolge generiert. Eine Ihrer Zahlen ist Riichtig wenn genau diese Zahl an genau derselben Stelle in der zegogenen Zahlenreihe vorkommt. </p>
 		      <p style="color: black; ">Bei 6 Richtigen gewinnen Sie den gesammten Jackpot!</p>
 		      <p style="color: black; ">Bei 5 Richtigen bekommen Sie die Hälfte des Jackpots.</p>
 		      <p style="color: black; ">Bei 4 Richtigen bekommen Sie ein Viertel des Jackpots.</p>
@@ -57,7 +57,7 @@ if(isset($_SESSION['pupil'])){
 		    </div>
 		    <div class="ticket">
 		      <h2>Tippfelder</h2>
-		      <form id="ticket-form">
+		      <form id="ticket-form" action="#">
 		       <div class="tipp-numbers-container" style="display: flex; justify-content: center; align-items: center; height: 300px; background-color: #eee;">
 				  <div class="tipp-number">1</div>
 				  <div class="tipp-number">1</div>
