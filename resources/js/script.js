@@ -772,3 +772,51 @@ addLoadEvent(function(){
 	  }
 	});
 });
+
+window.showConfetti = function(duration) {
+  const confettiContainer = document.createElement('div');
+  confettiContainer.style.position = 'fixed';
+  confettiContainer.style.top = '0';
+  confettiContainer.style.left = '0';
+    confettiContainer.style.bottom = '0';
+  confettiContainer.style.right = '0';
+  confettiContainer.style.zIndex = '9999';
+  document.body.appendChild(confettiContainer);
+
+  const colors = ['#f6c667', '#ef6eae', '#53b3cb', '#8bc34a', '#e65100', '#e91e63', '#4caf50'];
+  const shapes = ['circle', 'square', 'triangle', 'heart'];
+  const animations = ['a', 'b'];
+  const numConfettis = 100;
+  const minSize = 10;
+  const maxSize = 30;
+  const minSpeed = 10;
+  const maxSpeed = 20;
+
+  const confettiElements = [];
+
+  for (let i = 0; i < numConfettis; i++) {
+    const confetti = document.createElement('div');
+    const size = Math.floor(Math.random() * (maxSize - minSize + 1)) + minSize;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const shape = shapes[Math.floor(Math.random() * shapes.length)];
+    const animation = animations[Math.floor(Math.random() * animations.length)];
+    const speed = Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed;
+
+    confetti.style.width = `${size}px`;
+    confetti.style.height = `${size}px`;
+    confetti.style.borderRadius = shape === 'circle' ? '50%' : '0';
+    confetti.style.backgroundColor = color;
+    confetti.style.position = 'absolute';
+    confetti.style.top = '-20px';
+    confetti.style.left = `${Math.random() * 100}%`;
+    confetti.style.animation = `confetti-${animation} ${speed}s linear forwards`;
+
+    confettiElements.push(confetti);
+    confettiContainer.appendChild(confetti);
+  }
+
+  setTimeout(() => {
+    confettiElements.forEach(confetti => confetti.remove());
+    confettiContainer.remove();
+  }, duration * 1000);
+}
