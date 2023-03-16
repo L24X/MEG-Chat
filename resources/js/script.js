@@ -397,7 +397,7 @@ function addLottoTicket(id, numbers, status) {
 	    const ticketsContainer = document.getElementById("tickets-container");
 	
 	    const ticketElement = document.createElement("div");
-	    ticketElement.id = id;
+	    ticketElement.id = "lotto_ticket_"+id;
 	    ticketElement.classList.add("lotto-ticket");
 	
 	    const numbersContainer = document.createElement("div");
@@ -409,7 +409,17 @@ function addLottoTicket(id, numbers, status) {
 		    numbersContainer.appendChild(numberElement);
 	    }
 	    ticketElement.appendChild(numbersContainer);
+	    
+	    const statusContainer = document.createElement("div");
+	    statusContainer.id =  "lotto_ticket_"+id+"_status";
+	    statusContainer.style = "width: 100%; height: auto; text-align: center; font-size: 18px; ";
+	    ticketElement.appendChild(statusContainer);
+	    
 	    ticketsContainer.appendChild(ticketElement);
+	}
+	if(status){
+		document.getElementById("lotto_ticket_"+id+"_status").innerText = status.text;
+		document.getElementById("lotto_ticket_"+id+"_status").style.color = status.color;
 	}
 }
 
@@ -453,7 +463,7 @@ window.updateJackpot = function() {
 		    const jackpotAmountElement = document.querySelector(".jackpot-amount");
 	        jackpotAmountElement.textContent = `${amount} MEG-Taler`;
 	        data.tickets.reverse().forEach(function(t){
-				addLottoTicket(t.id, Object.values(t.numbers));
+				addLottoTicket(t.id, Object.values(t.numbers), t.status);
 			});
 	        startCountdown(new Date(data.draw));
 	    } catch(e){

@@ -28,7 +28,16 @@ if(isset($_SESSION['pupil'])){
     
     while($row = $stmtData->fetchObject()){
 		$ticket_data = (array)$row;
-		$jackpot_data['tickets'][] = array('id' => $ticket_data['id'], 'numbers' => json_decode($ticket_data['tipp']));
+		$status = false;
+		if($ticket_data['status'] == 0){
+		} else if($ticket_data['status'] == -1){
+		    $status = array('text' => "Verlohren!", 'color' => "orange");
+		} else if($ticket_data['status'] == -2){
+		    $status = array('text' => "Vom MEG-Chat Team ausgeschlossen!", 'color' => "red");
+		} else {
+		    $status = array('text' => "Gewonnen! Du hast ".$ticket_data['status']." MEG-Taler Erhalten!", 'color' => "green");
+		}
+		$jackpot_data['tickets'][] = array('id' => $ticket_data['id'], 'numbers' => json_decode($ticket_data['tipp'], 'status' => $status));
 	}
 }
 
