@@ -540,6 +540,11 @@ window.message_input_keydown = function(evt) {
 		document.getElementById("private_message_text").style.height = (document.getElementById("private_message_text").rows*30)+"px";
 	}
 	
+	setTimeout(function(){
+      document.getElementById("private_message_text").style.cssText = 'height:auto; padding:0';
+      document.getElementById("private_message_text").style.cssText = 'height:' + document.getElementById("private_message_text").scrollHeight + 'px';
+    },0);
+	
     evt = evt || window.event;
     var charCode = evt.keyCode || evt.which;
     
