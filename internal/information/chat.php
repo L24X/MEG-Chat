@@ -96,7 +96,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 					    <h1>Entweder dieser Chat exestiert nicht oder zu hast keinen Zugriff darauf. Sollte dieses Problem weiterhin auftauchen melde dich bitte bei einem Administrator.!</h1>
 		                <?php
 					} else { ?>
-						<div style="height: auto; min-height: 60px; margin-top: 6px; " class="centriert">
+						<div style="height: auto; min-height: 50px; margin-top: 6px; " class="centriert">
 							<div style="width: auto; height: 100%; " class="centriert">
 								<?php if($is_mobile && !isset($_GET['list'])){ ?>
 								<div style="height: 110px; width: auto; min-width: 20px; float: left; padding-right: 15px; " class="centriert">
@@ -119,7 +119,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 					            </div>
 				            </div>
 		                </div>
-		                <div style="width: 100%; height: calc( 100% - 110px ); min-height: 200px; max-height: 100%; margin-top: 20px; " class="centriert">
+		                <div style="width: 100%; height: calc( 100% - 125px ); min-height: 200px; max-height: 100%; margin-top: 20px; " class="centriert">
 		                    <div style="height: 100%; width: 100%; position: relative;" id="chat_inner_data_content_container">
 								<?php if(isset($_GET['members'])){ ?>
 								<div style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; overflow-x: hidden; overflow-y: auto; " class="no_scrollbar">
