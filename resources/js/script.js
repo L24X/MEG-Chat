@@ -816,11 +816,11 @@ window.showConfetti = function(duration = 10) {
   const colors = ['#f6c667', '#ef6eae', '#53b3cb', '#8bc34a', '#e65100', '#e91e63', '#4caf50'];
   const shapes = ['circle', 'square', 'triangle', 'heart'];
   const animations = ['a', 'b', 'c', 'd', 'e'];
-  const numConfettis = 100;
+  const numConfettis = 200;
   const minSize = 10;
   const maxSize = 30;
-  const minSpeed = 10;
-  const maxSpeed = 20;
+  const minSpeed = 8;
+  const maxSpeed = 80;
 
   const confettiElements = [];
 
@@ -853,9 +853,9 @@ window.showConfetti = function(duration = 10) {
 	      return;  
 	  }
 	  showConfetti(duration-count);
-  }, 200);
+  }, 500);
   setTimeout(() => {
     confettiElements.forEach(confetti => confetti.remove());
     confettiContainer.remove();
-  }, maxSpeed);
+  }, maxSpeed*1000);
 }

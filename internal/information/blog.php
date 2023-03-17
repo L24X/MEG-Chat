@@ -31,59 +31,28 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
         <? require('../middleware/head.php'); ?>
     </head>
     <body>
-		<?php if(!$is_mobile) { ?>
-        <div style="float: left; width: 160px; max-width: 100%; ">
-            <div style="width: 100%; height: auto;" class="centriert"><img style="width: 100%;" src="/resources/images/logo.png" alt="MEG Chat Logo"></div>
-            <div style="width: 100%; height: auto; " class="centriert"><h2>MEG Chat</h2></div>
-            <div style="width: 100%; height: auto; border-top: 1px solid black; " class="centriert">
-                <h2 style="font-size: 16px; " class="text"><a href="javascript:page_navigate('/');" class="text">Zur Startseite</a></h2>
-            </div>
-            <div style="width: 100%; height: auto; border-top: 1px solid black; margin-top: 10px; text-align: center; overflow: hidden; " class="centriert">
-				<div style="width: 100%; text-align: center; height: auto; margin-top: 10px; ">
-                    <?php
-					if(isset($_SESSION['pupil'])){
-						?>
-						<h2 style="margin-top: 5px; font-size: 14px; word-wrap: break-word; ">Du bist angemeldet als <?php echo htmlspecialchars($pupil_data['fullname']); ?>!</h2>
-                        <?php
-						if($pupil_data['activated'] == 0){
-							?>
-							<p style="color: red; font-size: 10px; ">Dein Account ist noch nicht freigeschaltet worden. Bitte gedulte dich einige Zeit oder Kontaktiere einen Administrator. Wir werden deine Identität Prüfen und den Account anschließend freischalten.</p>
-                            <?php
-					    }
-						?>
-						<div style="width: 100%; height: auto; margin-top: 10px; ">
-						    <button onclick="page_navigate('/schueler/<?php echo htmlspecialchars($pupil_data['id']); ?>');" style="background-color: darkslategray; color: white; font-size: 16px; width: 100%; height: 25px; margin-top: 10px; ">Einstellungen</button>
-						    <button onclick="window.location.href='/account/logout';" style="background-color: red; color: white; font-size: 16px; width: 100%; height: 25px; margin-top: 10px; ">Abmelden</button>
-						</div>
-                        <?php
-	                } else { ?>
-						<div style="width: 100%; height: auto; margin-top: 10px; ">
-	                        <button onclick="page_navigate('/account/login');" style="width: 100%; height: 25px; margin-top: 10px; ">Anmelden</button>
-	                        <button onclick="page_navigate('/account/register');" style="width: 100%; height: 50px; margin-top: 10px; ">Mich als Schüler hinzufügen</button>
-	                    </div>
-                    <?php } ?>
-                </div>
-            </div>
-        </div>
-        <?php } else { ?>
-	    <button onclick="window.history.go(-1); " style="position: fixed; top: 0px; left: 0px; min-height: 50px; height: auto; width:  auto; font-size: 16px; background-color: transparent; font-size: 24px; color: white; border: none; outline: none; ">&#8678;</button>
-		<?php } ?>
-        <div style="float: left; width: <?php if(!$is_mobile){ ?>calc( 100% - 162px )<?php } else { ?>100%<?php } ?>; min-width: 300px; max-width: 100%; text-align: center;" class="centriert">
-            <div style="height: 100%; ">
-            <?php if(!$blog_data){
-			    ?>
-			    <h1>Dieser Blogbeitrag konnte nicht gefunden werden!</h1>
-                <?php
-			} else { ?>
-                <h1><?php echo htmlspecialchars($blog_data['header']); ?></h1>
-                <div style="width: 100%; height: auto; " class="centriert">
-                    <img style="width: 500px; max-width: 100%; " src="<?php echo htmlspecialchars($blog_data['image']); ?>">
-                </div>
-                <div style="width: 100%; height: auto; margin-top: 10px; " class="centriert">
-                    <div style="width: 500px; max-width: 100%; font-size: 16px;"><?php echo htmlspecialchars($blog_data['text']); ?></div>
-                </div>
-            <?php } ?>
-            </div>
-        </div>
+		<?php require('../middleware/navbar.php'); ?>
+		<div id="site_container">
+			<?php if($is_mobile){ ?>
+				<button onclick="window.history.go(-1); " style="position: fixed; top: 85px; left: 0px; min-height: 50px; height: auto; width:  auto; font-size: 16px; background-color: transparent; font-size: 24px; color: white; border: none; outline: none; ">&#8678;</button>
+			<?php } ?>
+	        <div style="float: left; width: 100%; min-width: 300px; max-width: 100%; text-align: center;" class="centriert">
+	            <div style="height: 100%; ">
+	            <?php if(!$blog_data){
+				    ?>
+				    <h1>Dieser Blogbeitrag konnte nicht gefunden werden!</h1>
+	                <?php
+				} else { ?>
+	                <h1><?php echo htmlspecialchars($blog_data['header']); ?></h1>
+	                <div style="width: 100%; height: auto; " class="centriert">
+	                    <img style="width: 500px; max-width: 100%; " src="<?php echo htmlspecialchars($blog_data['image']); ?>">
+	                </div>
+	                <div style="width: 100%; height: auto; margin-top: 10px; " class="centriert">
+	                    <div style="width: 800px; max-width: 100%; font-size: 20px;"><?php echo htmlspecialchars($blog_data['text']); ?></div>
+	                </div>
+	            <?php } ?>
+	            </div>
+	        </div>
+	    </div>
     </body>
 </html>
