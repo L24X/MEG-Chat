@@ -535,12 +535,9 @@ window.last_message_author_id = false;
 window.member_window = false;
 
 window.message_input_keydown = function(evt) {
-	if(document.getElementById("private_message_text").value.split("\n").length < document.getElementById("private_message_text").rows){
-		document.getElementById("private_message_text").rows = document.getElementById("private_message_text").value.split("\n").length;
-	}
-	
 	setTimeout(function(){
       document.getElementById("private_message_text").style.height = "auto";
+      document.getElementById("private_message_text").style.maxHeight = "250px";
       document.getElementById("private_message_text").style.padding = "0";
       document.getElementById("private_message_text").style.height = document.getElementById("private_message_text").scrollHeight + 'px';
     },0);
@@ -550,13 +547,7 @@ window.message_input_keydown = function(evt) {
     
     if(!charCode) return;
     
-    if(evt.shiftKey){
-	    if (charCode == 13) {
-			if(document.getElementById("private_message_text").rows < 10){
-				document.getElementById("private_message_text").rows++;
-			}
-		}
-	} else {
+    if(!evt.shiftKey){
 		if (charCode == 13) {
 			evt.preventDefault();
 			
