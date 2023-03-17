@@ -100,7 +100,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 							<div style="width: auto; height: 100%; " class="centriert">
 								<?php if($is_mobile && !isset($_GET['list'])){ ?>
 								<div style="height: 110px; width: auto; min-width: 20px; float: left; padding-right: 15px; " class="centriert">
-								    <button onclick="if(member_window) { chat_messages_info(); } else { page_navigate('/chat/list'); }" style="min-height: 50px; height: auto; width:  auto; font-size: 16px; background-color: transparent; font-size: 24px; color: white; border: none; outline: none; ">&#8678;</button>
+								    <button onclick="if(member_window) { chat_messages_info(); } else { page_navigate('/chat/list'); }" style="min-height: 50px; height: auto; width: auto; font-size: 16px; background-color: transparent; font-size: 24px; color: white; border: none; outline: none; ">&#8678;</button>
 								</div>
 								<?php } ?>
 								<div onclick="chat_messages_info();" style="height: 110px; width: auto; float: left; " class="centriert">
@@ -119,7 +119,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 					            </div>
 				            </div>
 		                </div>
-		                <div style="width: 100%; height: calc( 100% - 125px ); min-height: 200px; max-height: 100%; margin-top: 20px; " class="centriert">
+		                <div style="width: 100%; height: calc( 100% - 140px ); min-height: 200px; max-height: 100%; margin-top: 20px; " class="centriert">
 		                    <div style="height: 100%; width: 100%; position: relative;" id="chat_inner_data_content_container">
 								<?php if(isset($_GET['members'])){ ?>
 								<div style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; overflow-x: hidden; overflow-y: auto; " class="no_scrollbar">
