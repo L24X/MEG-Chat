@@ -119,7 +119,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 					            </div>
 				            </div>
 		                </div>
-		                <div style="width: 100%; height: calc( 100% - 140px ); min-height: 200px; max-height: 100%; margin-top: 20px; " class="centriert">
+		                <div style="width: 100%; height: calc( 100% - 160px ); min-height: 200px; max-height: 100%; margin-top: 20px; " class="centriert">
 		                    <div style="height: 100%; width: 100%; position: relative;" id="chat_inner_data_content_container">
 								<?php if(isset($_GET['members'])){ ?>
 								<div style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; overflow-x: hidden; overflow-y: auto; " class="no_scrollbar">
@@ -191,7 +191,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 		                            <?php
 								} else {
 								    ?>
-								    <textarea rows="1" onkeydown="message_input_keydown(event);" id="private_message_text" style="position: absolute; bottom: 0px; right: 0px; left: 0px; height: 30px;  font-size: 24px; text-align: left; resize: none; background-color: transparent; " class="text" placeholder="Meine Nachricht.."></textarea>
+								    <textarea rows="1" onkeydown="message_input_keydown(event);" id="private_message_text" style="position: absolute; bottom: 0px; right: 0px; left: 0px; height: 30px;  font-size: 24px; text-align: left; resize: none; background-color: transparent; word-wrap: break-word; white-space: pre-wrap;" class="text" placeholder="Meine Nachricht.."></textarea>
 		                            <?php
 								}
 							    }
