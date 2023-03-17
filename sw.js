@@ -43,9 +43,11 @@ self.addEventListener('fetch', (event) => {
           return networkResponse;
         });
         if(event.request.destination == "document"){
+			console.log("a");
 		    return fetchedResponse || cachedResponse;
 		} else {
             return cachedResponse || fetchedResponse;
+            console.log("b");
         }
       });
     }));
