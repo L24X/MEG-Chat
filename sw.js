@@ -7,7 +7,10 @@ const filesToCache = [
     "/resources/icons/android-icon-144x144.png",
     "/resources/icons/android-icon-192x192.png",
     "/resources/images/avatar.png",
-    "/resources/images/logo.png"
+    "/resources/images/logo.png",
+    "/",
+    "/schueler",
+    "/impressum"
 ];
 
 self.addEventListener("install", e => {

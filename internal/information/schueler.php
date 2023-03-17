@@ -90,6 +90,16 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 								  <button onclick="event.stopPropagation(); vote('<?php echo htmlspecialchars($s_data['id']); ?>');">Gefällt Mir</button>
 							  </div>
 	                            <?php }?>
+	                            <?php
+	                            if(isset($_SESSION['pupil'])){
+								  if($pupil_data['id'] == $s_data['id']){
+									  ?>
+									  <h3 style="margin-top: 20px; ">Account:</h3>
+									  <button onclick="window.location.href = '/account/logout';" style="background-color: red; color: white; ">Abmelden</button>
+									  <?php
+							      }
+							    }
+							    ?>
 							</div>
 							<div id="chats_together" class="tabcontent" style="text-align: left; padding-left: 10px; padding-right: 10px; padding-bottom: 10px; ">
 	                            <?php

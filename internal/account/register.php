@@ -106,7 +106,7 @@ if(isset($_POST['submit'])){
 							<a href="/account/login">Anmelden</a>
 							<a href="/">Zur Startseite</a>
 					   </div>
-					  <input id="submit" name="submit" type="submit" value="Eintragen">
+					  <input id="submit" onclick="delete_cache();" name="submit" type="submit" value="Eintragen">
 					</form>
 		        </div>
 		    </div>
