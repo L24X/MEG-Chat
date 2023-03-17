@@ -33,6 +33,12 @@ if(isset($_POST['submit'])){
 	}
 	
 	if(!$error){
+		setcookie(
+		  "loginstatus",
+		  "true",
+		  time() + (10 * 365 * 24 * 60 * 60),
+		  '/'
+		);
 		$_SESSION['pupil'] = $check['id'];
 		header("Location: /");
         return exit();
