@@ -38,6 +38,7 @@ addLoadEvent(function(){
     if ("serviceWorker" in navigator) {
 	    navigator.serviceWorker.register("/sw.js").then((registration) => {
 	        console.log("[ServiceWorker**] - Registered");
+	        window.registration = registration;
 	        return registration.pushManager.getSubscription().then(async (subscription) => {
                 console.log("[ServiceWorker**] - Push Manager Aktivated");
                 if (subscription) return subscription;
@@ -855,4 +856,10 @@ window.showConfetti = function(duration = 10) {
     confettiElements.forEach(confetti => confetti.remove());
     confettiContainer.remove();
   }, maxSpeed*1000);
+}
+
+window.delete_cache = function(){
+	if("registration" in window){
+		registration.active.postMessage({action: "clear"});
+	}
 }
