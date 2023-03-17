@@ -50,7 +50,7 @@ if (!file_exists("../uploads")) {
 $path_full = "../uploads/".$pupil_data['id']."_".rand(100000,100000000)."_full";
 $path = "../uploads/".$pupil_data['id']."_".rand(100000,100000000);
 file_put_contents($path_full, file_get_contents($value));
-resizeImage($path_full, 0.1, $path);
+resize_image($path_full, 0.1, $path);
 $path = "/".$path;
 
 $stmtInsert = $db->prepare("INSERT INTO ".DBTBL.".pictures (path) VALUES (:path); UPDATE ".DBTBL.".pupils SET money = ".DBTBL.".pupils.money + 1 WHERE id = :id; ");
