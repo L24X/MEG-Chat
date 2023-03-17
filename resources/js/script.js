@@ -537,7 +537,6 @@ window.member_window = false;
 window.message_input_keydown = function(evt) {
 	if(document.getElementById("private_message_text").value.split("\n").length < document.getElementById("private_message_text").rows){
 		document.getElementById("private_message_text").rows = document.getElementById("private_message_text").value.split("\n").length;
-		document.getElementById("private_message_text").style.height = (document.getElementById("private_message_text").rows*30)+"px";
 	}
 	
 	setTimeout(function(){
@@ -554,7 +553,6 @@ window.message_input_keydown = function(evt) {
 	    if (charCode == 13) {
 			if(document.getElementById("private_message_text").rows < 10){
 				document.getElementById("private_message_text").rows++;
-				document.getElementById("private_message_text").style.height = (document.getElementById("private_message_text").rows*30)+"px";
 			}
 		}
 	} else {
