@@ -43,7 +43,7 @@ self.addEventListener('fetch', (event) => {
           return networkResponse;
         });
         if(event.request.destination == "document"){
-		    return fetchedResponse;
+		    return fetchedResponse || cachedResponse;
 		} else {
             return cachedResponse || fetchedResponse;
         }
@@ -51,5 +51,13 @@ self.addEventListener('fetch', (event) => {
     }));
   } else {
     return;
+  }
+});
+
+self.addEventListener('message', function handler (event) {
+  if(event.data.action == "clear"){
+	  caches.keys().then(function(names) {
+          for (let name of names) caches.delete(name);
+	  });
   }
 });
