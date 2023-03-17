@@ -540,8 +540,9 @@ window.message_input_keydown = function(evt) {
 	}
 	
 	setTimeout(function(){
-      document.getElementById("private_message_text").style.cssText = 'height:auto; padding:0';
-      document.getElementById("private_message_text").style.cssText = 'height:' + document.getElementById("private_message_text").scrollHeight + 'px';
+      document.getElementById("private_message_text").style.height = "auto";
+      document.getElementById("private_message_text").style.padding = "0";
+      document.getElementById("private_message_text").style.height = document.getElementById("private_message_text").scrollHeight + 'px';
     },0);
 	
     evt = evt || window.event;
