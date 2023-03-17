@@ -193,7 +193,10 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 								    ?>
 								    <div style="position: absolute; bottom: 0px; right: 2px; left: 0px; height: auto; min-height: 30px; background-color: #222; ">
 										<div style="width: 100%; height: 30px; display: none; color: white; font-size: 18px; "></div>
-								        <textarea rows="1" onkeydown="message_input_keydown(event);" id="private_message_text" style="width: 100%; height: 30px; font-size: 24px; text-align: left; resize: none; background-color: transparent; word-wrap: break-word; white-space: pre-wrap;" class="text" placeholder="Meine Nachricht.."></textarea>
+										<div style="width: 100%; height: auto; min-height: 30px; ">
+								            <textarea rows="1" onkeydown="message_input_keydown(event);" id="private_message_text" style="width: calc( 100% - 32px ); height: 30px; font-size: 24px; text-align: left; resize: none; background-color: transparent; word-wrap: break-word; white-space: pre-wrap; float: left; " class="text" placeholder="Meine Nachricht.."></textarea>
+								            <button style="height: 30px; width: 30px; float: right; font-size: 20px; ">+</button>
+								        </div>
 								    </div>
 							
 		                            <?php
