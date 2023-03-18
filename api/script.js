@@ -13,11 +13,11 @@ window.chatserver = {
 		xhr.setRequestHeader("Accept", "application/json");
 		xhr.setRequestHeader("Content-Type", "application/json");
 
-		let data = {
+		let post_data = {
 		  channel: channel,
-		  data: data;
+		  data: data
 		};
-		xhr.send(JSON.stringify(data));
+		xhr.send(JSON.stringify(post_data));
 	}
 };
 
@@ -51,7 +51,7 @@ function load_channel(channel){
 		
 		let data = {
 		  channel: channel,
-		  last: lasts[channel] || -1;
+		  last: lasts[channel] || -1
 		};
 		
 		xhr.send(JSON.stringify(data));
@@ -61,7 +61,7 @@ async function load(){
 	for(var i = 0; i < Object.keys(listeners).length; i++){
 		var channel = Object.keys(listeners)[i];
 	    await load_channel(channel)
-	});
+	};
 	setTimeout(load, 100);
 }
 load();
