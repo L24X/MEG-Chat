@@ -44,7 +44,7 @@ if($chat_data){
 }
 
 if($chat_data){
-	$stmtMemberCount = $db->prepare("SELECT COUNT(id) as count FROM ".DBTBL.".chats_members WHERE chat = :chat; ");
+	$stmtMemberCount = $db->prepare("SELECT COUNT(id) as count FROM ".DBTBL.".pupils WHERE id IN (SELECT pupil FROM ".DBTBL.".chats_members WHERE chat = :chat); ");
 	$stmtMemberCount->execute(array('chat' => $chat_data['id']));
 	$member_count = ((array)$stmtMemberCount->fetchObject())['count'];
 	
@@ -198,7 +198,6 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 								            <button style="height: 30px; width: 30px; float: right; font-size: 20px; ">+</button>
 								        </div>
 								    </div>
-							
 		                            <?php
 								}
 							    }
