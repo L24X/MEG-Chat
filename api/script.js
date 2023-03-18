@@ -8,15 +8,23 @@ window.chatserver = {
 	},
 	send: function(data, channel = 0){
 		if(!data) return;
-		
-		
+		let xhr = new XMLHttpRequest();
+		xhr.open("POST", "https://meg-chat.de/ajax/open/connect.php");
+		xhr.setRequestHeader("Accept", "application/json");
+		xhr.setRequestHeader("Content-Type", "application/json");
+
+		let data = {
+		  channel: channel,
+		  data: data;
+		};
+		xhr.send(JSON.stringify(data));
 	}
 };
 
 function load_channel(channel){
 	return new Promise(function(resolve, reject){
 		let xhr = new XMLHttpRequest();
-		xhr.open("POST", "https://meg-chat.de/ajax/open/connect.php");
+		xhr.open("GET", "https://meg-chat.de/ajax/open/connect.php");
 		xhr.setRequestHeader("Accept", "application/json");
 		xhr.setRequestHeader("Content-Type", "application/json");
 		
@@ -57,3 +65,5 @@ async function load(){
 	setTimeout(load, 100);
 }
 load();
+
+
