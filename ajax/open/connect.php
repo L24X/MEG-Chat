@@ -1,7 +1,7 @@
 <?php
-require_once("../../internal/logic/db.php");
-
 header("Access-Control-Allow-Origin: *");
+
+require_once("../../internal/logic/db.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if(!isset($_POST['data'])) return;
