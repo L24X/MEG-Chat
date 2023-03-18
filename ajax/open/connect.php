@@ -1,6 +1,8 @@
 <?php
 require_once("../../internal/logic/db.php");
 
+header("Access-Control-Allow-Origin: *");
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if(!isset($_POST['data'])) return;
 	$stmtMessage = $db->prepare("INSERT INTO meg2.data (data, channel) VALUES (:data, :channel); ");
