@@ -938,7 +938,7 @@ function chooseFile() {
   });
 }
 window.chatUploadFile = async function(){
-	var file = chooseFile();
+	var file = await chooseFile();
 	if(!file) return;
 	uploadFile(file, function(p){
 		console.log(p);
