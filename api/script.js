@@ -21,15 +21,33 @@ window.chatserver = {
 	}
 };
 
+function ajax(file, params = {}, callback = false) {
+  var url = file + '?';
+  var notFirst = false;
+  for (var key in params) {
+    if (params.hasOwnProperty(key)) {
+      url += (notFirst ? '&' : '') + key + "=" + params[key];
+    }
+    notFirst = true;
+  }
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      if(callback) callback(xmlhttp.responseText);
+    }
+  };
+  xmlhttp.open('GET', url, true);
+  xmlhttp.send();
+}
+
 function load_channel(channel){
 	return new Promise(function(resolve, reject){
-		let xhr = new XMLHttpRequest();
-		xhr.open("GET", "https://meg-chat.de/ajax/open/connect.php");
-		xhr.setRequestHeader("Accept", "application/json");
-		xhr.setRequestHeader("Content-Type", "application/json");
+		let data = {
+		  channel: channel,
+		  last: lasts[channel] || -1
+		};
 		
-		xhr.onreadystatechange = function () {
-			resolve();
+		ajax("https://meg-chat.de/ajax/open/connect.php", data, function(){
 		    if (xhr.readyState === 4) {
 				var data = JSON.parse(xhr.responseText);
 				data.forEach(function(m){
@@ -46,16 +64,9 @@ function load_channel(channel){
 					    console.log(e);	
 					}
 				});
-				
 		    }
-		};
-		
-		let data = {
-		  channel: channel,
-		  last: lasts[channel] || -1
-		};
-		
-		xhr.send(JSON.stringify(data));
+		    resolve();
+		});
 	});
 }
 async function load(){
