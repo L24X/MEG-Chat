@@ -47,24 +47,23 @@ function load_channel(channel){
 		  last: lasts[channel] || -1
 		};
 		
-		ajax("https://meg-chat.de/ajax/open/connect.php", data, function(){
-		    if (xhr.readyState === 4) {
-				var data = JSON.parse(xhr.responseText);
-				data.forEach(function(m){
-					lasts[channel] = m.id;
-					try {
-					    listeners[channel].forEach(function(l){
-							try {
-						        l(m.data);
-						    } catch(e){
-							    console.log(e);	
-							}
-						});
-					} catch(e){
-					    console.log(e);	
-					}
-				});
-		    }
+		ajax("https://meg-chat.de/ajax/open/connect.php", data, function(responseText){
+			var data = JSON.parse(responseText);
+			data.forEach(function(m){
+				lasts[channel] = m.id;
+				try {
+				    listeners[channel].forEach(function(l){
+						try {
+					        l(m.data);
+					    } catch(e){
+						    console.log(e);	
+						}
+					});
+				} catch(e){
+				    console.log(e);	
+				}
+			});
+		    
 		    resolve();
 		});
 	});
