@@ -874,3 +874,75 @@ window.delete_cache = function(){
 		registration.active.postMessage({action: "clear"});
 	}
 }
+
+window.uploadFile = function(file, progressHandler, completeHandler) {
+  var chunkSize = 2 * 1024 * 1024;
+  var fileSize = file.size;
+  var offset = 0;
+
+  var reader = new FileReader();
+  reader.onload = function(event) {
+    var chunk = event.target.result;
+    var formData = new FormData();
+    formData.append('file', chunk);
+    formData.append('offset', offset);
+    formData.append('filesize', fileSize);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/ajax/upload_file.php', true);
+
+    xhr.upload.addEventListener('progress', function(e) {
+      if (e.lengthComputable) {
+        var percentComplete = (e.loaded / e.total) * 100;
+        progressHandler(percentComplete);
+      }
+    }, false);
+
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          offset += chunkSize;
+          if (offset < fileSize) {
+            uploadChunk();
+          } else {
+            completeHandler(xhr.responseText);
+          }
+        } else {
+          console.error(xhr.statusText);
+        }
+      }
+    };
+
+    xhr.send(formData);
+  };
+
+  function uploadChunk() {
+    var slice = file.slice(offset, offset + chunkSize);
+    reader.readAsArrayBuffer(slice);
+  }
+
+  uploadChunk();
+}
+function chooseFile() {
+  return new Promise((resolve, reject) => {
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.addEventListener('change', () => {
+      if (input.files && input.files[0]) {
+        resolve(input.files[0]);
+      } else {
+        resolve(false);
+      }
+    });
+    input.click();
+  });
+}
+async function chatUploadFile(){
+	var file = chooseFile();
+	if(!file) return;
+	uploadFile(file, function(p){
+		console.log(p);
+	}, function(data){
+	    console.log(data);	
+	});
+}
