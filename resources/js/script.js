@@ -937,7 +937,7 @@ function chooseFile() {
     input.click();
   });
 }
-async function chatUploadFile(){
+window.chatUploadFile = async function(){
 	var file = chooseFile();
 	if(!file) return;
 	uploadFile(file, function(p){
