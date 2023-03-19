@@ -286,7 +286,12 @@ window.vote = function(id){
 		if(data.length > 2){
 		    popup("Fehler!", data);
 		} else {
-		    page_navigate(window.location.href, ".schueler_vote_count_"+id, ".schueler_vote_count_"+id, false);	
+		    page_navigate(window.location.href, ".schueler_vote_count_"+id, ".schueler_vote_count_"+id, false);
+		    var c = Number(document.getElementsByClassName("schueler_vote_count_"+id)[0].innerText);
+			c++;
+			[...document.getElementsByClassName("schueler_vote_count_"+id)].forEach(function(e){
+			    e.innerText = c;	
+			});
 		}
 	});
 };
