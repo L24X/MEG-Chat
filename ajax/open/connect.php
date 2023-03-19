@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmtMessage->execute(array('channel' => isset($_POST['channel']) ? $_POST['channel'] : 0, 'data' => json_encode($_POST['data'])));
 } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	$stmtMessage = $db->prepare("SELECT * FROM meg2.data WHERE id > :last AND channel = :channel; ");
-    $stmtMessage->execute(array('channel' => isset($_POST['channel']) ? $_POST['channel'] : 0, 'last' => isset($_POST['last']) ? $_POST['last'] : -1));
+    $stmtMessage->execute(array('channel' => isset($_GET['channel']) ? $_GET['channel'] : 0, 'last' => isset($_GET['last']) ? $_GET['last'] : -1));
     $data = array();
     while($row = $stmtMessage->fetchObject()){
 		$data[] = array('data' => json_decode(((array)$row)['data']), 'id' => ((array)$row)['id']);
