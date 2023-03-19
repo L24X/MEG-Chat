@@ -95,7 +95,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 								  if($pupil_data['id'] == $s_data['id']){
 									  ?>
 									  <h3 style="margin-top: 20px; ">Account:</h3>
-									  <button onclick="window.location.href = '/account/logout';" style="background-color: red; color: white; ">Abmelden</button>
+									  <button onclick="delete_cache(); window.location.href = '/account/logout';" style="background-color: red; color: white; ">Abmelden</button>
 									  <?php
 							      }
 							    }

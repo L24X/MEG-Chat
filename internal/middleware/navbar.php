@@ -13,7 +13,7 @@
   <div class="user-profile">
 	<?php if(isset($_SESSION['pupil'])){ ?>
     <img src="<?php echo htmlspecialchars(empty($pupil_data['avatar']) ? "/resources/images/avatar.png" : $pupil_data['avatar']); ?>" alt="Profilbild">
-    <div class="user-info">
+    <div class="user-info" id="right_top_user">
       <span class="user-name"><?php echo htmlspecialchars($pupil_data['fullname']); ?></span>
       <span class="user-balance"><span class="my_meg_taler_count"><?php echo htmlspecialchars(isset($pupil_data['money']) ? $pupil_data['money'] : 0); ?></span> MEG-Taler</span>
     </div>

@@ -174,6 +174,7 @@ window.page_navigate = async function(url, from, to, loading_message = true) {
     XHRt.onload = async function() {
 		fertig = true;
 		page_navigate_loading = false;
+		
 		if(Object.keys(page_navigate_queue).length > 0){
 			setTimeout(function(){
 				if(Object.keys(page_navigate_queue).length == 0) return;
@@ -194,6 +195,11 @@ window.page_navigate = async function(url, from, to, loading_message = true) {
 		if(loading_message) {
 			spa_url = page_navigate_working_url;
 			window.history.pushState({}, "", page_navigate_working_url);
+		}
+		
+		if(!document.getElementById("right_top_user") != !doc.getElementById("right_top_user")){
+		    delete_cache();
+		    window.location.reload();
 		}
 		
 		//Only fpr MEG-Chat Lotto App:
