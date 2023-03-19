@@ -50,7 +50,7 @@ function load_channel(channel){
 				try {
 				    listeners[channel].forEach(function(l){
 						try {
-					        l(m.data);
+					        l(JSON.parse(m.data));
 					    } catch(e){
 						    console.log(e);	
 						}
