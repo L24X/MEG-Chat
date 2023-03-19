@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmtMessage->execute(array('channel' => isset($_POST['channel']) ? $_POST['channel'] : 0, 'last' => isset($_POST['last']) ? $_POST['last'] : -1));
     $data = array();
     while($row = $stmtMessage->fetchObject()){
-		$data[] = json_decode(((array)$row)['data']);
+		$data[] = array('data' => json_decode(((array)$row)['data']), 'id' => ((array)$row)['id']);
 	}
     echo json_encode($data);
 }

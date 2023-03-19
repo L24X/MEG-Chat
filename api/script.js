@@ -32,11 +32,12 @@ function load_channel(channel){
 			resolve();
 		    if (xhr.readyState === 4) {
 				var data = JSON.parse(xhr.responseText);
-				listeners[channel].forEach(function(l){
+				data.forEach(function(m){
+					lasts[channel] = m.id;
 					try {
-					    data.forEach(function(m){
+					    listeners[channel].forEach(function(l){
 							try {
-						        l(m);
+						        l(m.data);
 						    } catch(e){
 							    console.log(e);	
 							}
