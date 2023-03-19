@@ -2,11 +2,11 @@
 
 require_once("../../internal/logic/db.php");
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-	if(!isset($_POST['data'])) return;
+if (isset($_GET['send'])) {
+	if(!isset($_GET['data'])) return;
 	$stmtMessage = $db->prepare("INSERT INTO meg2.data (data, channel) VALUES (:data, :channel); ");
-    $stmtMessage->execute(array('channel' => isset($_POST['channel']) ? $_POST['channel'] : 0, 'data' => json_encode($_POST['data'])));
-} else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $stmtMessage->execute(array('channel' => isset($_GET['channel']) ? $_GET['channel'] : 0, 'data' => json_encode($_GET['data'])));
+} else {
 	$stmtMessage = $db->prepare("SELECT * FROM meg2.data WHERE id > :last AND channel = :channel; ");
     $stmtMessage->execute(array('channel' => isset($_GET['channel']) ? $_GET['channel'] : 0, 'last' => isset($_GET['last']) ? $_GET['last'] : -1));
     $data = array();

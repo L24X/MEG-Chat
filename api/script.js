@@ -8,16 +8,12 @@ window.chatserver = {
 	},
 	send: function(data, channel = 0){
 		if(!data) return;
-		let xhr = new XMLHttpRequest();
-		xhr.open("POST", "https://meg-chat.de/ajax/open/connect.php");
-		xhr.setRequestHeader("Accept", "application/json");
-		xhr.setRequestHeader("Content-Type", "application/json");
-
 		let post_data = {
+		  send: true,
 		  channel: channel,
-		  data: data
+		  data: JSON.stringify(data)
 		};
-		xhr.send(JSON.stringify(post_data));
+		ajax("https://meg-chat.de/ajax/open/connect.php", post_data);
 	}
 };
 
