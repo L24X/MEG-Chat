@@ -25,11 +25,11 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 	<title>Candy Crush</title>
 	<style type="text/css">html, body { touch-action: auto; position: fixed; } html, body, canvas { -webkit-tap-highlight-color: rgba(0,0,0,0); touch-action: none; } </style>
 	<!-- custom-html-head.template.html -->
-    <?php require('../internal/middleware/head.php'); ?>
+
 </head>
-<body oncontextmenu="return false;" style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px;">
+<body oncontextmenu="return false;">
 <?php require('../internal/middleware/navbar.php'); ?>
-		<div id="site_container" style="position: fixed; top: 80px; left:0px; right: 0px; bottom: 0px; ">
+		<div id="site_container">
 
 <style type="text/css">
 .preloader_container {
@@ -38,7 +38,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 	justify-content: center;
 	align-items: center;
 	position: fixed;
-	top: 80px;
+	top: 0;
 	left: 0;
 	width: 100vw;
 	height: 100vh;
