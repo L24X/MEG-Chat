@@ -25,7 +25,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 	<title>Candy Crush</title>
 	<style type="text/css">html, body { touch-action: auto; position: fixed; } html, body, canvas { -webkit-tap-highlight-color: rgba(0,0,0,0); touch-action: none; } </style>
 	<!-- custom-html-head.template.html -->
-
+    <?php require('../middleware/head.php'); ?>
 </head>
 <body oncontextmenu="return false;">
 <?php require('../internal/middleware/navbar.php'); ?>
