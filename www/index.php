@@ -29,7 +29,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 </head>
 <body oncontextmenu="return false;">
 <?php require('../internal/middleware/navbar.php'); ?>
-		<div id="site_container">
+		<div id="site_container" style="position: fixed; top: 80px; left:0px; right: 0px; bottom: 0px; ">
 
 <style type="text/css">
 .preloader_container {
