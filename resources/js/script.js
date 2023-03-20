@@ -880,9 +880,8 @@ window.uploadFile = function(file, progressHandler, completeHandler) {
   var fileSize = file.size;
   var offset = 0;
 
-  var reader = new FileReader();
-  reader.onload = function(event) {
-    var chunk = event.target.result;
+  function uploadChunk() {
+    var chunk = file.slice(offset, offset + chunkSize);
     var formData = new FormData();
     formData.append('file', chunk);
     formData.append('offset', offset);
@@ -914,11 +913,6 @@ window.uploadFile = function(file, progressHandler, completeHandler) {
     };
 
     xhr.send(formData);
-  };
-
-  function uploadChunk() {
-    var slice = file.slice(offset, offset + chunkSize);
-    reader.readAsArrayBuffer(slice);
   }
 
   uploadChunk();
