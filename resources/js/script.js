@@ -939,7 +939,7 @@ window.chatUploadFile = async function(chat_id){
 	var file = await chooseFile();
 	if(!file) return;
 	var e = document.createElement("div");
-	e.style = "width: 100%; height: 50px; color: white; ";
+	e.style = "width: 100%; height: 50px; color: white; text-align: right; padding-right: 15px; ";
 	var t = document.createElement("h4");
 	t.innerText = file.name+" wird hochgeladen...";
 	e.appendChild(t);
@@ -948,8 +948,7 @@ window.chatUploadFile = async function(chat_id){
 	e.appendChild(i);
     document.getElementById("sub_navbar").appendChild(e);
 	uploadFile(file, function(p){
-		console.log(p);
-		i.innerText = p+"% abgeschlossen..";
+		i.innerText = p.toFixed(2)+"% abgeschlossen..";
 	}, function(data){
 	    console.log(data);
 	    i.innerText = "Abschließen..";
