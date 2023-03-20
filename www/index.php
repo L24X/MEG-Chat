@@ -7,13 +7,6 @@ if(isset($_SESSION['pupil'])){
 	$pupil_data = (array)$stmtCheck->fetchObject();
 }
 
-$blog = $_GET['blog'];
-
-$stmtData = $db->prepare("SELECT * FROM ".DBTBL.".blog WHERE id = :id;");
-$stmtData->execute(array('id' => $blog));
-$row = $stmtData->fetchObject();
-$blog_data = (array)$row;
-
 if(isset($_SERVER['HTTP_USER_AGENT'])){
     $is_mobile = preg_match("/(android|webos|avantgo|iphone|ipad|ipod|blackberry|iemobile|bolt|boost|cricket|docomo|fone|hiptop|mini|opera mini|kitkat|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
 } else {
