@@ -27,7 +27,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 	<!-- custom-html-head.template.html -->
     <?php require('../internal/middleware/head.php'); ?>
 </head>
-<body oncontextmenu="return false;">
+<body oncontextmenu="return false;" style="position: fixed; top: 80px; left: 0px; right: 0px; bottom: 0px; ">
 <?php require('../internal/middleware/navbar.php'); ?>
 		<div id="site_container" style="position: fixed; top: 80px; left:0px; right: 0px; bottom: 0px; ">
 
@@ -38,7 +38,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 	justify-content: center;
 	align-items: center;
 	position: fixed;
-	top: 80;
+	top: 80px;
 	left: 0;
 	width: 100vw;
 	height: 100vh;
