@@ -892,7 +892,7 @@ window.uploadFile = function(file, progressHandler, completeHandler) {
 
     xhr.upload.addEventListener('progress', function(e) {
       if (e.lengthComputable) {
-        var percentComplete = (e.loaded / e.total) * 100;
+        var percentComplete = ((offset+e.loaded) / fileSize) * 100;
         progressHandler(percentComplete);
       }
     }, false);
@@ -908,9 +908,13 @@ window.uploadFile = function(file, progressHandler, completeHandler) {
           }
         } else {
           console.error(xhr.statusText);
+          uploadChunk();
         }
       }
     };
+    xhr.onerror = function(){
+        uploadChunk();
+    }
 
     xhr.send(formData);
   }
@@ -931,12 +935,24 @@ function chooseFile() {
     input.click();
   });
 }
-window.chatUploadFile = async function(){
+window.chatUploadFile = async function(chat_id){
 	var file = await chooseFile();
 	if(!file) return;
+	var e = document.createElement("div");
+	e.style = "width: 100%; height: 50px; color: white; ";
+	var t = document.createElement("h4");
+	t.innerText = file.name+" wird hochgeladen...";
+	e.appendChild(t);
+	var i = document.createElement("span");
+	i.innerText = "Vorbereiten..";
+	e.appendChild(i);
+    document.getElementById("sub_navbar").appendChild(e);
 	uploadFile(file, function(p){
 		console.log(p);
+		i.innerText = p+"% abgeschlossen..";
 	}, function(data){
-	    console.log(data);	
+	    console.log(data);
+	    i.innerText = "Abschließen..";
+	    e.remove();
 	});
 }
