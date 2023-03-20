@@ -1,3 +1,25 @@
+<?php
+require_once("../logic/db.php");
+
+if(isset($_SESSION['pupil'])){
+	$stmtCheck = $db->prepare("SELECT * FROM ".DBTBL.".pupils WHERE id = :id;");
+	$stmtCheck->execute(array('id' => $_SESSION['pupil']));
+	$pupil_data = (array)$stmtCheck->fetchObject();
+}
+
+$blog = $_GET['blog'];
+
+$stmtData = $db->prepare("SELECT * FROM ".DBTBL.".blog WHERE id = :id;");
+$stmtData->execute(array('id' => $blog));
+$row = $stmtData->fetchObject();
+$blog_data = (array)$row;
+
+if(isset($_SERVER['HTTP_USER_AGENT'])){
+    $is_mobile = preg_match("/(android|webos|avantgo|iphone|ipad|ipod|blackberry|iemobile|bolt|boost|cricket|docomo|fone|hiptop|mini|opera mini|kitkat|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+} else {
+	$is_mobile = isset($_COOKIE['desktop']) ? ($_COOKIE['desktop'] == "a") : true;
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,6 +35,8 @@
 
 </head>
 <body oncontextmenu="return false;">
+<?php require('../middleware/navbar.php'); ?>
+		<div id="site_container">
 
 <style type="text/css">
 .preloader_container {
@@ -85,6 +109,6 @@
 	}, options);
 })()
 </script>
-
+</div>
 </body>
 </html>
