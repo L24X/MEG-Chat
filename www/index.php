@@ -27,7 +27,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 	<!-- custom-html-head.template.html -->
     <?php require('../internal/middleware/head.php'); ?>
 </head>
-<body oncontextmenu="return false;" style="position: fixed; top: 60px; left: 0px; right: 0px; bottom: 0px; transform: scale(0.9);">
+<body oncontextmenu="return false;" style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px;">
 <?php require('../internal/middleware/navbar.php'); ?>
 		<div id="site_container" style="position: fixed; top: 80px; left:0px; right: 0px; bottom: 0px; ">
 
