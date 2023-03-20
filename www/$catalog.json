@@ -1,0 +1,37 @@
+[
+	{
+		"name": "fonts",
+		"size": 0,
+		"modifiedTime": 1679240335339,
+		"createTime": 1679240335339,
+		"isDirectory": true
+	},
+	{
+		"name": "images",
+		"size": 8192,
+		"modifiedTime": 1679240335350,
+		"createTime": 1679240335350,
+		"isDirectory": true
+	},
+	{
+		"name": "music",
+		"size": 0,
+		"modifiedTime": 1679240335381,
+		"createTime": 1679240335381,
+		"isDirectory": true
+	},
+	{
+		"name": "sounds",
+		"size": 4096,
+		"modifiedTime": 1679240335389,
+		"createTime": 1679240335389,
+		"isDirectory": true
+	},
+	{
+		"name": "test_stone.png",
+		"size": 4556,
+		"modifiedTime": 1679240335390,
+		"createTime": 1679240335390,
+		"isDirectory": false
+	}
+]
