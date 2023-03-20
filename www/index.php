@@ -1,5 +1,5 @@
 <?php
-require_once("../middleware/logic/db.php");
+require_once("../internal/logic/db.php");
 
 if(isset($_SESSION['pupil'])){
 	$stmtCheck = $db->prepare("SELECT * FROM ".DBTBL.".pupils WHERE id = :id;");
@@ -35,7 +35,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 
 </head>
 <body oncontextmenu="return false;">
-<?php require('../middleware/navbar.php'); ?>
+<?php require('../internal/middleware/navbar.php'); ?>
 		<div id="site_container">
 
 <style type="text/css">
