@@ -38,7 +38,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 	justify-content: center;
 	align-items: center;
 	position: fixed;
-	top: 0;
+	top: 80;
 	left: 0;
 	width: 100vw;
 	height: 100vh;
