@@ -23,6 +23,8 @@ RewriteRule ^gallerie$ internal/information/gallery.php [QSA]
 RewriteRule ^gallerie/$ internal/information/gallery.php [QSA]
 RewriteRule ^gallerie/([0-9]+)$ internal/information/gallery.php?picture=$1 [QSA]
 
+RewriteRule ^files/([0-9]+)$ internal/information/file.php?file=$1 [QSA]
+
 RewriteRule ^warum_meg$ internal/information/warum_meg.php [QSA]
 
 ErrorDocument 404 /error/404.html

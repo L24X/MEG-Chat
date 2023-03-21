@@ -20,9 +20,6 @@ if (isset($_FILES['file']) && isset($_POST['offset']) && isset($_POST['filesize'
 
   $offsetFile = file_exists($targetFile) ? filesize($targetFile) : 0;
   if($offset != $offsetFile){
-      echo "Fehler!";
-      echo "Neu: ".$offset;
-      echo "Hat: ".$offsetFile;
   }
 
   $fileSize = intval($_POST['filesize']);
@@ -34,9 +31,22 @@ if (isset($_FILES['file']) && isset($_POST['offset']) && isset($_POST['filesize'
   fclose($fileHandle);
 
   if ($offset + $_FILES['file']['size'] >= $fileSize) {
-    echo 'Upload complete!';
+    function generateRandomString($length = 16) {
+  		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  		$charactersLength = strlen($characters);
+  		$randomString = '';
+  		for ($i = 0; $i < $length; $i++) {
+  			$randomString .= $characters[rand(0, $charactersLength - 1)];
+  		}
+  		return $randomString;
+  	}
+  	$code = generateRandomString(32);
+    $stmtData = $db->prepare("INSERT INTO ".DBTBL.".files (path, name, type, size, code) VALUES (:path, :name, :type, :size, :code); ");
+    $stmtData->execute(array('path' => $targetFile, 'name' => basename($_FILES['file']['name']), 'type' => $_FILES['file']['type'], 'size' => $fileSize, 'code' => $code));
+
+    echo json_encode(array('status' => "complete", 'code' => $code));
   } else {
-    echo 'Upload in progress...';
+    echo json_encode(array('status' => "uploading"));
   }
 }
 ?>
