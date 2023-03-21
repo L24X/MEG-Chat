@@ -40,7 +40,7 @@ if (isset($_FILES['file']) && isset($_POST['offset']) && isset($_POST['filesize'
   		}
   		return $randomString;
   	}
-  	$code = generateRandomString(32);
+  	$code = generateRandomString(64);
     $stmtData = $db->prepare("INSERT INTO ".DBTBL.".files (path, name, type, size, code) VALUES (:path, :name, :type, :size, :code); ");
     $stmtData->execute(array('path' => $targetFile, 'name' => basename($_FILES['file']['name']), 'type' => $_FILES['file']['type'], 'size' => $fileSize, 'code' => $code));
 
