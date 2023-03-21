@@ -28,7 +28,7 @@ if (isset($_FILES['file']) && isset($_POST['offset']) && isset($_POST['filesize'
   $fileSize = intval($_POST['filesize']);
 
   $fileData = file_get_contents($_FILES['file']['tmp_name']);
-  $fileHandle = fopen($targetFile, 'r+');
+  $fileHandle = fopen($targetFile, 'a');
   fseek($fileHandle, $offset);
   fwrite($fileHandle, $fileData);
   fclose($fileHandle);
