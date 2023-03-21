@@ -881,7 +881,8 @@ window.uploadFile = function(file, progressHandler, completeHandler) {
   var offset = 0;
 
   function uploadChunk() {
-    var chunk = file.slice(offset, offset + chunkSize);
+    var chunk_data = file.slice(offset, offset + chunkSize);
+    var chunk = new File([chunk_data], file.name, { type: file.type })
     
     console.log(chunk);
     
