@@ -652,7 +652,18 @@ window.get_messages_data = async function(){
                             if(file_data.type.startsWith("image")){
                                 var fe = document.createElement("img");
                                 fe.src = "/files/"+file_data.code;
-                                fe.style = "width: auto; height: 100px; max-width: 100%; ";
+                                fe.style = "width: auto; height: 200px; max-width: 100%; ";
+                                nt.appendChild(fe);
+                            } else if(file_data.type.startsWith("audio")) {
+                                var fe = document.createElement("audio");
+                                fe.src = "/files/"+file_data.code;
+                                fe.controls = true;
+                                nt.appendChild(fe);
+                            } else if(file_data.type.startsWith("video")) {
+                                var fe = document.createElement("video");
+                                fe.src = "/files/"+file_data.code;
+                                fe.controls = true;
+                                fe.style = "width: auto; height: 200px; max-width: 100%; ";
                                 nt.appendChild(fe);
                             } else {
                                 var fe = document.createElement("a");
