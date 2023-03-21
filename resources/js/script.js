@@ -907,7 +907,7 @@ window.uploadFile = function(file, progressHandler, completeHandler) {
           if(data.status == "uploading"){
               offset += chunkSize;
               uploadChunk();
-          } else if(status == "complete")
+          } else if(status == "complete"){
               completeHandler(data.code);
           } else if(status == "position"){
               offset = data.offset;
