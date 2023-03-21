@@ -8,9 +8,11 @@ if(!isset($_SESSION['pupil'])){
 
 if(!isset($_SESSION[basename($_FILES['file']['name'])])) $_SESSION[basename($_FILES['file']['name'])] = rand(100000,100000000);
 $targetDir = '/media/hdd1/';
-$targetFile = $targetDir . $_SESSION['pupil'] . $_SESSION[basename($_FILES['file']['name'])] . basename($_FILES['file']['name']);
+$targetFile = $targetDir . $_SESSION['pupil'] . "_" . $_SESSION[basename($_FILES['file']['name'])] . "_" . basename($_FILES['file']['name']);
 
 if (isset($_FILES['file']) && isset($_POST['offset']) && isset($_POST['filesize'])) {
+  echo json_encode($_FILES['file']);
+  
   $offset = intval($_POST['offset']);
   $fileSize = intval($_POST['filesize']);
 
