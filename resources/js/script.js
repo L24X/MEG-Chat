@@ -672,6 +672,11 @@ window.get_messages_data = async function(){
                                 fe.controls = true;
                                 fe.style = "width: auto; height: 200px; max-width: 100%; ";
                                 nt.appendChild(fe);
+                            } else {
+                                var fe = document.createElement("div");
+                                fe.innerText = "Keine Vorschau verfügbar";
+                                fe.style = "background-color: black; color: white; display: flex; justify-content: center; align-items: center; width: auto; min-width: 220px; height: 200px; max-width: 100%; ";
+                                nt.appendChild(fe);
                             }
                             var fe = document.createElement("a");
                             fe.download = true;
