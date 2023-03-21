@@ -879,10 +879,11 @@ window.uploadFile = function(file, progressHandler, completeHandler) {
   var chunkSize = 2 * 1024 * 1024;
   var fileSize = file.size;
   var offset = 0;
+  var fileid = Math.round(Math.random()*1000000);
 
   function uploadChunk() {
     var chunk_data = file.slice(offset, offset + chunkSize);
-    var chunk = new File([chunk_data], file.name, { type: file.type })
+    var chunk = new File([chunk_data], fileid+"_"+file.name, { type: file.type })
     
     var formData = new FormData();
     formData.append('file', chunk);
