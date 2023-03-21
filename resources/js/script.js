@@ -546,6 +546,12 @@ window.chat_id = false;
 window.last_message_author_id = false;
 window.member_window = false;
 
+window.chat_send_message = function(chatId, text, type = "text"){
+    post_request("/ajax/send_message.php", {text: text, chat: chatId, type: type}, function(){
+        update_meg_taler_balance();
+    });
+};
+
 window.message_input_keydown = function(evt) {
 	setTimeout(function(){
       document.getElementById("private_message_text").style.height = "auto";
@@ -569,13 +575,8 @@ window.message_input_keydown = function(evt) {
 			document.getElementById("private_message_text").value = "";
 			document.getElementById("private_message_text").rows = 1;
 			document.getElementById("private_message_text").style.height = "30px";
-			
-			function send_chess_message(){
-				post_request("/ajax/send_message.php", {text: value, chat: chat_id}, function(){
-				    update_meg_taler_balance();	
-				});
-			}
-			send_chess_message();
+
+			chat_send_message(chat_id, value);
 		}
     }
 };
@@ -643,7 +644,29 @@ window.get_messages_data = async function(){
 					var nei = document.createElement("div");
 					nei.style = "margin-left: 44px; ";
 					var nt = document.createElement("span");
-					nt.innerText = z.text;
+					if(z.type == "text"){
+					    nt.innerText = z.text;
+					} else if(z.type == "file"){
+					    try {
+					        var file_data = JSON.parse(z.text);
+                            if(file_data.type.startsWith("image")){
+                                var fe = document.createElement("img");
+                                fe.src = "/files/"+file_data.code;
+                                fe.style = "width: auto; height: 100px; max-width: 100%; ";
+                                nt.appendChild(fe);
+                            } else {
+                                var fe = document.createElement("a");
+                                fe.download = true;
+                                fe.href = "/files/"+file_data.code;
+                                nt.appendChild(fe);
+                            }
+					    } catch(e){
+					        nt.innerHTML = '<span style="font-weight: small; font-size: 8px; color: red; ">Konnte nicht geladen werden - Ungültige Daten</span>';
+					    }
+					} else {
+					    nt.innerHTML = '<span style="font-weight: small; font-size: 8px; color: red; ">Konnte nicht geladen werden - Ungültiges Format</span>';
+					}
+
 					nt.style = "word-wrap: break-word; ";
 					nt.onclick = function(){
 					    
@@ -944,7 +967,7 @@ function chooseFile() {
     input.click();
   });
 }
-window.chatUploadFile = async function(chat_id){
+window.chatUploadFile = async function(chatId){
 	var file = await chooseFile();
 	if(!file) return;
 	var e = document.createElement("div");
@@ -958,9 +981,10 @@ window.chatUploadFile = async function(chat_id){
     document.getElementById("sub_navbar").appendChild(e);
 	uploadFile(file, function(p){
 		i.innerText = p.toFixed(2)+"% abgeschlossen..";
-	}, function(data){
-	    console.log(data);
+	}, function(code){
 	    i.innerText = "Abschließen..";
 	    e.remove();
+
+	    chat_send_message(chatId, JSON.stringify({name: file.name, code: code, size: file.size, type: file.type}), "file");
 	});
 }

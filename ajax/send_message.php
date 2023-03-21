@@ -7,6 +7,11 @@ if(!isset($_SESSION['pupil'])){
 
 $chat = $_POST['chat'];
 
+$message_type = "text";
+if(isset($_POST['type'])){
+    $message_type = $_POST['type'];
+}
+
 $chat_data = false;
 $member = false;
 
@@ -33,8 +38,8 @@ if($member = $stmtMember->fetchObject()){
 	}
 }
 
-$stmtMessage = $db->prepare("INSERT INTO ".DBTBL.".chats_messages (chat, author, text) VALUES (:chat, :author, :text); ");
-$stmtMessage->execute(array('chat' => $chat_data['id'], 'author' => $member['pupil'], 'text' => $_POST['text']));
+$stmtMessage = $db->prepare("INSERT INTO ".DBTBL.".chats_messages (chat, author, text, type) VALUES (:chat, :author, :text, :type); ");
+$stmtMessage->execute(array('chat' => $chat_data['id'], 'author' => $member['pupil'], 'text' => $_POST['text'], 'type' => $message_type));
 
 $stmtInsert = $db->prepare("UPDATE ".DBTBL.".pupils SET money = ".DBTBL.".pupils.money + (SELECT COUNT(id) AS count FROM ".DBTBL.".chats_members WHERE chat = :chat) -1 WHERE id = :id; ");
 $stmtInsert->execute(array('chat' => $chat_data['id'], 'id' => $_SESSION['pupil']));
