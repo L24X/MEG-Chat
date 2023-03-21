@@ -967,9 +967,10 @@ function chooseFile() {
     input.click();
   });
 }
-window.chatUploadFile = async function(chatId){
+window.chatUploadFile = async function(){
 	var file = await chooseFile();
 	if(!file) return;
+	var chatId = chat_id;
 	var e = document.createElement("div");
 	e.style = "width: 100%; height: 50px; color: white; text-align: right; padding-right: 15px; ";
 	var t = document.createElement("h4");
