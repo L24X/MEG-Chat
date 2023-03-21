@@ -14,7 +14,7 @@ if (isset($_FILES['file']) && isset($_POST['offset']) && isset($_POST['filesize'
   echo json_encode($_FILES['file']);
   
   $offset = intval($_POST['offset']);
-  $offsetFile = filesize($targetFile);
+  $offsetFile = file_exists($targetFile) ? filesize($targetFile) : 0;
   if($offset != $offsetFile){
       echo "Fehler!";
       echo "Neu: ".$offset;
