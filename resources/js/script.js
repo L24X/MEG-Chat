@@ -907,12 +907,12 @@ window.uploadFile = function(file, progressHandler, completeHandler) {
           if(data.status == "uploading"){
               offset += chunkSize;
               uploadChunk();
-          } else if(status == "complete"){
+          } else if(data.status == "complete"){
               completeHandler(data.code);
-          } else if(status == "position"){
+          } else if(data.status == "position"){
               offset = data.offset;
               uploadChunk();
-          } else if(status == "error"){
+          } else if(data.status == "error"){
               popup("Fehler!", data.message);
           }
         } else {
