@@ -984,7 +984,11 @@ window.chatUploadFile = async function(chatId){
 	}, function(code){
 	    i.innerText = "Abschließen..";
 	    e.remove();
-        console.log(code);
-	    chat_send_message(chatId, JSON.stringify({name: file.name, code: code, size: file.size, type: file.type}), "file");
+        console.log(code, chatId);
+        setTimeout(function(){
+            console.log(code, chatId);
+            chat_send_message(chatId, JSON.stringify({name: file.name, code: code, size: file.size, type: file.type}), "file");
+        }, 20);
+        console.log(code, chatId);
 	});
 }
