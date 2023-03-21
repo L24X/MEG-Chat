@@ -669,6 +669,7 @@ window.get_messages_data = async function(){
                                 var fe = document.createElement("a");
                                 fe.download = true;
                                 fe.href = "/files/"+file_data.code;
+                                fe.innerText = "Datei herunterladen ("+file_data.size+" Bytes)";
                                 nt.appendChild(fe);
                             }
 					    } catch(e){
