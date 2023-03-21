@@ -581,6 +581,13 @@ window.message_input_keydown = function(evt) {
     }
 };
 
+function formatFileSize(bytes) {
+  const sizes = ['Byte', 'KB', 'MB', 'GB', 'TB', 'EB', 'PB'];
+  if (bytes === 0) return '0 Byte';
+  const i = Math.floor(Math.log(bytes) / Math.log(1024));
+  return parseFloat((bytes / Math.pow(1024, i)).toFixed(2)) + ' ' + sizes[i];
+}
+
 window.get_messages_data = async function(){
 	if(!document.getElementById("chat_container") || !document.getElementById("chat_inner_data_container")){
 	    return;
@@ -665,13 +672,12 @@ window.get_messages_data = async function(){
                                 fe.controls = true;
                                 fe.style = "width: auto; height: 200px; max-width: 100%; ";
                                 nt.appendChild(fe);
-                            } else {
-                                var fe = document.createElement("a");
-                                fe.download = true;
-                                fe.href = "/files/"+file_data.code;
-                                fe.innerText = "Datei herunterladen ("+file_data.size+" Bytes)";
-                                nt.appendChild(fe);
                             }
+                            var fe = document.createElement("a");
+                            fe.download = true;
+                            fe.href = "/files/"+file_data.code;
+                            fe.innerText = "Datei herunterladen ("+formatFileSize(file_data.size)+")";
+                            nt.appendChild(fe);
 					    } catch(e){
 					        nt.innerHTML = '<span style="font-weight: small; font-size: 8px; color: red; ">Konnte nicht geladen werden - Ungültige Daten</span>';
 					    }
