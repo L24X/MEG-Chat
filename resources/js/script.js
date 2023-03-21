@@ -675,7 +675,7 @@ window.get_messages_data = async function(){
                             } else {
                                 var fe = document.createElement("div");
                                 fe.innerText = "Keine Vorschau verfügbar";
-                                fe.style = "background-color: black; color: white; display: flex; justify-content: center; align-items: center; width: auto; min-width: 220px; height: 200px; max-width: 100%; ";
+                                fe.style = "background-color: black; color: white; display: flex; justify-content: center; align-items: center; width: 220px; max-width: 100%; height: 200px; ";
                                 nt.appendChild(fe);
                             }
                             var fe = document.createElement("a");
