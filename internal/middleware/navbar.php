@@ -24,4 +24,4 @@
 	<?php } ?>
   </div>
 </header>
-<div style="width: 100%; opacity: 0.6; pointer-events: none; min-height: 60px; height: auto; " id="sub_navbar"></div>
+<div style="width: 100%; opacity: 0.6; pointer-events: none; min-height: 60px; height: auto; margin-top: 80px; position: absolute; " id="sub_navbar"></div>
