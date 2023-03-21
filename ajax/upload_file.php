@@ -14,6 +14,13 @@ if (isset($_FILES['file']) && isset($_POST['offset']) && isset($_POST['filesize'
   echo json_encode($_FILES['file']);
   
   $offset = intval($_POST['offset']);
+  $offsetFile = filesize($targetFile);
+  if($offset != $offsetFile){
+      echo "Fehler!";
+      echo "Neu: ".$offset;
+      echo "Hat: ".$offsetFile;
+  }
+
   $fileSize = intval($_POST['filesize']);
 
   $out = fopen($targetFile, 'ab');
