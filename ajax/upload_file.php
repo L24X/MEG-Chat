@@ -2,7 +2,7 @@
 require_once("../internal/logic/db.php");
 
 if(!isset($_SESSION['pupil'])){
-	echo "Bitte melde dich erneut an, um Datein hochladen zu können.";
+	echo json_encode(array('status' => "error", 'message' => "Bitte melde dich an, um Dateien hochladen zu können."));
 	return exit();
 }
 
@@ -16,10 +16,10 @@ $targetDir = '/media/hdd1/';
 $targetFile = $targetDir . $_SESSION['pupil'] . "_" . $_SESSION[basename($_FILES['file']['name'])] . "_" . basename($_FILES['file']['name']);
 
 if (isset($_FILES['file']) && isset($_POST['offset']) && isset($_POST['filesize'])) {
-  echo json_encode($_FILES['file']);
-
   $offsetFile = file_exists($targetFile) ? filesize($targetFile) : 0;
   if($offset != $offsetFile){
+      echo json_encode(array('status' => "position", 'offset' => $offsetFile));
+      return exit();
   }
 
   $fileSize = intval($_POST['filesize']);

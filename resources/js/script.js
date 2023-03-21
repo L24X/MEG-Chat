@@ -903,11 +903,17 @@ window.uploadFile = function(file, progressHandler, completeHandler) {
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
-          offset += chunkSize;
-          if (offset < fileSize) {
-            uploadChunk();
-          } else {
-            completeHandler(xhr.responseText);
+          var data = JSON.parse(xhr.responseText);
+          if(data.status == "uploading"){
+              offset += chunkSize;
+              uploadChunk();
+          } else if(status == "complete")
+              completeHandler(data.code);
+          } else if(status == "position"){
+              offset = data.offset;
+              uploadChunk();
+          } else if(status == "error"){
+              popup("Fehler!", data.message);
           }
         } else {
           console.error(xhr.statusText);
