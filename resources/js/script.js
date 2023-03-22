@@ -650,7 +650,7 @@ window.get_messages_data = async function(){
 					ne.id = "message_"+chat_id+"_"+z.id;
 					var nei = document.createElement("div");
 					nei.style = "margin-left: 44px; ";
-					var nt = document.createElement("span");
+					var nt = document.createElement("div");
 					nt.style = "word-wrap: break-word; min-width: 90%; width: auto; max-width: 100%; ";
 					nt.onclick = function(){
 					    
@@ -672,7 +672,7 @@ window.get_messages_data = async function(){
 					na2.innerText = z.time;
 					na2.style = "font-size: 8px; font-weight: small; margin-left: 10px; ";
 					nei.appendChild(na2);
-					var nt = document.createElement("span");
+					var nt = document.createElement("div");
 					nt.style = "margin-left: 10px; word-wrap: break-word; min-width: 90%; width: auto; max-width: 100%; ";
 					nt.innerText = "\n";
 					nei.appendChild(nt);
