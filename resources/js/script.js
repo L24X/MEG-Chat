@@ -767,11 +767,6 @@ window.get_messages_data = async function(){
                             fe.controls = true;
                             fe.style = "width: auto; height: 200px; max-width: 100%; float: left; ";
                             fnt.appendChild(fe);
-                        } else {
-                            var fe = document.createElement("div");
-                            fe.innerText = "Keine Vorschau verfügbar";
-                            fe.style = "background-color: black; color: white; display: flex; justify-content: center; align-items: center; width: 220px; max-width: 100%; height: 200px; float: left; ";
-                            fnt.appendChild(fe);
                         }
                         var fr = document.createElement("div");
                         fr.style = "max-height: 200px; height: auto; overflow-x: hidden; overflow-y: auto; margin-left: 15px; margin-top: 2px; float: left;";

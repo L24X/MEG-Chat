@@ -23,8 +23,8 @@ if(isset($_SESSION['pupil'])){
 		<div id="site_container">
 		    <div style="margin-top: 80px; text-align: center; ">
 		        <h1>Tools & Werkzeuge</h1>
-		        <p style="font-size: 18px; ">Hier finden Sie alle möglichen von Schülern programmierte nützliche Tools. Schüler des Max Ernst Gymnasiums können diese gerne für Ihre Projekte nutzen.</p>
-                <ul>
+		        <p style="font-size: 18px; margin-top: 20px; ">Hier finden Sie alle möglichen von Schülern programmierte nützliche Tools. Schüler des Max Ernst Gymnasiums können diese gerne für Ihre Projekte nutzen.</p>
+                <ul style="margin-top: 50px; ">
                     <li><a href="/werkzeuge/quiz/">Quiz erstellen</a></li>
                     <li><a href="/werkzeuge/ufc/">Audio Dateien umwandeln</a></li>
                 </ul>

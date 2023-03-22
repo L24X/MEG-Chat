@@ -22,7 +22,7 @@ if(isset($_SESSION['pupil'])){
 		<?php require('../../../middleware/navbar.php'); ?>
 		<div id="site_container">
 		    <div style="margin-top: 80px; ">
-		        <h1>Quiz Erstellen</h1>
+		        <h1 style="text-align: center; ">Quiz Erstellen</h1>
 		    </div>
 		</div>
 	</body>
