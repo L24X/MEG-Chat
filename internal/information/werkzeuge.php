@@ -21,9 +21,11 @@ if(isset($_SESSION['pupil'])){
     <body>
 		<?php require('../middleware/navbar.php'); ?>
 		<div id="site_container">
+		    <div style="margin-top: 80px; ">
 		    <ul>
 		        <li><a href="/werkzeuge/quiz/">Quiz erstellen</a></li>
 		    </ul>
+		    </div>
 		</div>
 	</body>
 </html>
