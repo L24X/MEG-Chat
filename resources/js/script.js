@@ -693,7 +693,7 @@ window.get_messages_data = async function(){
                     try {
                         var file_data = JSON.parse(z.text);
                         var fnt = document.createElement("div");
-                        fnt.style = "margin-top: 5px; padding: 10px; border: 2px solid white; border-radius: 10px; min-height: 220px; height: auto; width: auto; max-width: 100%;";
+                        fnt.style = "margin-top: 5px; padding: 10px; border: 2px solid white; border-radius: 10px; min-height: 220px; height: auto; width: auto; max-width: 100%; overflow:auto;";
                         if(file_data.type.startsWith("image")){
                             var fe = document.createElement("img");
                             fe.src = "/files/"+file_data.code;
@@ -702,7 +702,7 @@ window.get_messages_data = async function(){
                         } else if(file_data.type.startsWith("audio")) {
                             var fe = document.createElement("audio");
                             fe.src = "/files/"+file_data.code;
-                            fe.style = "";
+                            fe.style = "float: left; ";
                             fe.controls = true;
                             fnt.appendChild(fe);
                         } else if(file_data.type.startsWith("video")) {
@@ -718,7 +718,7 @@ window.get_messages_data = async function(){
                             fnt.appendChild(fe);
                         }
                         var fr = document.createElement("div");
-                        fr.style = "max-height: 200px; height: auto; overflow-x: hidden; overflow-y: auto; margin-left: 15px;  ";
+                        fr.style = "max-height: 200px; height: auto; overflow-x: hidden; overflow-y: auto; margin-left: 15px; float: left;";
                         var fu = document.createElement("ul");
 
                         ["Name: "+file_data.name, "Größe: "+formatFileSize(file_data.size), "Type: "+file_data.type].forEach(function(t){
