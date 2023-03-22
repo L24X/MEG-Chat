@@ -1,5 +1,4 @@
 <?php
-<?php
 require_once("../logic/db.php");
 
 if(isset($_SESSION['pupil'])){
