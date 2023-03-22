@@ -693,11 +693,11 @@ window.get_messages_data = async function(){
                     try {
                         var file_data = JSON.parse(z.text);
                         var fnt = document.createElement("div");
-                        fnt.style = "margin-top: 5px; padding: 10px; border: 2px solid white; border-radius: 10px; min-height: 220px; height: auto; width: auto; max-width: 100%; overflow:auto;";
+                        fnt.style = "margin-top: 5px; padding: 10px; border: 2px solid white; border-radius: 10px; min-height: 60px; height: auto; width: auto; max-width: 100%; overflow:auto;";
                         if(file_data.type.startsWith("image")){
                             var fe = document.createElement("img");
                             fe.src = "/files/"+file_data.code;
-                            fe.style = "width: auto; height: 200px; max-width: 100%;";
+                            fe.style = "width: auto; height: 200px; max-width: 100%; float: left; ";
                             fnt.appendChild(fe);
                         } else if(file_data.type.startsWith("audio")) {
                             var fe = document.createElement("audio");
@@ -709,16 +709,16 @@ window.get_messages_data = async function(){
                             var fe = document.createElement("video");
                             fe.src = "/files/"+file_data.code;
                             fe.controls = true;
-                            fe.style = "width: auto; height: 200px; max-width: 100%; ";
+                            fe.style = "width: auto; height: 200px; max-width: 100%; float: left; ";
                             fnt.appendChild(fe);
                         } else {
                             var fe = document.createElement("div");
                             fe.innerText = "Keine Vorschau verfügbar";
-                            fe.style = "background-color: black; color: white; display: flex; justify-content: center; align-items: center; width: 220px; max-width: 100%; height: 200px; ";
+                            fe.style = "background-color: black; color: white; display: flex; justify-content: center; align-items: center; width: 220px; max-width: 100%; height: 200px; float: left; ";
                             fnt.appendChild(fe);
                         }
                         var fr = document.createElement("div");
-                        fr.style = "max-height: 200px; height: auto; overflow-x: hidden; overflow-y: auto; margin-left: 15px; float: left;";
+                        fr.style = "max-height: 200px; height: auto; overflow-x: hidden; overflow-y: auto; margin-left: 15px; margin-top: 2px; float: left;";
                         var fu = document.createElement("ul");
 
                         ["Name: "+file_data.name, "Größe: "+formatFileSize(file_data.size), "Type: "+file_data.type].forEach(function(t){
