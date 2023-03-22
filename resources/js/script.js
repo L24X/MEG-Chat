@@ -701,9 +701,7 @@ window.get_messages_data = async function(){
 					nei.style = "margin-left: 44px; ";
 					var nt = document.createElement("div");
 					nt.style = "word-wrap: break-word; min-width: 90%; width: auto; max-width: 100%; ";
-					nt.onclick = function(){
-					    
-					};
+					nt.id = "message_"+chat_id+"_"+z.id+"_inner";
 					nei.appendChild(nt);
 					ne.appendChild(nei);
 				} else {
@@ -715,7 +713,7 @@ window.get_messages_data = async function(){
 					var na = document.createElement("u");
 					na.innerText = z.author.username;
 					na.style = "font-weight: bold; cursor: pointer; ";
-					na.onclick = 'page_navigate("/schueler/'+z.author.id+');';
+					na.id = "message_"+chat_id+"_"+z.id+"_author";
 					nei.appendChild(na);
 					var na2 = document.createElement("span");
 					na2.innerText = z.time;
@@ -723,6 +721,7 @@ window.get_messages_data = async function(){
 					nei.appendChild(na2);
 					var nt = document.createElement("div");
 					nt.style = "word-wrap: break-word; min-width: 90%; width: auto; max-width: 100%; ";
+					nt.id = "message_"+chat_id+"_"+z.id+"_inner";
 					nt.innerText = "\n";
 					nei.appendChild(nt);
 					ne.appendChild(nei);
@@ -736,6 +735,7 @@ window.get_messages_data = async function(){
 					ne.appendChild(neb);
 				}
 
+                if(!z.type) z.type = "text";
 				if(z.type == "text"){
                     nt.innerText = z.text;
                 } else if(z.type == "file"){
@@ -796,19 +796,34 @@ window.get_messages_data = async function(){
                     nt.innerHTML = '<span style="font-weight: small; font-size: 8px; color: red; ">Konnte nicht geladen werden - Ungültiges Format</span>';
                 }
 
-                addContextMenu(nt, [
-                    {text: "Löschen", onclick: function(){
-                        console.log("1");
-                    }},
-                    {text: "Bearbeiten", onclick: function(){
-                        console.log("2");
-                    }}
-                ]);
-
                 if(!document.getElementById("chat_inner_data") || !document.getElementById("chat_inner_data_container")) return;
                 document.getElementById("chat_inner_data").insertAdjacentHTML("beforeend", ne.outerHTML);
                 document.getElementById("chat_inner_data_container").scrollTop = document.getElementById("chat_inner_data_container").scrollHeight;
-				
+
+				var te = document.getElementById("message_"+chat_id+"_"+z.id+"_inner");
+				if(te){
+				    addContextMenu(te, [
+                        {text: "Löschen", onclick: function(){
+                            console.log("1");
+                        }},
+                        {text: "Bearbeiten", onclick: function(){
+                            console.log("2");
+                        }}
+                    ]);
+				}
+
+				var ate = document.getElementById("message_"+chat_id+"_"+z.id+"_author");
+                if(ate){
+                    ate.onclick = function(){
+                         page_navigate("/schueler/"+z.author.id);
+                    };
+                    addContextMenu(ate, [
+                        {text: "Benutzerprofil", onclick: function(){
+                            page_navigate("/schueler/"+z.author.id);
+                        }}
+                    ]);
+                }
+
 				last_message_author_id = z.author.id;
 				loaded_messages_count++;
 				
