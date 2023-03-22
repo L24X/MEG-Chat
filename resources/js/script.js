@@ -651,7 +651,7 @@ window.get_messages_data = async function(){
 					var nei = document.createElement("div");
 					nei.style = "margin-left: 44px; ";
 					var nt = document.createElement("span");
-					nt.style = "word-wrap: break-word; ";
+					nt.style = "word-wrap: break-word; min-width: 90%; width: auto; max-width: 100%; ";
 					nt.onclick = function(){
 					    
 					};
@@ -678,7 +678,7 @@ window.get_messages_data = async function(){
 					na2.style = "font-size: 8px; font-weight: small; margin-left: 10px; ";
 					nei.appendChild(na2);
 					var nt = document.createElement("span");
-					nt.style = "margin-left: 10px; word-wrap: break-word; ";
+					nt.style = "margin-left: 10px; word-wrap: break-word; min-width: 90%; width: auto; max-width: 100%; ";
 					nt.innerText = "\n";
 					nei.appendChild(nt);
 					ne.appendChild(nei);
