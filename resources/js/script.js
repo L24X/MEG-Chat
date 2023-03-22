@@ -693,7 +693,7 @@ window.get_messages_data = async function(){
                     try {
                         var file_data = JSON.parse(z.text);
                         var fnt = document.createElement("div");
-                        fnt.style = "margin-top: 5px; padding: 10px; border: 2px solid white; border-radius: 10px; min-height: 60px; height: auto; width: auto; max-width: 100%; overflow:auto;";
+                        fnt.style = "margin-top: 5px; padding: 10px; border: 2px solid white; border-radius: 10px; min-height: 60px; height: auto; min-width: 260px; width: 90%; max-width: 100%; overflow:auto;";
                         if(file_data.type.startsWith("image")){
                             var fe = document.createElement("img");
                             fe.src = "/files/"+file_data.code;
