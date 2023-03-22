@@ -673,7 +673,7 @@ window.get_messages_data = async function(){
 					na2.style = "font-size: 8px; font-weight: small; margin-left: 10px; ";
 					nei.appendChild(na2);
 					var nt = document.createElement("div");
-					nt.style = "margin-left: 10px; word-wrap: break-word; min-width: 90%; width: auto; max-width: 100%; ";
+					nt.style = "word-wrap: break-word; min-width: 90%; width: auto; max-width: 100%; ";
 					nt.innerText = "\n";
 					nei.appendChild(nt);
 					ne.appendChild(nei);
@@ -692,29 +692,30 @@ window.get_messages_data = async function(){
                 } else if(z.type == "file"){
                     try {
                         var file_data = JSON.parse(z.text);
-                        nt.style = "padding: 10px; border: 2px solid white; border-radius: 10px; height: 220px; ";
+                        var fnt = document.createElement("div");
+                        fnt.style = "padding: 10px; border: 2px solid white; border-radius: 10px; min-height: 220px; height: auto; ";
                         if(file_data.type.startsWith("image")){
                             var fe = document.createElement("img");
                             fe.src = "/files/"+file_data.code;
                             fe.style = "width: auto; height: 200px; max-width: 100%;";
-                            nt.appendChild(fe);
+                            fnt.appendChild(fe);
                         } else if(file_data.type.startsWith("audio")) {
                             var fe = document.createElement("audio");
                             fe.src = "/files/"+file_data.code;
                             fe.style = "";
                             fe.controls = true;
-                            nt.appendChild(fe);
+                            fnt.appendChild(fe);
                         } else if(file_data.type.startsWith("video")) {
                             var fe = document.createElement("video");
                             fe.src = "/files/"+file_data.code;
                             fe.controls = true;
                             fe.style = "width: auto; height: 200px; max-width: 100%; ";
-                            nt.appendChild(fe);
+                            fnt.appendChild(fe);
                         } else {
                             var fe = document.createElement("div");
                             fe.innerText = "Keine Vorschau verfügbar";
                             fe.style = "background-color: black; color: white; display: flex; justify-content: center; align-items: center; width: 220px; max-width: 100%; height: 200px; ";
-                            nt.appendChild(fe);
+                            fnt.appendChild(fe);
                         }
                         var fr = document.createElement("div");
                         fr.style = "height: 200px; margin-left: 15px;  ";
@@ -735,7 +736,8 @@ window.get_messages_data = async function(){
                         fu.appendChild(ff);
 
                         fr.appendChild(fu);
-                        nt.appendChild(fr);
+                        fnt.appendChild(fr);
+                        nt.appendChild(fnt);
                     } catch(e){
                         nt.innerHTML = '<span style="font-weight: small; font-size: 8px; color: red; ">Konnte nicht geladen werden - Ungültige Daten</span>';
                     }
