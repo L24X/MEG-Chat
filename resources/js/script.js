@@ -742,6 +742,7 @@ window.get_messages_data = async function(){
                         nt.innerHTML = '<span style="font-weight: small; font-size: 8px; color: red; ">Konnte nicht geladen werden - Ungültige Daten</span>';
                     }
                 } else {
+                    console.log("Format not supported: "+z.type);
                     nt.innerHTML = '<span style="font-weight: small; font-size: 8px; color: red; ">Konnte nicht geladen werden - Ungültiges Format</span>';
                 }
 
