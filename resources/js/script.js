@@ -558,6 +558,7 @@ window.lotto_buy_ticket = function(tipp){
     });
 };
 window.start_tipp = function(){
+    init_lotto_picker();
 	const numberContainers = document.querySelectorAll('.tipp-number');
 	      
 	lotto_buy_ticket({
@@ -904,25 +905,25 @@ window.chat_messages_info = function(){
 	member_window = false;
 };
 
-addLoadEvent(function(){
-	const numberContainers = document.querySelectorAll('.tipp-number');
+window.init_lotto_picker = function(){
+    const numberContainers = document.querySelectorAll('.tipp-number');
+    document.onwheel = function(){
+      if (event.target.closest('.tipp-numbers-container')) {
+        const direction = event.deltaY > 0 ? 1 : -1;
 
-	document.addEventListener('wheel', (event) => {
-	  if (event.target.closest('.tipp-numbers-container')) {
-	    const direction = event.deltaY > 0 ? 1 : -1;
-	    
-	    const index = Array.from(numberContainers).indexOf(event.target);
-	  
-	    if (index !== -1) {
-	      const currentNumber = parseInt(numberContainers[index].textContent);
-	      
-	      const newNumber = (currentNumber + direction + 100) % 100;
-	      
-	      numberContainers[index].textContent = newNumber;
-	    }
-	  }
-	});
-});
+        const index = Array.from(numberContainers).indexOf(event.target);
+
+        if (index !== -1) {
+          const currentNumber = parseInt(numberContainers[index].textContent);
+
+          const newNumber = (currentNumber + direction + 100) % 100;
+
+          numberContainers[index].textContent = newNumber;
+        }
+      }
+    };
+};
+addLoadEvent(init_lotto_picker);
 
 window.startJackpotVibration = function() {
   const jackpotBox = document.querySelector('.jackpot-box');
@@ -994,7 +995,7 @@ window.showConfetti = function(duration = 10) {
     confettiContainer.appendChild(confetti);
   }
   
-  var count = 0;
+  var count = 4;
   var spammer = setInterval(function(){
 	  count++;
 	  if(count >= duration){
