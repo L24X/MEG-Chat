@@ -717,7 +717,7 @@ window.get_messages_data = async function(){
                             nt.appendChild(fe);
                         }
                         var fr = document.createElement("div");
-                        fr.style = "height: auto; min-height: 20px; margin-left: 15px; width: auto; min-width: 20px; ";
+                        fr.style = "height: 200px; margin-left: 15px;  ";
                         var fu = document.createElement("ul");
 
                         ["Name: "+file_data.name, "Größe: "+formatFileSize(file_data.size), "Type: "+file_data.type].forEach(function(t){
