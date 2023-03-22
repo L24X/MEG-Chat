@@ -657,11 +657,6 @@ window.get_messages_data = async function(){
 					};
 					nei.appendChild(nt);
 					ne.appendChild(nei);
-	
-					if(!document.getElementById("chat_inner_data") || !document.getElementById("chat_inner_data_container")) return;
-					
-					document.getElementById("chat_inner_data").insertAdjacentHTML("beforeend", ne.outerHTML);
-					document.getElementById("chat_inner_data_container").scrollTop = document.getElementById("chat_inner_data_container").scrollHeight;
 				} else {
 					var ne = document.createElement("div");
 					ne.style = "width: 100%; height: auto; margin-top: 10px; min-height: 40px; word-warp: break-word; color: white; text-align: left; font-size: 14px; position: relative; transition: all 0.4s; border-radius: 12px; word-wrap: break-word; ";
@@ -690,11 +685,6 @@ window.get_messages_data = async function(){
 					neba.src = z.author.avatar || "/resources/images/avatar.png";
 					neb.appendChild(neba);
 					ne.appendChild(neb);
-					
-					if(!document.getElementById("chat_inner_data") || !document.getElementById("chat_inner_data_container")) return;
-					
-					document.getElementById("chat_inner_data").insertAdjacentHTML("beforeend", ne.outerHTML);
-					document.getElementById("chat_inner_data_container").scrollTop = document.getElementById("chat_inner_data_container").scrollHeight;
 				}
 
 				if(z.type == "text"){
@@ -751,6 +741,10 @@ window.get_messages_data = async function(){
                 } else {
                     nt.innerHTML = '<span style="font-weight: small; font-size: 8px; color: red; ">Konnte nicht geladen werden - Ungültiges Format</span>';
                 }
+
+                if(!document.getElementById("chat_inner_data") || !document.getElementById("chat_inner_data_container")) return;
+                document.getElementById("chat_inner_data").insertAdjacentHTML("beforeend", ne.outerHTML);
+                document.getElementById("chat_inner_data_container").scrollTop = document.getElementById("chat_inner_data_container").scrollHeight;
 				
 				last_message_author_id = z.author.id;
 				loaded_messages_count++;
