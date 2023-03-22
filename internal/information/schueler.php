@@ -173,6 +173,7 @@ if(isset($_SERVER['HTTP_USER_AGENT'])){
 					</div>
 	            <?php } ?>
 	        </div>
+	        <div style="width: 100%; height: 20px; "></div>
 	    </div>
     </body>
 </html> 

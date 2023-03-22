@@ -141,9 +141,9 @@ window.page_navigate = async function(url, from, to, loading_message = true) {
 	if(!url) return;
 	if(page_navigate_loading){
 		page_navigate_queue[url] = {from: from, to: to, loading_message: loading_message};
-		if(Object.keys(page_navigate_queue).length > 3){
+		if(Object.keys(page_navigate_queue).length > 6){
 			delete page_navigate_queue[Object.keys(page_navigate_queue)[0]];
-			console.log("[WARNING] Running 3 Reqeusts behind!");
+			console.log("[WARNING] Running 6 Reqeusts behind!");
 	    }
 	    return;
 	}
