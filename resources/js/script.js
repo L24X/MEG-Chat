@@ -307,9 +307,18 @@ window.addContextMenu = function(element, options) {
   // Hinzufügen des Rechtsklick-Event-Listeners
   element.addEventListener('contextmenu', e => {
     e.preventDefault();
-    // Positioniere das Context-Menu-Element an der Mausposition
-    menu.style.top = `${e.clientY}px`;
-    menu.style.left = `${e.clientX}px`;
+
+    // Positioniere das Context-Menu-Element an der Mausposition unter Berücksichtigung der Scrollpositionen
+    let top = e.clientY;
+    let left = e.clientX;
+    let parent = element.offsetParent;
+    while (parent) {
+      top += parent.scrollTop;
+      left += parent.scrollLeft;
+      parent = parent.offsetParent;
+    }
+    menu.style.top = `${top}px`;
+    menu.style.left = `${left}px`;
     menu.style.display = 'block';
   });
 
