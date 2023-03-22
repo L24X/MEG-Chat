@@ -312,9 +312,15 @@ window.addContextMenu = function(element, options) {
     let top = e.clientY;
     let left = e.clientX;
     let parent = element.offsetParent;
+
+    // Schleife durch die Eltern-Elemente, um die scrollbaren Elemente zu finden
     while (parent) {
-      top += parent.scrollTop;
-      left += parent.scrollLeft;
+      // Wenn das Elternelement gescrollt wird, füge die Scrollpositionen hinzu
+      if (parent.scrollHeight > parent.clientHeight || parent.scrollWidth > parent.clientWidth) {
+        top += parent.scrollTop - parent.clientTop;
+        left += parent.scrollLeft - parent.clientLeft;
+      }
+
       parent = parent.offsetParent;
     }
     menu.style.top = `${top}px`;
