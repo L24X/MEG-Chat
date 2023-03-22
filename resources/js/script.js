@@ -659,30 +659,46 @@ window.get_messages_data = async function(){
                             if(file_data.type.startsWith("image")){
                                 var fe = document.createElement("img");
                                 fe.src = "/files/"+file_data.code;
-                                fe.style = "width: auto; height: 200px; max-width: 100%; ";
+                                fe.style = "width: auto; height: 200px; max-width: 100%; float: left; ";
                                 nt.appendChild(fe);
                             } else if(file_data.type.startsWith("audio")) {
                                 var fe = document.createElement("audio");
                                 fe.src = "/files/"+file_data.code;
+                                fe.style = "float: left; ";
                                 fe.controls = true;
                                 nt.appendChild(fe);
                             } else if(file_data.type.startsWith("video")) {
                                 var fe = document.createElement("video");
                                 fe.src = "/files/"+file_data.code;
                                 fe.controls = true;
-                                fe.style = "width: auto; height: 200px; max-width: 100%; ";
+                                fe.style = "width: auto; height: 200px; max-width: 100%; float: left; ";
                                 nt.appendChild(fe);
                             } else {
                                 var fe = document.createElement("div");
                                 fe.innerText = "Keine Vorschau verfügbar";
-                                fe.style = "background-color: black; color: white; display: flex; justify-content: center; align-items: center; width: 220px; max-width: 100%; height: 200px; ";
+                                fe.style = "background-color: black; color: white; display: flex; justify-content: center; align-items: center; width: 220px; max-width: 100%; height: 200px; float: left; ";
                                 nt.appendChild(fe);
                             }
-                            var fe = document.createElement("a");
-                            fe.download = true;
-                            fe.href = "/files/"+file_data.code;
-                            fe.innerText = "Datei herunterladen ("+formatFileSize(file_data.size)+")";
-                            nt.appendChild(fe);
+                            var fr = document.createElement("div");
+                            fr.style = "height: auto; min-height: 20px; float: left; width: auto; min-width: 20px; margin-left: 10px; ";
+                            var fu = document.createElement("ul");
+
+                            ["Name: "+file_data.name, "Größe: "+formatFileSize(file_data.size), "Type: "+file_data.type].forEach(function(t){
+                                var ff = document.createElement("li");
+                                ff.innerText = t;
+                                fu.appendChild(ff);
+                            });
+
+                            var ff = document.createElement("li");
+                            var fl = document.createElement("a");
+                            fl.download = file_data.name;
+                            fl.href = "/files/"+file_data.code;
+                            fl.innerText = "Datei herunterladen";
+                            ff.appendChild(fl);
+                            fu.appendChild(ff);
+
+                            fr.appendChild(fu);
+                            nt.appendChild(fr);
 					    } catch(e){
 					        nt.innerHTML = '<span style="font-weight: small; font-size: 8px; color: red; ">Konnte nicht geladen werden - Ungültige Daten</span>';
 					    }
