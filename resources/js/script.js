@@ -280,6 +280,46 @@ window.close_all_popups = function(){
 	    e.remove();	
 	});
 };
+window.addContextMenu = function(element, options) {
+  // Erstelle das Context-Menu-Element
+  const menu = document.createElement('div');
+  menu.style.position = 'absolute';
+  menu.style.background = '#333';
+  menu.style.color = '#fff';
+  menu.style.padding = '8px';
+  menu.style.borderRadius = '4px';
+  menu.style.display = 'none';
+
+  // Erstelle die Buttons basierend auf den Optionen
+  options.forEach(option => {
+    const button = document.createElement('div');
+    button.style.cursor = 'pointer';
+    button.style.marginBottom = '8px';
+    button.style.color = '#fff';
+    button.textContent = option.text;
+    button.onclick = option.onclick;
+    menu.appendChild(button);
+  });
+
+  // Füge das Context-Menu-Element zum übergebenen Element hinzu
+  element.appendChild(menu);
+
+  // Hinzufügen des Rechtsklick-Event-Listeners
+  element.addEventListener('contextmenu', e => {
+    e.preventDefault();
+    // Positioniere das Context-Menu-Element an der Mausposition
+    menu.style.top = `${e.clientY}px`;
+    menu.style.left = `${e.clientX}px`;
+    menu.style.display = 'block';
+  });
+
+  // Hinzufügen des Klick-Event-Listeners zum Ausblenden des Menüs
+  document.addEventListener('click', e => {
+    if (!menu.contains(e.target)) {
+      menu.style.display = 'none';
+    }
+  });
+}
 
 window.vote = function(id){
 	post_request("/ajax/vote.php", {vote: id}, function(data){
@@ -746,6 +786,15 @@ window.get_messages_data = async function(){
                     console.log("Format not supported: "+z.type);
                     nt.innerHTML = '<span style="font-weight: small; font-size: 8px; color: red; ">Konnte nicht geladen werden - Ungültiges Format</span>';
                 }
+
+                addContextMenu(nt, [
+                    {text: "Löschen", onclick: function(){
+                        console.log("1");
+                    }},
+                    {text: "Bearbeiten", onclick: function(){
+                        console.log("2");
+                    }}
+                ]);
 
                 if(!document.getElementById("chat_inner_data") || !document.getElementById("chat_inner_data_container")) return;
                 document.getElementById("chat_inner_data").insertAdjacentHTML("beforeend", ne.outerHTML);
