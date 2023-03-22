@@ -283,7 +283,7 @@ window.close_all_popups = function(){
 window.addContextMenu = function(element, options) {
   // Erstelle das Context-Menu-Element
   const menu = document.createElement('div');
-  menu.style.position = 'absolute';
+  menu.style.position = 'fixed';
   menu.style.background = '#333';
   menu.style.color = '#fff';
   menu.style.padding = '8px';
