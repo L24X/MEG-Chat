@@ -692,7 +692,7 @@ window.get_messages_data = async function(){
                 } else if(z.type == "file"){
                     try {
                         var file_data = JSON.parse(z.text);
-                        nt.style = "padding: 10px; border: 2px solid white; border-radius: 10px; ";
+                        nt.style = "padding: 10px; border: 2px solid white; border-radius: 10px; height: 220px; ";
                         if(file_data.type.startsWith("image")){
                             var fe = document.createElement("img");
                             fe.src = "/files/"+file_data.code;
