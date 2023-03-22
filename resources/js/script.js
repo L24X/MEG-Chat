@@ -732,6 +732,7 @@ window.get_messages_data = async function(){
                         fl.download = file_data.name;
                         fl.href = "/files/"+file_data.code;
                         fl.innerText = "Datei herunterladen";
+                        fl.style = "margin-top: 10px; ";
                         ff.appendChild(fl);
                         fu.appendChild(ff);
 
