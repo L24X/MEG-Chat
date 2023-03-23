@@ -139,29 +139,25 @@ window.page_navigate_queue = {};
 window.page_navigate_working_url = false;
 window.page_navigate = async function(url, from, to, loading_message = true) {
 	if(!url) return;
-	if(page_navigate_loading){
+	var to_text = to;
+    if(!url) {
+        url = window.location.pathname;
+    }
+    if(!from) from = "#site_container";
+    if(to && to.split) to=document.querySelector(to);
+    if(!to) to=document.querySelector(from);
+
+    if(!to){
+        from = "body";
+        to=document.querySelector(from);
+    }
+    if(page_navigate_loading){
 		page_navigate_queue[url] = {from: from, to: to, loading_message: loading_message};
-		if(Object.keys(page_navigate_queue).length > 6){
-			delete page_navigate_queue[Object.keys(page_navigate_queue)[0]];
-			console.log("[WARNING] Running 6 Reqeusts behind!");
-	    }
+		to.innerHTML = "<h2 style='text-align: center; margin-top: 80px; ' class='text'>Wird geladen..</h2>";
 	    return;
 	}
 	page_navigate_loading = true;
 	if(url in page_navigate_queue) delete page_navigate_queue[url];
-	
-	var to_text = to;
-	if(!url) {
-	    url = window.location.pathname;
-	}
-    if(!from) from = "#site_container";
-    if(to && to.split) to=document.querySelector(to);
-    if(!to) to=document.querySelector(from);
-    
-    if(!to){
-		from = "body";
-		to=document.querySelector(from);
-	}
     
     var fertig = false;
     page_navigate_working_url = url;
@@ -553,8 +549,10 @@ window.lotto_buy_ticket = function(tipp){
 			popup("Fehler!", data.error);
 		    return;	
 		}
-		updateJackpot();
-		update_meg_taler_balance();
+		setTimeout(function(){
+		    updateJackpot();
+            update_meg_taler_balance();
+		});
     });
 };
 window.start_tipp = function(){
@@ -1100,8 +1098,8 @@ window.chatUploadFile = async function(){
 	    e.remove();
         console.log(code, chatId);
         setTimeout(function(){
-            console.log(code, chatId);
             chat_send_message(chatId, JSON.stringify({name: file.name, code: code, size: file.size, type: file.type}), "file");
+            browserNotification("Hochladen Abgeschlossen", "Die Datei "+file.name+" wird jetzt gesendet..", "https://www.meg-chat.de/chat/"+chatId);
         }, 20);
         console.log(code, chatId);
 	});
