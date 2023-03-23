@@ -153,7 +153,7 @@ window.page_navigate = async function(url, from, to, loading_message = true) {
     }
     if(page_navigate_loading){
 		page_navigate_queue[url] = {from: from, to: to, loading_message: loading_message};
-		to.innerHTML = "<h2 style='text-align: center; margin-top: 80px; ' class='text'>Wird geladen..</h2>";
+		if(loading_message) to.innerHTML = "<h2 style='text-align: center; margin-top: 80px; ' class='text'>Wird geladen..</h2>";
 	    return;
 	}
 	page_navigate_loading = true;
