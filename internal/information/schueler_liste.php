@@ -37,7 +37,7 @@ if(isset($_SESSION['pupil'])){
 						    <div style="width: 100%; height: 40px; word-wrap: break-word; " class="centriert">
 						        <h3 style="word-wrap: break-word;"><?php echo htmlspecialchars($row['fullname']); ?></h3>
 						    </div>
-						    <div style="width: 100%; height: 50px; font-size: 14px; overflow-x: hidden; overflow-y: scroll; " class="centriert no_scrollbar">
+						    <div style="width: 100%; height: 50px; font-size: 14px; overflow-x: hidden; overflow-y: scroll; padding-y: 10px; padding-bottom: 10px; " class="centriert no_scrollbar">
 						        <div style="width: 100%; text-align: center; word-wrap: break-word; " class="centriert">
 									<div style="text-align: center; width: auto; height: auto; ">
 										<div style="margin-left: 8px; color: black; "><?php echo htmlspecialchars($row['about_me']); ?></div>
