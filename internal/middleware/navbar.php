@@ -1,5 +1,5 @@
 <header class="navbar">
-  <a href="#" class="logo">MEG-Chat</a>
+  <a href="javascript:page_navigate('/');" class="logo">MEG-Chat</a>
   <div class="menu-icon">&#9776;</div>
   <nav class="navigation">
     <ul>

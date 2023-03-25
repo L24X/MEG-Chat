@@ -33,4 +33,4 @@ RewriteRule ^files/(.+)$ internal/information/file.php?file=$1 [QSA]
 
 RewriteRule ^warum_meg$ internal/information/warum_meg.php [QSA]
 
-ErrorDocument 404 /error/404.html
+ErrorDocument 404 /error/404.php
