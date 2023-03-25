@@ -15,7 +15,7 @@
 		    <div style="width: 600px; max-width: 95%; text-align: left; min-height: 400px; height: auto; ">
 		        <h1>Datenschutzerklärung</h1>
                 <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst und halten uns strikt an die Regeln der Datenschutzgesetze. Personenbezogene Daten werden auf dieser Webseite nur im technisch notwendigen Umfang erhoben. In keinem Fall werden die erhobenen Daten verkauft oder aus anderen Gründen an Dritte weitergegeben.</p>
-		        <h2>Datenerfassung auf unserer Webseite</h2>
+		        <h2 style="marign-top: 20px; ">Datenerfassung auf unserer Webseite</h2>
 				<p>MEG-Chat erhebt und speichert automatisch in ihren Server Log Files Informationen, die Ihr Browser an uns übermittelt. Dies sind:</p>
 				<ul>
 					<li>Browsertyp/ -version</li>
@@ -24,14 +24,13 @@
 					<li>Hostname des zugreifenden Rechners (IP Adresse)</li>
 					<li>Uhrzeit der Serveranfrage.</li>
 				</ul>
-				
-				<h2>Verwendung von Cookies</h2>
+				<h2 style="marign-top: 20px; ">Verwendung von Cookies</h2>
 				<p>Wir verwenden auf unserer Webseite Cookies. Dabei handelt es sich um kleine Textdateien, die auf Ihrem Rechner abgelegt werden und die Ihr Browser speichert. Diese Cookies richten auf Ihrem Rechner keinen Schaden an und enthalten keine Viren. Es wird ausschließlich das PHP-Session-Cookie verwendet.</p>
 				
-				<h2>Öffentlichkeit der eingegeben Daten</h2>
+				<h2 style="marign-top: 20px; ">Öffentlichkeit der eingegeben Daten</h2>
 				<p>Bitte beachten Sie, dass alle in den MEG-Chat eingegebenen Daten öffentlich sichtbar sind. Es besteht keine Möglichkeit, diese Daten zu verbergen oder nur für ausgewählte Nutzer sichtbar zu machen.</p>
 				
-				<h2>Datenschutzbeauftragter</h2>
+				<h2 style="marign-top: 20px; ">Datenschutzbeauftragter</h2>
 				<p>Verantwortlich für die Einhaltung der Datenschutzbestimmungen auf dieser Webseite ist:</p>
 				<p>Name: Tilo Behnke</p>
 				<p>Adresse: Berliner Ring 51, 50321 Brühl</p>
