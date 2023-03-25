@@ -13,7 +13,7 @@
     <div id="site_container">
 		<div style="text-align: center; margin-top: 120px; ">
 			<h1 style="margin-top: 20px; ">Impressum</h1>
-			<p style="margin-top: 20px; ">Tilo Ulf Behnke<br>Berliner Ring 51<br>50321, Brühl<br><br><b>Tel: </b>+49 015752250315<br><b>Email: </b>behnke.tilo@meg-bruehl.de
+			<p style="margin-top: 20px; ">Tilo Behnke<br>Berliner Ring 51<br>50321 Brühl<br><br><b>Tel: </b>+49 015752250315<br><b>Email: </b>behnke.tilo@meg-bruehl.de
 			</p>
 			<h2 style="margin-top: 20px; ">Mitwirkende</h2>
 			<div style="height: 120px; margin-top: 20px; ">
