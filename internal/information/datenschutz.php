@@ -34,8 +34,8 @@
 				<h2>Datenschutzbeauftragter</h2>
 				<p>Verantwortlich für die Einhaltung der Datenschutzbestimmungen auf dieser Webseite ist:</p>
 				<p>Name: Tilo Behnke</p>
-				<p>Adresse: Musterstraße 123, 12345 Musterstadt</p>
-				<p>E-Mail: datenschutz@meg-chat.de</p>
+				<p>Adresse: Berliner Ring 51, 50321 Brühl</p>
+				<p>E-Mail: behnke.tilo@meg-bruehl.de</p>
 		    </div>
 		</div>
     </div>
