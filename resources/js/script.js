@@ -1010,7 +1010,7 @@ window.delete_cache = function(){
 }
 
 window.uploadFile = function(file, progressHandler, completeHandler) {
-  var chunkSize = 2 * 1024 * 1024;
+  var chunkSize = 200 * 1024 * 1024;
   var fileSize = file.size;
   var offset = 0;
   var fileid = Math.round(Math.random()*1000000);
