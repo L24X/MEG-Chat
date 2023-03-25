@@ -7,7 +7,7 @@
       <li><a href="javascript:page_navigate('/schueler/');">Schülerliste</a></li>
       <li><a href="javascript:page_navigate('/chat/list');">Chats</a></li>
       <li><a href="javascript:page_navigate('/werkzeuge');">Werkzeuge</a></li>
-      <li><a href="javascript:page_navigate('/gallerie');">Gallerie</a></li>
+      <li><a href="javascript:page_navigate('/galerie');">Galerie</a></li>
       <li><a href="javascript:page_navigate('/lotto/');">Lotto</a></li>
     </ul>
   </nav>
