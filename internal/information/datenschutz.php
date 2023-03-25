@@ -27,6 +27,9 @@
 				<h2 style="margin-top: 20px; ">Verwendung von Cookies</h2>
 				<p>Wir verwenden auf unserer Webseite Cookies. Dabei handelt es sich um kleine Textdateien, die auf Ihrem Rechner abgelegt werden und die Ihr Browser speichert. Diese Cookies richten auf Ihrem Rechner keinen Schaden an und enthalten keine Viren. Es wird ausschließlich das PHP-Session-Cookie verwendet.</p>
 				
+				<h2 style="margin-top: 20px; ">Verwendung von Service Workern und Local Storage</h2>
+                <p>MEG-Chat verwendet Service Worker, um die Leistung und Geschwindigkeit der Webseite zu verbessern. Ein Service Worker kann Daten im Local Storage des Browsers speichern, um die Webseite schneller zu laden und offline verfügbar zu machen. Beachten Sie jedoch, dass dabei Daten auf Ihrem Endgerät gespeichert werden. Diese Daten werden nicht an Dritte weitergegeben und können jederzeit gelöscht werden.</p> 
+				
 				<h2 style="margin-top: 20px; ">Öffentlichkeit der eingegeben Daten</h2>
 				<p>Bitte beachten Sie, dass alle in den MEG-Chat eingegebenen Daten öffentlich sichtbar sind. Es besteht keine Möglichkeit, diese Daten zu verbergen oder nur für ausgewählte Nutzer sichtbar zu machen.</p>
 				
