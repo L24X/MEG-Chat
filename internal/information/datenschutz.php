@@ -11,7 +11,7 @@
 <body>
 	<? require('../middleware/navbar.php'); ?>
     <div id="site_container">
-		<div style="width: 100%; height: 100%; margin-top: 180px; " class="centriert">
+		<div style="width: 100%; height: 100%; margin-top: 140px; " class="centriert">
 		    <div style="width: 600px; max-width: 95%; text-align: left; min-height: 400px; height: auto; ">
 		        <h1>Datenschutzerklärung</h1>
                 <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst und halten uns strikt an die Regeln der Datenschutzgesetze. Personenbezogene Daten werden auf dieser Webseite nur im technisch notwendigen Umfang erhoben. In keinem Fall werden die erhobenen Daten verkauft oder aus anderen Gründen an Dritte weitergegeben.</p>
@@ -38,6 +38,7 @@
 				<p>Name: Tilo Behnke</p>
 				<p>Adresse: Berliner Ring 51, 50321 Brühl</p>
 				<p>E-Mail: behnke.tilo@meg-bruehl.de</p>
+				<div style="width: 100%; height: 100px; "></div>
 		    </div>
 		</div>
     </div>
