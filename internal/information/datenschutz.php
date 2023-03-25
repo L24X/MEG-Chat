@@ -17,7 +17,7 @@
                 <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst und halten uns strikt an die Regeln der Datenschutzgesetze. Personenbezogene Daten werden auf dieser Webseite nur im technisch notwendigen Umfang erhoben. In keinem Fall werden die erhobenen Daten verkauft oder aus anderen Gründen an Dritte weitergegeben.</p>
 		        <h2 style="margin-top: 20px; ">Datenerfassung auf unserer Webseite</h2>
 				<p>MEG-Chat erhebt und speichert automatisch in ihren Server Log Files Informationen, die Ihr Browser an uns übermittelt. Dies sind:</p>
-				<ul style="margin-left: 15px; ">
+				<ul style="margin-left: 15px; margin-top: 15px; ">
 					<li>Browsertyp/ -version</li>
 					<li>verwendetes Betriebssystem</li>
 					<li>Referrer URL (die zuvor besuchte Seite)</li>
