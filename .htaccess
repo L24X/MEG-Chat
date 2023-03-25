@@ -21,7 +21,9 @@ RewriteRule ^werkzeuge/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ internal/information/w
 RewriteRule ^zeitung/$ internal/information/zeitung.php [QSA]
 RewriteRule ^zeitung$ internal/information/zeitung.php [QSA]
 RewriteRule ^zeitung/([0-9]+)$ internal/information/zeitung.php?zeitung=$1 [QSA]
+
 RewriteRule ^impressum$ internal/information/impressum.php [QSA]
+RewriteRule ^datenschutzerklaerung$ internal/information/datenschutz.php [QSA]
 
 RewriteRule ^gallerie$ internal/information/gallery.php [QSA]
 RewriteRule ^gallerie/$ internal/information/gallery.php [QSA]
