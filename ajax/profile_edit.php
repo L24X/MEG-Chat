@@ -12,18 +12,6 @@ $pupil_data = (array)$stmtCheck->fetchObject();
 function resizeImage($path, $maxSizeInMB, $destinationPath) {
   $maxSizeInKB = $maxSizeInMB * 1024;
   $quality = 90;
-  while (filesize($path) > $maxSizeInKB) {
-    $image = imagecreatefromstring(file_get_contents($path));
-    $width = imagesx($image);
-    $height = imagesy($image);
-    $newWidth = $width * 0.9;
-    $newHeight = $height * 0.9;
-    $newImage = imagecreatetruecolor($newWidth, $newHeight);
-    imagecopyresampled($newImage, $image, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-    imagejpeg($newImage, $path, $quality);
-    imagedestroy($image);
-    imagedestroy($newImage);
-  }
   copy($path, $destinationPath);
   unlink($path);
 }

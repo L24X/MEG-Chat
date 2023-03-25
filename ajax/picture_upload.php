@@ -24,22 +24,6 @@ function resize_image($source_path, $max_size_mb, $destination_path) {
     // Originalbild einlesen
     $source_data = file_get_contents($source_path);
 
-    // Schleife für die Verkleinerung des Bildes
-    while (strlen($source_data) > $max_size_bytes) {
-        // Bildgröße halbieren
-        $source_data = pack('H*', bin2hex($source_data));
-        $source_data = imagecreatefromstring($source_data);
-        $new_width = imagesx($source_data) / 2;
-        $new_height = imagesy($source_data) / 2;
-        $new_image = imagecreatetruecolor($new_width, $new_height);
-        imagecopyresampled($new_image, $source_data, 0, 0, 0, 0, $new_width, $new_height, imagesx($source_data), imagesy($source_data));
-
-        // Bild in den Speicher laden
-        ob_start();
-        imagejpeg($new_image, null, 100);
-        $source_data = ob_get_clean();
-    }
-
     // Verkleinertes Bild in eine Datei speichern
     file_put_contents($destination_path, $source_data);
 }
